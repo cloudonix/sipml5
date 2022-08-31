@@ -132,10 +132,10 @@ textarea {
 }
 body {
   margin: 0;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: 'Montserrat';
   font-size: 13px;
   line-height: 18px;
-  color: #00a2dd;
+  color: #0171af;
   background-color: #576a72;
 }
 a {
@@ -606,7 +606,7 @@ input,
 button,
 select,
 textarea {
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: 'lato';
 }
 label {
   display: block;
@@ -2782,7 +2782,7 @@ input[type="submit"].btn.btn-mini {
 .navbar-inner {
   padding-left: 20px;
   padding-right: 20px;
-  background-color: #0171af;
+  background-color: #00a2dd;
   background-repeat: repeat-x;
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#333333', endColorstr='#222222', GradientType=0);
   -webkit-border-radius: 4px;
