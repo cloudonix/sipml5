@@ -1,9 +1,15 @@
+# Ringplan Lite
+This project is an adaptation of the SipML5-NG codebase for use by the Ringplan platform, both as a standalone webapp and as an embedable client.
+
+
+
+---
 # SIPml5-NG
 On May 14th, 2012 SIPml5, the world's first open Source HTML SIP client was released. SIPml5 had captivated the mind of RTC pioneers
-  in the open source communities. However, as time pregressed, its creator Doubango Telecom had abandoned the project. On Feb 8th, 2018 
+  in the open source communities. However, as time pregressed, its creator Doubango Telecom had abandoned the project. On Feb 8th, 2018
   Doubango Telecom had released their final version of SIPml5 (version 2.1.4) - and since then the code base had remained unmaintained.
-  
-On June 17th, 2020 Cloudonix released its fork of the original SIPml5 project - SIPml5-NG. The new project picks up the project from that point and merges back to the project various patches and updates, provided by the Open Source community 
+
+On June 17th, 2020 Cloudonix released its fork of the original SIPml5 project - SIPml5-NG. The new project picks up the project from that point and merges back to the project various patches and updates, provided by the Open Source community
 and the various SIPml5 developer community.
 
 SIPml5-NG is an open source (BSD license) HTML5 SIP client entirely written in javascript for integration in social networks (FaceBook, Twitter, Google+), online games, e-commerce websites, email signatures... No extension, plugin or gateway is needed. The media stack relies on WebRTC.
@@ -46,7 +52,7 @@ Our testing and verification process includes testing using the following WebRTC
   - Freeswitch
   - Kamailio
   - OpenSIPS
-  
+
 - SIP over WebSocket Endpoints
   - webrtc.cloudonix.io
 
@@ -55,12 +61,12 @@ Our testing and verification process includes testing using the following WebRTC
   - Firefox
   - Safari
   - Edge
- 
+
 - Mobile Browsers
   - Google Chrome
   - Firefox
   - Safari
-  
+
 **The following browsers are known to be non-compatible or do not support WebRTC natively:**
 
 - Opera
@@ -68,14 +74,14 @@ Our testing and verification process includes testing using the following WebRTC
 - Mobile browsers provided by low end mobile vendors
 
 # Where did the Asterisk patches go?
-As of version 12 of the Asterisk project, support for SIP over WebSocket is native to the project. As the patches were required for 
-older versions, that are no longer supported or available - we had decided to remove that directory. 
+As of version 12 of the Asterisk project, support for SIP over WebSocket is native to the project. As the patches were required for
+older versions, that are no longer supported or available - we had decided to remove that directory.
 
 # License
 The code is released under BSD terms. For more information: https://github.com/cloudonix/sipml5-ng/blob/wiki/License.md
 
 # How to contribute to the project
-If you have a patch for this project, please submit a pull request. Pull requests will be tested and verified for proper functionality and stability. 
+If you have a patch for this project, please submit a pull request. Pull requests will be tested and verified for proper functionality and stability.
 Once a patch had been accepted - it will be merged back into the upstream repository.
 
 Project home page: [github.com/cloudonix/sipml5-ng](https://github.com/cloudonix/sipml5-ng) <br />

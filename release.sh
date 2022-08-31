@@ -15,7 +15,7 @@ API_FILE_PATH=$API_FOLDER_NAME/$API_FILE_NAME
 
 # src dst
 CompressFile()
-{	
+{
 	echo Compressing ... $1 to $2
 	if [ ${1: -3} == ".js" ]
 	then
@@ -38,7 +38,7 @@ AppendFile()
 AppendScripts()
 {
 	echo "var __b_release_mode = true;" > $1
-	
+
 	AppendFile src/adapter.js $1
 	AppendFile src/tinySAK/src/tsk_base64.js $1
     AppendFile src/tinySAK/src/tsk_buff.js $1
@@ -48,10 +48,10 @@ AppendScripts()
     AppendFile src/tinySAK/src/tsk_ragel.js $1
     AppendFile src/tinySAK/src/tsk_string.js $1
     AppendFile src/tinySAK/src/tsk_utils.js $1
-    
+
 	# at this step 'tsk_utils_log_info' is defined
 	echo "tsk_utils_log_info('SIPML5-NG API version = $API_VERSION');" >> $1
-    
+
     AppendFile src/tinyMEDIA/src/tmedia_common.js $1
 	AppendFile src/tinyMEDIA/src/tmedia_webrtc4all.js $1 #include_in<tmedia_common.js>
 	AppendFile src/tinyMEDIA/src/tmedia_defaults.js $1 #include_in<tmedia_common.js>
@@ -61,8 +61,8 @@ AppendScripts()
 	AppendFile src/tinyMEDIA/src/tmedia_session_ghost.js $1 #include_in<tmedia_session.js>
     AppendFile src/tinyMEDIA/src/tmedia_param.js $1
     AppendFile src/tinyMEDIA/src/tmedia_qos.js $1
-    
-    
+
+
     AppendFile src/tinySDP/src/headers/tsdp_header.js $1
 	AppendFile src/tinySDP/src/headers/tsdp_header_A.js $1 #include_in<tsdp_header.js>
 	AppendFile src/tinySDP/src/headers/tsdp_header_C.js $1 #include_in<tsdp_header.js>
@@ -72,8 +72,8 @@ AppendScripts()
 	AppendFile src/tinySDP/src/headers/tsdp_header_V.js $1 #include_in<tsdp_header.js>
     AppendFile src/tinySDP/src/tsdp_message.js $1
 	AppendFile src/tinySDP/src/tsdp_parser_message.js $1 #include_in<tsdp_message.js>
-    
-    
+
+
     AppendFile src/tinySIP/src/tsip_action.js $1
 	AppendFile src/tinySIP/src/tsip_event.js $1
 	AppendFile src/tinySIP/src/tsip_message.js $1
@@ -91,10 +91,10 @@ AppendScripts()
 	AppendFile src/tinySIP/src/tsip_timers.js $1
 	AppendFile src/tinySIP/src/tsip_uri.js $1
 	AppendFile src/tinySIP/src/parsers/tsip_parser_uri.js $1 #include_in<tsip_uri.js>
-	
+
 	AppendFile src/tinySIP/src/authentication/tsip_auth.js $1
 	AppendFile src/tinySIP/src/authentication/tsip_challenge.js $1
-	
+
 	AppendFile src/tinySIP/src/dialogs/tsip_dialog.js $1
 	AppendFile src/tinySIP/src/dialogs/tsip_dialog_generic.js $1 #include_in<tsip_dialog.js>
 	AppendFile src/tinySIP/src/dialogs/tsip_dialog_generic__message.js $1 #include_in<tsip_dialog_generic.js>
@@ -108,7 +108,7 @@ AppendScripts()
 	AppendFile src/tinySIP/src/dialogs/tsip_dialog_invite__timers.js $1 #include_in<tsip_dialog_invite.js>
 	AppendFile src/tinySIP/src/dialogs/tsip_dialog_register.js $1 #include_in<tsip_dialog.js>
     AppendFile src/tinySIP/src/dialogs/tsip_dialog_layer.js $1
-    
+
     AppendFile src/tinySIP/src/headers/tsip_header.js $1
 	AppendFile src/tinySIP/src/headers/tsip_header_Int.js $1 #include_in<tsip_header.js>
 	AppendFile src/tinySIP/src/headers/tsip_header_NameAddr.js $1 #include_in<tsip_header.js>
@@ -125,22 +125,22 @@ AppendScripts()
 	AppendFile src/tinySIP/src/headers/tsip_header_Subscription_State.js $1 #include_in<tsip_header.js>
 	AppendFile src/tinySIP/src/headers/tsip_header_Via.js $1 #include_in<tsip_header.js>
 	AppendFile src/tinySIP/src/headers/tsip_header_WWW_Authenticate.js $1 #include_in<tsip_header.js>
-    
+
     AppendFile src/tinySIP/src/parsers/tsip_parser_header.js $1
     # src/tinySIP/src/parsers/tsip_parser_message.js $1
     # src/tinySIP/src/parsers/tsip_parser_uri.js $1
-    
+
     AppendFile src/tinySIP/src/transactions/tsip_transac.js $1
 	AppendFile src/tinySIP/src/transactions/tsip_transac_ict.js $1 #include_in<tsip_transac.js>
 	AppendFile src/tinySIP/src/transactions/tsip_transac_ist.js $1 #include_in<tsip_transac.js>
 	AppendFile src/tinySIP/src/transactions/tsip_transac_layer.js $1 #include_in<tsip_transac.js>
 	AppendFile src/tinySIP/src/transactions/tsip_transac_nict.js $1 #include_in<tsip_transac.js>
 	AppendFile src/tinySIP/src/transactions/tsip_transac_nist.js $1 #include_in<tsip_transac.js>
-	
+
 	AppendFile src/tinySIP/src/transports/tsip_transport.js $1
 	AppendFile src/tinySIP/src/transports/tsip_transport_layer.js $1
-	
-	
+
+
 	AppendFile SIPml.js $1
 }
 
@@ -160,15 +160,15 @@ DeployFile()
 DeployFolder()
 {
 	for src_file in $(find $1 -name '*.js' -o -name '*.htm' -o -name '*.html' -o -name '*.css' -o -name '*.wav' -o -name '*.png' -o -name '*.bmp')
-	do 
+	do
 		name=`basename $src_file`
 		src_dir=`dirname "$src_file"`
 		base=${src_file%/*}
-		
+
 		dest_dir=$API_FOLDER_NAME/${src_dir: 0}
 		dest_file=$dest_dir/$name
 		mkdir -p $dest_dir
-		
+
 		DeployFile $src_file $dest_file
 	done
 }
@@ -197,5 +197,3 @@ rm -r $API_FILE_PATH.tmp.js
 # generate and deploy documentation
 ./docgen.sh
 DeployFolder docgen
-
-
