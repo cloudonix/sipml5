@@ -1,0 +1,128 @@
+<div class="row" id="videoconf-icon">
+  <div class='col-md-offset-11 col-md-1 text-right'>
+    <span id='service-active' class='fa-stack fa-lg text-info' style='display: none'>
+      <a href='#' onclick='$("#videoconf-main").parent().videoconf.show()'>
+        <i class='fa fa-square-o fa-stack-2x'></i>
+        <i class='fa fa-users fa-stack-1x'></i>
+      </a>
+    </span>
+    <span id='service-inactive' class='fa-stack fa-lg' data-toggle='tooltip' data-placement="left" title='service not available'>
+      <i class='fa fa-users fa-stack-1x text-info'></i>
+      <i class='fa fa-ban fa-stack-2x text-danger'></i>
+    </span>
+  </div>
+</div>
+
+<div class="row" id="videoconf-main" style='display: none'>
+  <div class="col-md-10 videoconf-participant-panel" style='display: none;'>
+    <div class='row' style='border-right: 1px solid #acacac; border-bottom: 1px solid #acacac'>
+      <div class='col-md-2 col-xs-4 videoconf-video-frame'>
+        <div class='videoconf-video-overlay-text'>
+          Empty
+        </div>
+        <div class='col-md-2 col-xs-4 videoconf-zoom-icon'>
+          <i class='fa fa-arrows-alt'></i>
+        </div>
+        <div class="videoconf-video-pane">
+          <video style="width: 100%; padding: 0" autoplay="true" loop="true"></video>
+        </div>
+      </div>
+      <div class='col-md-2 col-xs-4 videoconf-video-frame'>
+        <div class='videoconf-video-overlay-text'>
+          Empty
+        </div>
+        <div class='col-md-2 col-xs-6 videoconf-zoom-icon'>
+          <i class='fa fa-arrows-alt'></i>
+        </div>
+        <div class="videoconf-video-pane">
+          <video style="width: 100%; padding: 0" autoplay="true" loop="true"></video>
+        </div>
+      </div>
+      <div class='col-md-2 col-xs-4 videoconf-video-frame'>
+        <div class="videoconf-video-overlay-text">
+          Empty
+        </div>
+        <div class='col-md-2 col-xs-4 videoconf-zoom-icon'>
+          <i class='fa fa-arrows-alt'></i>
+        </div>
+        <div class="videoconf-video-pane">
+          <video style="width: 100%; padding: 0" autoplay="true" loop="true"></video>
+        </div>
+      </div>
+      <div class='col-md-2 col-xs-4 videoconf-video-frame'>
+        <div class='videoconf-video-overlay-text'>
+          Empty
+        </div>
+        <div class='col-md-2 col-xs-4 videoconf-zoom-icon'>
+          <i class='fa fa-arrows-alt'></i>
+        </div>
+        <div class='videoconf-video-pane'>
+          <video style="width: 100%; padding: 0" autoplay="true" loop="true"></video>
+        </div>
+      </div>
+      <div class='col-md-2 col-xs-4 videoconf-video-frame'>
+        <div class='videoconf-video-overlay-text'>
+          Empty
+        </div>
+        <div class='col-md-2 col-xs-4 videoconf-zoom-icon'>
+          <i class='fa fa-arrows-alt'></i>
+        </div>
+        <div class='videoconf-video-pane'>
+          <video style="width: 100%; padding: 0" autoplay="true" loop="true"></video>
+        </div>
+      </div>
+      <div class='col-md-2 col-xs-4 videoconf-video-frame'>
+        <div class='videoconf-video-overlay-text'>
+          Empty
+        </div>
+        <div class='col-md-2 col-xs-4 videoconf-zoom-icon'>
+          <i class='fa fa-arrows-alt'></i>
+        </div>
+        <div class='videoconf-video-pane'>
+          <video style="width: 100%; padding: 0" autoplay="true" loop="true"></video>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-10 col-xs-8 videoconf-zoom-frame" style='display: none'>
+        <div class='videoconf-zoom-close'>
+          <p class='text-right'>x</p>
+        </div>
+        <div class="videoconf-zoom-pane">
+          <video id='videoconf-zoom' style="width: 100%; padding: 0" autoplay="true" loop="true"></video>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-offset-10 col-md-2 col-xs-offset-8 col-xs-4 videoconf-video-panel">
+    <div class='row'>
+      <div class="videoconf-logo pull-left">
+        <img src="sansay/img/sansay-logo.png" />
+      </div>
+      <div class="pull-right">
+        <a href="javascript: $('#videoconf-main').parent().videoconf.hide()">x</a>
+      </div>
+    </div>
+    <div class="row" style="padding: 10px 0 10px 0">
+      <p class="text-center">Room Number</p>
+      <div class="col-md-offset-1 col-md-10">
+        <input id='confroom-num' class="videoconf-text-input" type="text">
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-offset-3 col-md-6 videoconf-btn">
+        <p id='videoconf-leave-txt' class="text-center" style='display: none'>Leave</p>
+        <p id='videoconf-join-txt' class="text-center">Join</p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12 videoconf-video-frame videoconf-video-self">
+        <div class='videoconf-video-pane'>
+          <div class="col-md-12 videoconf-join-error" style='display: none'>Invalid conference number. Please check your number and try again</div>
+          <video id='videoconf-video-self' class='videoconf-horizontal-flip' muted="true" autoplay="true" loop="true"></video>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,1 +1,0 @@
-This folder contains JavaScript files for the webphone core, skins and samples.

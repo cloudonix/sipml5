@@ -1,0 +1,181 @@
+      <div class="row" id="webphone-icon">
+        <div class='col-md-offset-11 col-md-1 text-right'>
+          <span id='show-phone' class='fa-stack fa-lg text-info' style="display: none">
+            <a href='#' onclick='$("#webphone-keypad").parent().webphone.show()'>
+              <i class='fa fa-square-o fa-stack-2x'></i>
+              <i class='fa fa-phone fa-stack-1x'></i>
+            </a>
+          </span>
+          <span id='inactive-phone' class='fa-stack fa-lg' data-toggle='tooltip' data-placement="left" title='Webphone service not available'>
+            <i class='fa fa-phone fa-stack-1x text-info'></i>
+            <i class='fa fa-ban fa-stack-2x text-danger'></i>
+          </span>
+        </div>
+      </div>
+
+      <div class="row" id="webphone-incoming-call" style="display: none;">
+        <div class="webphone-panel col-md-offset-9 col-md-3">
+          <div class='row' style='margin-top: 20px'>
+            <div>
+              <p class='text-center'>INCOMING CALL</p>
+              <p class='webphone-caller-id text-center'>
+                <i class='fa fa-volume-control-phone'></i>
+                <b></b>
+              </p>
+            </div>
+          </div>
+          <div class='row'>
+            <p class='text-center' style='padding-top: 50px; padding-bottom: 50px'>
+              <img src="sansay/img/avatar.jpg"></img>
+            </p>
+          </div>
+          <div class='row'>
+            <div class='webphone-reject-key col-md-offset-1 col-sm-offset-1 col-xs-offset-1 col-md-3 col-sm-3 col-xs-3 text-center'>
+              Reject
+            </div>
+            <div class='webphone-answer-key col-md-offset-4 col-sm-offset-4 col-xs-offset-4 col-md-3 col-sm-3 col-xs-3 text-center'>
+              Answer
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row" id="webphone-video" style="display: none;">
+        <div class="webphone-video-frame webphone-panel col-md-offset-9 col-md-3">
+          <div class="webphone-video-top-overlay row">
+            <div class="col-md-12">
+              <div class="row">
+                <div class="webphone-video-fkey col-md-4 col-lg-4 col-sm-4 col-xs-4"><p>Transfer</p></div>
+                <div class="webphone-video-fkey webphone-video-fkey-center col-md-4 col-lg-4 col-sm-4 col-xs-4"><p>Hold</p></div>
+                <div class="webphone-video-fkey col-md-4 col-lg-4 col-sm-4 col-xs-4"><p>Mute</p></div>
+              </div>
+              <div class="row">
+                <div class="webphone-video-elapse-time webphone-elapse-time col-md-3">
+                  00:00
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="webphone-video-main">
+            <video id="remote-side-video" autoplay="true" loop="true"></video>
+          </div>
+
+          <div class="webphone-video-bottom-overlay row">
+            <div class="col-md-5 col-lg-5 col-sm-5 col-xs-5" id='webphone-video-end-btn'>
+              <div class="webphone-video-bottom-overlay-btn">
+                <p>End Call</p>
+              </div>
+            </div>
+            <div class="col-md-4 col-lg-4 col-sm-4 col-xs-4">
+              &nbsp;
+            </div>
+            <div class="webphone-pip-frame col-md-3 col-lg-3 col-sm-3 col-xs-3">
+              <div class="webphone-video-pip">
+                <video class='webphone-horizontal-flip' id="local-side-video" muted="true" loop="true" autoplay="true"></viedo>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row" id="webphone-keypad" style="display: none">
+        <div class="webphone-panel col-md-offset-9 col-md-3">
+          <div class='row'>
+            <div class="pull-left" style="margin-left: 8px;">
+              <img class="webphone-logo" />
+            </div>
+            <div class="pull-right" style="margin-right: 8px">
+              <a href="javascript: $('#webphone-keypad').parent().webphone.hide()">x</a>
+            </div>
+          </div>
+          <div class='webphone-display row'>
+            <div class="webphone-digits col-md-12" style="min-height: 57px">
+            </div>
+          </div>
+          <div class='webphone-display row'>
+            <div id="last-call" class="pull-left" style="padding-left: 15px; min-height: 22px">
+              &nbsp;
+            </div>
+            <div id="elapse-time" class="pull-left webphone-elapse-time" style="display: none; padding-left: 15px; min-height: 22px">
+            </div>
+          </div>
+          <div class='row' id="no-call">
+            <div class="webphone-fkey side-key col-md-4 col-sm-4 col-xs-4" id="webphone-redial-btn">
+              <p><i class="fa fa-repeat"></i></p>
+            </div>
+            <div class="webphone-fkey center-key col-md-4 col-sm-4 col-xs-4">
+              <p>&nbsp;</p>
+            </div>
+            <div class="webphone-fkey side-key col-md-4 col-sm-4 col-xs-4" id="webphone-backspace-btn">
+              <p><i class='fa fa-step-backward'></i></p>
+            </div>
+          </div>
+          <div class='row webphone-inactive' id="in-call">
+            <div class="webphone-fkey side-key col-md-4 col-sm-4 col-xs-4" id="webphone-xfer-btn">
+              <p>Transfer</p>
+            </div>
+            <div class="webphone-fkey center-key col-md-4 col-sm-4 col-xs-4" id="webphone-hold-btn">
+              <p id="hold-btn-text">Hold</p>
+              <p id="resume-btn-text" class="webphone-inactive">Resume</p>
+            </div>
+            <div class="webphone-fkey side-key col-md-4 col-sm-4 col-xs-4" id="webphone-mute-btn">
+              <p id="mute-btn-text">Mute</p>
+              <p id="unmute-btn-text" class="webphone-inactive">Unmute</p>
+            </div>
+          </div>
+          <div class='row'>
+            <div class="webphone-key side-key col-md-4 col-sm-4 col-xs-4" id="webphone-1-btn">
+              <p>1</p>
+            </div>
+            <div class="webphone-key center-key col-md-4 col-sm-4 col-xs-4" id="webphone-2-btn">
+              <p>2<small>ABC</small></p>
+            </div>
+            <div class="webphone-key side-key col-md-4 col-sm-4 col-xs-4" id="webphone-3-btn">
+              <p>3<small>DEF</small></p>
+            </div>
+          </div>
+          <div class='row'>
+            <div class="webphone-key side-key col-md-4 col-sm-4 col-xs-4" id="webphone-4-btn">
+              <p>4<small>GHI</small></p>
+            </div>
+            <div class="webphone-key center-key col-md-4 col-sm-4 col-xs-4" id="webphone-5-btn">
+              <p>5<small>KJL</small></p>
+            </div>
+            <div class="webphone-key side-key col-md-4 col-sm-4 col-xs-4" id="webphone-6-btn">
+              <p>6<small>MNO</small></p>
+            </div>
+          </div>
+          <div class='row'>
+            <div class="webphone-key side-key col-md-4 col-sm-4 col-xs-4" id="webphone-7-btn">
+              <p>7<small>PQRS</small></p>
+            </div>
+            <div class="webphone-key center-key col-md-4 col-sm-4 col-xs-4" id="webphone-8-btn">
+              <p>8<small>TUV</small></p>
+            </div>
+            <div class="webphone-key side-key col-md-4 col-sm-4 col-xs-4" id="webphone-9-btn">
+              <p>9<small>WXYZ</small></p>
+            </div>
+          </div>
+          <div class='row'>
+            <div class="webphone-key side-key col-md-4 col-sm-4 col-xs-4" id="webphone-star-btn">
+              <p><i class="fa fa-asterisk"></i></p>
+            </div>
+            <div class="webphone-key center-key col-md-4 col-sm-4 col-xs-4" id="webphone-0-btn">
+              <p>0</p>
+            </div>
+            <div class="webphone-key side-key col-md-4 col-sm-4 col-xs-4" id="webphone-pound-btn">
+              <p><i class="fa fa-hashtag"></i></p>
+            </div>
+          </div>
+          <div class='row'>
+            <div class="webphone-ckey-voice col-md-8 col-sm-8 col-xs-8" id="webphone-call-btn">
+              <p id="call-btn-text" class="text-center">Call</p>
+              <p id="end-call-btn-text" class="text-center webphone-inactive">End Call</p>
+            </div>
+            <div class="webphone-ckey-video col-md-4 col-sm-4 col-xs-4" id="webphone-video-btn">
+              <p><i class="fa fa-video-camera"></i></p>
+            </div>
+          </div>
+        </div>
+      </div>

@@ -1,0 +1,81 @@
+<br>
+<h3 class="sansay-h3-style sansay-heading-color">Out-Of-The-Box Quick Start</h3>
+
+Sansay Webphone JQuery plugin provides a very easy to use API for web developers. The followings are
+required and must be included by the page that contains the Sansay Webphone.
+
+<ul style='padding: 10px; font-size: 15px'>
+    <li>
+      <b>JQuery</b> (version 1.7.2 or later)
+    </li>
+    <li>
+      <b>Bootstrap</b> (version 3.0 or later)
+    </li>
+    <li>
+        <b>Sansay WebSBC client engine:</b> websbc-client.js. Delivered as part of the SDK under sansay/js directory
+    </li>
+    <li>
+        <b>Sansay Webphone plugin:</b> webphone-plugin.js. Delivered as part of the SDK under sansay/js direcotry
+    </li>
+</ul>
+
+All one needs is a &lt;div&gt; as container where you want the webphone's keypad to be located on your page
+<div class='bs-example' style='margin-top: 15px;'>
+    <pre><code>&lt;div id=&quot;my-example-container&quot;&gt;&lt;/div&gt;</code></pre>
+</div>
+
+<br>
+Then initialize the plugin in the container when the document is ready.
+
+<div class='bs-example' style='margin-top: 15px;'>
+    <pre><code>$(document).ready(function() {&#x000A;  $(&quot;#my-example-container&quot;).webphone(&quot;websbc.example.com&quot;);&#x000A;  ...&#x000A;});</code></pre>
+
+    <br>
+    where
+    <div style='margin: 10px;'>
+        <p style='margin:0; padding: 0'>
+          <b>websbc.example.com</b> is the domain name of your WebSBC server. By default the WebSBC client connects
+          to the WebSBC server over secure websocket (wss) on port 9998. However, in some circumstances where port 9998 is
+          not available and the WebSBC must be configured to listen on different port, e.g. 7777, the port number must
+          be specified here at the end of the domain name as websbc.example.com:7777.
+        </p>
+    </div>
+</div>
+
+<br>
+To activate webphone invoke login() with the valid credentials.
+
+<div class='bs-example' style='margin-top: 15px;'>
+    <pre><code>$(&quot;#my-example-container&quot;).webphone.login(&quot;5551000&quot;, &quot;abcd1234&quot;, &quot;Joe Blow&quot;, &quot;common&quot;);</code></pre>
+    <br>
+    where
+    <div style='margin: 10px;'>
+        <p style='margin:0; padding: 0'>"5551000" is the SIP user</p>
+        <p style='margin:0; padding: 0'>"abcd1234" is the SIP password</p>
+        <p style='margin:0; padding: 0'>"Joe Blow" is the Caller ID</p>
+        <p style='margin:0; padding: 0'>"common" is the domain that the user belongs to in the WebSBC server</p>
+    </div>
+    <div style='margin: 10px;'>
+        The login() function also takes two optional callback functions for successful login and logout handling.
+        Please consult the <b>Plugin API</b> tab above or the example in the SDK package for more detail usage.
+    </div>
+    <div class='alert alert-danger' style="margin-top: 20px;">
+        It is recommended that SIP user and password information should
+        <b>not</b>
+        be hardcoded
+        in the javascript code. Use AJAX or other mechanism to obtain this information
+        at runtime before invoking login().
+        <br>
+        <br>
+        The example demo on the left obtain SIP user and password information from
+        the user inputs.
+    </div>
+</div>
+
+<br>
+Invoke logout() to deactivate webphone
+
+<div class='bs-example' style='margin-top: 15px;'>
+    <pre><code>$(&quot;#my-example-container&quot;).webphone.logout();</code></pre>
+</div>
+<br>

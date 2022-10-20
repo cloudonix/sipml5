@@ -1,0 +1,265 @@
+.screensharing-video-panel {
+  background: #0c0c0c;
+  opacity: 0.85;
+//  padding-bottom: 20px;
+}
+
+.screensharing-participant-panel {
+  background: #0c0c0c;
+  opacity: 0.85;
+}
+
+.screensharing-logo {
+  height: 15px;
+  margin-left: 5px;
+}
+.screensharing-logo img {
+  height: 15px;
+}
+.screensharing-video-self {
+  margin-top: 40px;
+  height: 120px !important;
+}
+.screensharing-video-frame {
+  overflow: hidden;
+  padding: 0;
+  height: 100px;
+}
+.screensharing-zoom-frame {
+  overflow: hidden;
+  padding: 0;
+  height: 500px;
+  width: 100%;
+//  border-top: 1px solid #ffffff;
+  border-right: 1px solid #acacac;
+}
+.screensharing-zoom-pane {
+  position: relative;
+  height: 500px;
+  width: 100%;
+}
+.screensharing-zoom-icon {
+  color: #ffffff;
+  position: absolute;
+  top: 80px;
+  left: 150px;
+  z-index: 1;
+  cursor: pointer;
+  display: none;
+}
+.screensharing-zoom-close {
+  width: 100%;
+  position: absolute;
+  z-index: 1;
+  padding-right: 10px;
+  cursor: pointer;
+}
+
+.screensharing-video-pane {
+  position: relative;
+  height: 100%;    //150px;
+  width: 100%;     //180px;
+}
+
+.screensharing-video-overlay-text {
+  font-size: 20px;
+  z-index: 1;
+  opacity: .4;
+  color: #ffffff;
+  padding-left: 5px;
+  position: absolute;
+}
+
+.screensharing-horizontal-flip {
+  -webkit-transform: scaleX(-1);
+  transform: scaleX(-1);
+  width: 100%;
+}
+
+.screensharing-btn {
+  border-radius: 15px;
+  border: 2px solid #7c7c7c;
+  font-size: 25px;
+  margin-top: 10px;
+  cursor: pointer;
+}
+
+.screensharing-btn p {
+  margin: 0;
+}
+
+.screensharing-text-input {
+  background: #000000;
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #7c7c7c
+}
+
+.screensharing-join-error {
+  color: red;
+}
+
+.pull-right a {
+  padding-right: 5px;
+}
+
+.download-ext-btn {
+  display: inline-block;
+  -webkit-box-sizing: content-box;
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
+  float: none;
+  z-index: auto;
+  width: auto;
+  height: inherit;
+  position: static;
+  cursor: pointer;
+  opacity: 1;
+  //margin: 30px 0 0;
+  padding: 0 60px;
+  overflow: visible;
+  border: 1px solid #555;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+  font: normal 25px/60px "Questrial", Helvetica, sans-serif;
+  color: rgb(255, 255, 255);
+  -o-text-overflow: clip;
+  text-overflow: clip;
+  background: rgb(210, 86, 0);
+  -webkit-box-shadow: 0 2px 1px 0 rgba(0,0,0,0.3) ;
+  box-shadow: 0 2px 1px 0 rgba(0,0,0,0.3) ;
+  text-shadow: 0 1px 2px #555 ;
+  -webkit-transition: none;
+  -moz-transition: none;
+  -o-transition: none;
+  transition: none;
+  -webkit-transform: none;
+  transform: none;
+  -webkit-transform-origin: 50% 50% 0;
+  transform-origin: 50% 50% 0;
+}
+.download-ext-btn :active {
+  display: inline-block;
+  -webkit-box-sizing: content-box;
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
+  float: none;
+  z-index: auto;
+  width: auto;
+  height: auto;
+  position: static;
+  cursor: pointer;
+  opacity: 1;
+  //margin: 30px 0 0;
+  padding: 0 60px;
+  overflow: visible;
+  border: 1px solid #555;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+  font: normal 25px/60px "Questrial", Helvetica, sans-serif;
+  color: rgb(255, 255, 255);
+  -o-text-overflow: clip;
+  text-overflow: clip;
+  background: rgb(200, 86, 0);
+  -webkit-box-shadow: 0 3px 0 0 rgba(0,0,0,0.1) inset;
+  box-shadow: 0 3px 0 0 rgba(0,0,0,0.1) inset;
+  text-shadow: 0 1px 2px #555 ;
+  -webkit-transition: none;
+  -moz-transition: none;
+  -o-transition: none;
+  transition: none;
+  -webkit-transform: none;
+  transform: none;
+  -webkit-transform-origin: 50% 50% 0;
+  transform-origin: 50% 50% 0;
+}
+.download-ext-btn :hover {
+  display: inline-block;
+  -webkit-box-sizing: content-box;
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
+  float: none;
+  z-index: auto;
+  width: auto;
+  height: inherit;
+  position: static;
+  cursor: pointer;
+  opacity: 1;
+  //margin: 30px 0 0;
+  padding: 0 60px;
+  overflow: visible;
+  border: 1px solid #555;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+  font: normal 25px/60px "Questrial", Helvetica, sans-serif;
+  color: rgb(255, 255, 255);
+  -o-text-overflow: clip;
+  text-overflow: clip;
+  background: rgb(260, 86, 0);
+  -webkit-box-shadow: 0 2px 4px 0 rgba(0,0,0,0.11) ;
+  box-shadow: 0 2px 4px 0 rgba(0,0,0,0.11) ;
+  text-shadow: 0 1px 2px #555 ;
+  -webkit-transition: all 150ms cubic-bezier(0.42, 0, 0.58, 1);
+  -moz-transition: all 150ms cubic-bezier(0.42, 0, 0.58, 1);
+  -o-transition: all 150ms cubic-bezier(0.42, 0, 0.58, 1);
+  transition: all 150ms cubic-bezier(0.42, 0, 0.58, 1);
+  -webkit-transform: none;
+  transform: none;
+  -webkit-transform-origin: 50% 50% 0;
+  transform-origin: 50% 50% 0;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.7);
+  transition: opacity 500ms;
+  visibility: hidden;
+  opacity: 0;
+}
+.overlay:target {
+  visibility: visible;
+  opacity: 1;
+}
+.popup {
+  margin: 70px auto;
+  padding: 20px;
+  background: #fff;
+  border: 1px solid #7c7c7c;
+  border-radius: 5px;
+  width: 30%;
+  position: relative;
+  transition: all 5s ease-in-out;
+}
+
+.popup h2 {
+  font-size: 1.5em;
+  margin-top: 0;
+  color: #333;
+  font-family: Tahoma, Arial, sans-serif;
+}
+.popup .close {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  transition: all 200ms;
+  font-size: 30px;
+  font-weight: bold;
+  text-decoration: none;
+  color: #333;
+}
+.popup .close:hover {
+  color: #06D85F;
+}
+.popup .content {
+  max-height: 30%;
+  overflow: auto;
+}
+@media screen and (max-width: 700px){
+  .popup{
+    width: 70%;
+  }
+}

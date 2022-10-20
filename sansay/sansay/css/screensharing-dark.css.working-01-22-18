@@ -1,0 +1,104 @@
+.screensharing-video-panel {
+  background: #0c0c0c;
+  opacity: 0.85;
+//  padding-bottom: 20px;
+}
+
+.screensharing-participant-panel {
+  background: #0c0c0c;
+  opacity: 0.85;
+}
+
+.screensharing-logo {
+  height: 15px;
+  margin-left: 5px;
+}
+.screensharing-logo img {
+  height: 15px;
+}
+.screensharing-video-self {
+  margin-top: 40px;
+  height: 120px !important;
+}
+.screensharing-video-frame {
+  overflow: hidden;
+  padding: 0;
+  height: 100px;
+}
+.screensharing-zoom-frame {
+  overflow: hidden;
+  padding: 0;
+  height: 500px;
+  width: 100%;
+//  border-top: 1px solid #ffffff;
+  border-right: 1px solid #acacac;
+}
+.screensharing-zoom-pane {
+  position: relative;
+  height: 500px;
+  width: 100%;
+}
+.screensharing-zoom-icon {
+  color: #ffffff;
+  position: absolute;
+  top: 80px;
+  left: 150px;
+  z-index: 1;
+  cursor: pointer;
+  display: none;
+}
+.screensharing-zoom-close {
+  width: 100%;
+  position: absolute;
+  z-index: 1;
+  padding-right: 10px;
+  cursor: pointer;
+}
+
+.screensharing-video-pane {
+  position: relative;
+  height: 100%;    //150px;
+  width: 100%;     //180px;
+}
+
+.screensharing-video-overlay-text {
+  font-size: 20px;
+  z-index: 1;
+  opacity: .4;
+  color: #ffffff;
+  padding-left: 5px;
+  position: absolute;
+}
+
+.screensharing-horizontal-flip {
+  -webkit-transform: scaleX(-1);
+  transform: scaleX(-1);
+  width: 100%;
+}
+
+.screensharing-btn {
+  border-radius: 15px;
+  border: 2px solid #7c7c7c;
+  font-size: 25px;
+  margin-top: 10px;
+  cursor: pointer;
+}
+
+.screensharing-btn p {
+  margin: 0;
+}
+
+.screensharing-text-input {
+  background: #000000;
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #7c7c7c
+}
+
+.screensharing-join-error {
+  color: red;
+}
+
+.pull-right a {
+  padding-right: 5px;
+}
