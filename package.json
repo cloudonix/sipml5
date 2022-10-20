@@ -1,0 +1,28 @@
+{
+  "name": "WebPhone",
+  "version": "3.6",
+  "description": "SIP client for browsers",
+  "main": "webphone_api.js",
+  "author": "Mizutech",
+  "homepage": "https://www.mizu-voip.com/Software/WebPhone.aspx",
+  "email": "webphone@mizu-voip.com",
+  "browser": "window",
+  "directories": {
+    "lib": "./js/lib",
+    "example": "./samples",
+    "doc": "./Documentation.pdf"
+  },
+  "keywords": [
+        "SIP",
+        "SIP client",
+        "SIP library",
+        "softphone",
+		"VoIP"
+    ],
+  "scripts": {
+  },	
+  "dependencies": {    
+  },
+  "devDependencies": {   
+  }  
+}

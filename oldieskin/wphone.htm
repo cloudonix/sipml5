@@ -1,0 +1,124 @@
+
+<!-- 
+  You must copy the webphone.jar in this directory for this example to work.
+  Then change at least the "serverAddress" variable below.
+  *You need at least the Standard license for this to work (the basic version doesn't contain the java script API)
+  *Make sure to have the webphone.jar near this html or set the file exact path with the "archive" applet parameter
+  *Always put the webphone's html code in a <div> element with id="webphone_bg_container"
+-->
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style type="text/css" media="all">@import "style.css";</style>
+<title>Wphone</title>
+<script src="js/jquery-1.8.3.min.js"></script>
+<script type="text/JavaScript" src="js/wp_api.js"></script>
+<script type="text/JavaScript" src="js/wp_common.js"></script>
+<script type="text/javascript">
+	
+	wp_api.attributes = { id: 'webphone', code: 'webphone.webphone.class', name: 'webphone', archive: '../native/webphone.jar', codebase: '.', width: 1, height: 1, alt: 'Enable or install java: https://java.com/en/download/index.jsp', MAYSCRIPT: true };
+
+	// Webphone Configuration Settings
+	
+        wp_api.parameters = {
+                                        serveraddress: '',
+                                        JAVA_CODEBASE: '.',
+                                        username: '',
+                                        MAYSCRIPT: true,
+                                        mayscript: 'yes',
+                                        scriptable: true,
+                                        jsscriptevent: 2,		// to get EVENTs and user balance(credit)
+                                        autocfgsave: 3,
+                        //                loglevel: 4,
+                                        hasincomingcall: false,
+                                        textmessaging: -1,
+                                        canopenlogview: false,
+                                        pluginspage: 'https://java.com/download/',
+                                        permissions: 'all-permissions'
+                                        //classloader_cache: false
+                                        };
+
+	// Webphone Skin Configuration Settings
+
+	wp_api.haveloginpage = true;		// in case you want to use a login page, set this variable to true
+	wp_api.isIphoneSkin = true;		//  if iPhone skin is used
+	
+	wp_api.brandname = '';
+	wp_api.company_webpage = '';
+	
+// http://HOST_DOMAIN/webphone.htm?serveraddress=YOURSIPDOMAIN.COM&username=USERNAME&password=PASSWORD&md5=MD5&realm=REALM
+</script>
+</head>
+<body onkeyup="wp_common.onKeyPressEvent(event)">
+<div id="js_not_enabled">The webphone needs JavaScript to be enabled</div>
+<DIV id="main">
+<div id="webphone_bg_container">
+	<div id="container_dial">
+    	<div id="header">
+	    	<img src="images/speaker.jpg" border="0" title="Volume Controls" id="speaker" onmouseover="wp_common.btnControl('speaker',2)" onmouseout="wp_common.btnControl('speaker',1)" onclick="wp_common.wp_AudioDevice()" />
+            <div id="logo">
+            	<a href="" id="logo_a" target="_blank" title=""></a>
+			</div>
+    	    <img src="images/logout.jpg" border="0" title="Logout" id="logout" onmouseover="wp_common.btnControl('logout',2)" onmouseout="wp_common.btnControl('logout',1)" onclick="wp_common.wp_Unregister()" />
+		</div>
+        <br />
+    	<input type="text" id="PhoneNumber" name="PhoneNumber" value="" onfocus="wp_common.testFocus(1)" onblur="wp_common.testFocus(0)" /><br />
+        <div style="width:200px; float:left; clear:both;"><!--//--></div>
+        <div id="info">
+	        <span id="credit" title="My account balance / My number"></span><span id="dtmf"></span>&nbsp;<span id="status" ondblclick="wp_common.voipStatusRegister()" title="Call status"></span>
+        </div>
+        <div id="info_event">
+	        <span id="displayEvent">&nbsp;</span>
+        </div>
+
+    	<ul id="numpad"><li><img src="images/btn_1.jpg" alt="" id="btn_1" onmouseover="wp_common.btnControl('btn_1',2)" onmouseout="wp_common.btnControl('btn_1',1)" onclick="wp_common.wp_BtnValue(1)"/></li><li><img src="images/btn_2.jpg" alt="" id="btn_2" onmouseover="wp_common.btnControl('btn_2',2)" onmouseout="wp_common.btnControl('btn_2',1)" onclick="wp_common.wp_BtnValue(2)" /></li><li><img src="images/btn_3.jpg" alt="" id="btn_3" onmouseover="wp_common.btnControl('btn_3',2)" onmouseout="wp_common.btnControl('btn_3',1)" onclick="wp_common.wp_BtnValue(3)" /></li><li><img src="images/btn_4.jpg" alt="" id="btn_4" onmouseover="wp_common.btnControl('btn_4',2)" onmouseout="wp_common.btnControl('btn_4',1)" onclick="wp_common.wp_BtnValue(4)" /></li><li><img src="images/btn_5.jpg" alt="" id="btn_5" onmouseover="wp_common.btnControl('btn_5',2)" onmouseout="wp_common.btnControl('btn_5',1)" onclick="wp_common.wp_BtnValue(5)" /></li><li><img src="images/btn_6.jpg" alt="" id="btn_6" onmouseover="wp_common.btnControl('btn_6',2)" onmouseout="wp_common.btnControl('btn_6',1)" onclick="wp_common.wp_BtnValue(6)" /></li><li><img src="images/btn_7.jpg" alt="" id="btn_7" onmouseover="wp_common.btnControl('btn_7',2)" onmouseout="wp_common.btnControl('btn_7',1)" onclick="wp_common.wp_BtnValue(7)" /></li><li><img src="images/btn_8.jpg" alt="" id="btn_8" onmouseover="wp_common.btnControl('btn_8',2)" onmouseout="wp_common.btnControl('btn_8',1)" onclick="wp_common.wp_BtnValue(8)" /></li><li><img src="images/btn_9.jpg" alt="" id="btn_9" onmouseover="wp_common.btnControl('btn_9',2)" onmouseout="wp_common.btnControl('btn_9',1)" onclick="wp_common.wp_BtnValue(9)" /></li><li><img src="images/btn_10.jpg" alt="" id="btn_10" onmouseover="wp_common.btnControl('btn_10',2)" onmouseout="wp_common.btnControl('btn_10',1)" onclick="wp_common.wp_BtnValue('*')" /></li><li><img src="images/btn_0.jpg" alt="" id="btn_0" onmouseover="wp_common.btnControl('btn_0',2)" onmouseout="wp_common.btnControl('btn_0',1)" onclick="wp_common.wp_BtnValue(0)" /></li><li><img src="images/btn_11.jpg" alt="" id="btn_11" onmouseover="wp_common.btnControl('btn_11',2)" onmouseout="wp_common.btnControl('btn_11',1)" onclick="wp_common.wp_BtnValue('#')" /></li></ul>
+        
+        <ul id="callbuttons"><li><img src="images/btn_call.jpg" alt="" id="btn_call" onmouseover="wp_common.btnStatusControl('btn_call',2,'call')" onmouseout="wp_common.btnStatusControl('btn_call',1,'call')" onclick="wp_common.wp_Call()" /></li><li><img src="images/btn_hangup.jpg" alt="" id="btn_hangup" onmouseover="wp_common.btnStatusControl('btn_hangup',2,'hangup')" onmouseout="wp_common.btnStatusControl('btn_hangup',1,'hangup')" onclick="wp_common.wp_Hangup()" /></li></ul>
+        
+        <ul id="acceptreject"><img src="images/btn_accept.jpg" alt="" id="btn_accept" onmouseover="wp_common.btnControl('btn_accept',2)" onmouseout="wp_common.btnControl('btn_accept',1)" onclick="wp_common.wp_Accept()" /><img src="images/btn_reject.jpg" alt="" id="btn_reject" onmouseover="wp_common.btnControl('btn_reject',2)" onmouseout="wp_common.btnControl('btn_reject',1)" onclick="wp_common.wp_Reject()" /></ul>
+        
+        <ul id="callfunctions"><li><img src="images/btn_chat.jpg" alt="" title="Chat" id="btn_chat" onmouseover="wp_common.btnControl('btn_chat',2)" onmouseout="wp_common.btnControl('btn_chat',1)" onclick="wp_common.wp_Chat()" /></li><li><img src="images/btn_transfer.jpg" alt="" title="Call Transfer" id="btn_transfer" onmouseover="wp_common.btnControl('btn_transfer',2)" onmouseout="wp_common.btnControl('btn_transfer',1)" onclick="wp_common.wp_CallTransfer()" /></li><li><img src="images/btn_hold.jpg" alt="" title="Call Hold" id="btn_hold" onmouseover="wp_common.btnControl('btn_hold',2)" onmouseout="wp_common.btnControl('btn_hold',1)" onclick="wp_common.wp_HoldOrVoicemail()" /></li><li><img src="images/btn_conference.jpg" alt="" title="Conference" id="btn_conference" onmouseover="wp_common.btnControl('btn_conference',2)" onmouseout="wp_common.btnControl('btn_conference',1)" onclick="wp_common.wp_Conference()" /></li></ul>
+        
+        <a href="" target="_blank" id="btn_main_a" title=""><img src="images/btn_main.jpg" alt="" id="btn_main" onmouseover="wp_common.btnControl('btn_main',2)" onmouseout="wp_common.btnControl('btn_main',1)" /></a>
+        <span id="test"></span>
+    </div>
+	<div id="container_register">
+	    <div id="logo2">
+            	<a href="" id="logo2_a" target="_blank" title=""></a>
+		</div>
+    	<div id="login_page_error_messages">&nbsp;</div>
+        <div id="register_form">
+            <label>Server address</label><br />
+            <input type="text" id="server_address_input" name="server_address_input" class="txt" value="" title="SIP server address" /><br /><br />
+            <label>Username</label><br />
+            <input type="text" id="username_input" name="username_input" class="txt" value="" title="SIP username" /><br /><br />
+            <label>Password</label><br />
+            <input type="password" id="password_input" name="password_input" class="txt" value="" title="SIP password" /><br /><br />
+            <input type="checkbox" id="savesettings" name="savesettings" value="" title="Save all your login setting on this PC" /><label>Save Settings</label><br /><br />
+            <img src="images/btn_connect.jpg" alt="" id="btn_connect" onmouseover="wp_common.btnControl('btn_connect',2)" onmouseout="wp_common.btnControl('btn_connect',1)" onclick="return wp_common.wp_LoadAppletAndRegister()" title="Register to sipserver" />
+        </div>
+    </div>
+    <script type="text/javascript">
+		if (wp_api.company_webpage.length > 3 && wp_api.company_webpage.indexOf("http://") < 0 && wp_api.company_webpage.indexOf("https://") < 0)
+		{
+			wp_api.company_webpage = "http://" + wp_api.company_webpage;
+		}
+		if (document.getElementById('logo_a') != null)		document.getElementById("logo_a").href = wp_api.company_webpage;
+		if (document.getElementById('logo_a') != null)		document.getElementById("logo_a").innerHTML = wp_api.brandname;
+		if (document.getElementById('logo_a') != null)		$("a#logo_a").attr("title",wp_api.brandname + ' Home Page');
+		
+		if (document.getElementById('logo2_a') != null)		document.getElementById("logo2_a").href = wp_api.company_webpage;
+		if (document.getElementById('logo2_a') != null)		document.getElementById("logo2_a").innerHTML = wp_api.brandname;
+		if (document.getElementById('logo2_a') != null)		$("a#logo2_a").attr("title",wp_api.brandname + ' Home Page');
+		
+		if (document.getElementById('btn_main_a') != null)		document.getElementById("btn_main_a").href = wp_api.company_webpage;
+		if (document.getElementById('btn_main_a') != null)		$("a#btn_main_a").attr("title",wp_api.brandname + ' Home Page');
+	</script>
+	<span id="testtest"></span>
+</div>
+</DIV>
+</body>
+</html>

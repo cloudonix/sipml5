@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<!-- The shortest example of initiating an outgoing call using the webphone -->
+
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Outgoing Call Example</title>
+    <script src="../webphone_api.js?jscodeversion=160"></script>
+</head>
+<body spellcheck="false">
+    <div>This is the simplest example to demonstrate how initiate an outgoing call.<br />Don't use this in production as it is not a complete implementation.<br /><br /><br /></div>
+
+    <button id="btn_call" onclick="webphone_api.call('DESTINATION')">Call</button>
+    <button id="btn_hangup" onclick="webphone_api.hangup()">Hangup</button>
+    <iframe allow="microphone *; camera *; autoplay *" allowfullscreen="true" style="display:none" height="0" width="0" id="loader"></iframe>
+
+    <script>
+        webphone_api.onAppStateChange(function (state)
+        {
+            if (state === 'loaded')
+            {
+                webphone_api.setparameter('serveraddress', 'YOURSIPDOMAIN.COM');
+                webphone_api.setparameter('username', 'USERNAME');
+                webphone_api.setparameter('password', 'PASSWORD');
+
+                webphone_api.start();
+            }
+        });
+    </script>
+</body>
+</html>

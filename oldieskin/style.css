@@ -1,0 +1,127 @@
+/*
+button border color:	484f59
+green:					26b14a
+*/
+html, body{
+	margin: 0px; padding: 0px; text-align:center; font-family: Arial, Verdana, Helvetica, sans-serif;
+	color:#aaaaaa; font-size:13px;
+}
+.txt{
+	width:120px; border:1px solid #484f59; 
+	font-size:13px; color:#aaaaaa; background: #2a2a2a;
+}
+label{
+	font-size:12px;
+}
+#main{
+	margin:0px auto; padding:0px; text-align:left; /*float:left; margin:auto;*/
+}
+#webphone_bg_container{
+	margin-top:10px; padding:0px; width:225px; height:445px; float:left;
+	background: url(images/bg.gif) no-repeat; display:inline;
+}
+#container_dial{
+	margin-top:71px; margin-left:16px; padding:0px; width:194px; display:none;
+}
+#header{
+	margin:0px; padding:0px; float:left; width:194px;
+}
+IMG#speaker{
+	width:14px; height:11px; border:0px; float:left; margin-left:3px; cursor:pointer; margin-top:3px;
+}
+IMG#logout{
+	width:11px; height:11px; border:0px; float:left; cursor:pointer; margin-top:3px;
+}
+#logo{
+	width:163px; float:left; text-align:center; margin-top:1px;
+}
+* html #logo{
+	width:163px; float:left; text-align:center; margin-top:0px;
+}
+#logo A, #logo2 A{
+	font-size:11px; color:#2e2e2e; font-weight:bold; text-decoration:none;
+}
+#PhoneNumber{
+	width:192px; margin-right:0px; display:inline; margin-bottom:3px; margin-top:3px; height:24px; font-size:20px;
+	color:#aaaaaa; background: #111111; text-align:center; float:right; padding:0px; border:0px;
+}
+#info{
+	height:13px; display:block; padding:0px; margin:0px; font-size:11px; clear:both; text-align:right;
+}
+#info_event{
+	height:14px; width:194px; clear:both; display:block; padding:0px; margin:0px; font-size:11px; text-align:center;
+}
+SPAN#credit{
+	font-size:11px; float:left;
+}
+SPAN#dtmf{
+	font-size:11px; float:left;
+}
+DIV#login_page_error_messages{
+	font-size:11px; color:#ff0000; float:right; width:192px; text-align:right;
+}
+SPAN#status{
+	font-size:11px; color:#26b14a;
+}
+SPAN#displayEvent{
+	font-size:11px; float:left; text-align:center; width:194px;
+}
+#container_dial #numpad{
+	width:194px;  margin:0px; padding:0px; float:left; display:inline; 
+	border-right:1px solid #484f59; border-top:1px solid #484f59;
+}
+
+#container_dial #numpad LI{
+	width:64px; height:41px; margin:0px; padding:0px; list-style-type:none; display:inline; float:none; 
+}
+#container_dial #numpad LI IMG{
+	width:64px; height:41px; border:0px; cursor:pointer;
+}
+#container_dial #callbuttons{
+	width:194px;  margin:0px; padding:0px; float:left; display:inline; 
+	border-right:1px solid #484f59;
+}
+#container_dial #callbuttons LI{
+	width:96px; height:41px; margin:0px; padding:0px; list-style-type:none; display:inline; float:left; 
+}
+#container_dial #callbuttons LI IMG{
+	width:96px; height:41px; border:0px; cursor:pointer;
+}
+#container_dial #acceptreject{
+	width:194px;  margin:0px; padding:0px; /*float:left; display:inline; */
+	border-right:1px solid #484f59;
+}
+#container_dial #acceptreject IMG{
+	width:96px; height:41px; border:0px; cursor:pointer;
+}
+#container_dial #callfunctions{
+	width:194px; margin:0px; padding:0px; /*float:left; display:inline;*/
+	border-right:1px solid #484f59;
+}
+#container_dial #callfunctions LI{
+	width:48px; height:28px; margin:0px; padding:0px; list-style-type:none; display:inline; float:left; 
+}
+#container_dial #callfunctions LI IMG{
+	width:48px; height:28px; border:0px; margin:0px; padding:0px; cursor:pointer; /*display:inline; float:left;*/
+}
+#btn_main_a{
+	width:42px; height:42px; padding:0px; /*float:none; */margin-left:76px; margin-top:4px;
+}
+#btn_main{
+	width:42px; height:42px; border:0px; margin:0px;
+}
+#container_register{
+	margin-top:71px; margin-left:16px; padding:0px; width:194px; display:none;
+}
+#logo2{
+	width:192px; float:left; text-align:center; margin-top:1px;
+}
+* html #logo2{
+	width:192px; float:left; text-align:center; margin-top:0px;
+}
+#register_form{
+	padding:0px; margin-top:42px; margin-left:37px; float:left; display:inline;
+}
+#register_form IMG{
+	width:120px; height:41px; border:0px; cursor:pointer;
+}

@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+
+<!-- an example of using the webphone library (phone API usage demonstartion) -->
+
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>API Example</title>
+    <script src="../webphone_api.js?jscodeversion=160"></script>
+    <style>
+        #msg_list { margin: .5em 0em .3em 0em; background: #ffffff; overflow-y: auto; overflow-x: hidden; width: 274px; height: 160px; text-align: left; border: 1px solid #ccc; border-radius: .1em;}
+        #msg_list B { margin-left: .2em; font-size: .8em; }
+        #msg_list P { margin-left: .6em; margin-top: 0; margin-bottom: .2em; font-size: .8em; }
+        #msg_list .date { margin-top: 0; margin-bottom: .2em; margin-right: .2em; font-weight: bold; font-size: .6em; text-align: right;}
+    </style>
+</head>
+<body>
+    <div>This is a simple example to demonstrate the webphone API usage.<br />
+        See the source of "api_example.html" about how it is done.</div><br />
+    <input type="text" placeholder="VoIP Server address" id="serveraddress" autocapitalize="off"><br />
+    <input type="text" placeholder="Username" id="username" autocapitalize="off"><br />
+    <input type="text" placeholder="Password" id="password" autocapitalize="off"><br />
+    <button onclick="Start();">Start</button><br /><br />
+    <input type="text" placeholder="Destination number" id="destnumber" autocapitalize="off"><br />
+    <button id="btn_call" onclick="Call();">Call</button>
+    <button id="btn_hangup" onclick="Hangup();">Hangup</button><br /><br />
+    
+    <!--conference,transfer,mute,hold,chat-->
+    <div id="callfunctions" style="width: 100%; background: #f00;">
+        <button id="btn_conference" onclick="Conference();" title="Conference" style="display: none; float: left; margin-right: .3em;">Conf</button>
+        <button id="btn_transfer" onclick="Transfer();" title="Call transfer" style="display: none; float: left; margin-right: .3em;">Trans</button>
+        <button id="btn_mute" onclick="Mute();" title="Mute/UnMute call" style="display: none; float: left; margin-right: .3em;">Mute</button>
+        <button id="btn_hold" onclick="Hold();" title="Hold/Unhold call" style="display: none; float: left; margin-right: .3em;">Hold</button>
+        <button id="btn_chat" onclick="Chat();" title="Open/Close chat window" style="display: none; float: left;">Chat</button>
+    </div><br /><br />
+    
+    <div id="icoming_call_layout">
+        ----------------------<br />
+        <button id="btn_accept" onclick="Accept();">Accept</button>
+        <button id="btn_reject" onclick="Reject();">Reject</button><br />
+        ----------------------<br /><br />
+    </div>
+    <div id="chatwindow" style="margin-bottom: 1em; display: none;">
+        <span>Chat:</span>
+        <div id="msg_list">
+            <!--<b>Me:</b><p>Hello, how are you? Hello, how are you? Hello, how are you? Hello, how are you? Hello, how are you today?</p><p class="date">Jun 05, 2014 11:59</p>-->
+        </div>
+        <div id="send_container">
+            <input type="text" placeholder="Compose" id="message" value="" title="Enter the chat to be sent" />&nbsp;
+            <button onclick="SendChat()" title="Send chat message">Send</button>
+        </div>
+    </div>
+    <iframe allow="microphone; camera" style="display:none" height="0" width="0" id="loader"></iframe>
+    <div id="events"></div>
+    <script>
+        var serveraddress_input = document.getElementById('serveraddress');
+        var username_input = document.getElementById('username');
+        var password_input = document.getElementById('password');
+        var destination_input = document.getElementById('destnumber');
+        
+        document.getElementById('btn_hangup').disabled = true;
+        document.getElementById('icoming_call_layout').style.display = 'none';
+
+
+        // waiting for "onloaded" event, meaning that the Webphone has loaded all it's modulkes and it's ready to start
+        // if automatic start is required, then webphone_api.start() should be called "onLoaded" event like this:
+        //webphone_api.onAppStateChange(function (state)
+        //{
+        //    if (state === 'laoded')
+        //    {
+        //      webphone_api.start();
+        //    }
+        //});
+        webphone_api.onAppStateChange(function (state)
+        {
+            if (state === 'loaded')
+            {
+                var serveraddress = webphone_api.getparameter('serveraddress');
+                var username = webphone_api.getparameter('username');
+                var password = webphone_api.getparameter('password');
+                var destination = webphone_api.getparameter('destination');
+
+                if (serveraddress.length > 0) { serveraddress_input.value = serveraddress; }
+                if (username.length > 0) { username_input.value = username; }
+                if (password.length > 0) { password_input.value = password; }
+                if (destination.length > 0) { destination_input.value = destination; }
+            }
+        });
+
+        function Start()
+        {
+            var serveraddress = serveraddress_input.value;
+            var username = username_input.value;
+            var password = password_input.value;
+            var destination = destination_input.value;
+            
+            if (typeof (serveraddress) === 'undefined' || serveraddress === null || serveraddress.length < 1) { alert('Set a valid serveaddress.'); serveraddress_input.focus(); return; }
+            if (typeof (username) === 'undefined' || username === null || username.length < 1) { alert('Set a valid username.'); username_input.focus(); return; }
+            if (typeof (password) === 'undefined' || password === null || password.length < 1) { alert('Set a valid password.'); password_input.focus(); return; }
+            
+            if (typeof (serveraddress) !== 'undefined' && serveraddress !== null && serveraddress.length > 0)
+            {
+                webphone_api.setparameter('serveraddress', serveraddress);
+            }
+            webphone_api.setparameter('username', username);
+            webphone_api.setparameter('password', password);
+            webphone_api.setparameter('destination', destination);
+            
+            document.getElementById('events').innerHTML = 'EVENT, Initializing...';
+            
+            webphone_api.start();
+        }
+        
+        function Call()
+        {
+            var destnr = document.getElementById('destnumber').value;
+            document.getElementById('btn_hangup').disabled = false;
+            if (typeof (destnr) === 'undefined' || destnr === null) { destnr = ''; }
+            
+            webphone_api.setparameter('destination', destnr);
+            webphone_api.call(destnr);
+        }
+        
+        function Hangup()
+        {
+            webphone_api.hangup();
+        }
+        
+        function Accept()
+        {
+            document.getElementById('icoming_call_layout').style.display = 'none';
+            webphone_api.accept();
+        }
+        
+        function Reject()
+        {
+            document.getElementById('icoming_call_layout').style.display = 'none';
+            webphone_api.reject();
+        }
+        
+        function Conference()
+        {
+            var destnum = prompt("Conference:\nEnter destination number", "");
+            if (destnum !== null)
+            {
+                webphone_api.conference(destnum, true);
+            }
+        }
+        
+        function Transfer()
+        {
+            var destnum = prompt("Transfer:\nEnter destination number", "");
+            if (destnum !== null)
+            {
+                webphone_api.transfer(destnum);
+            }
+        }
+        
+        var mutestate = true;
+        function Mute()
+        {
+            if (mutestate === true)
+            {
+                webphone_api.mute(true, 0);
+                mutestate = false;
+                document.getElementById('btn_mute').innerHTML = 'UnMute';
+            }else
+            {
+                webphone_api.mute(false, 0);
+                mutestate = true;
+                document.getElementById('btn_mute').innerHTML = 'Mute';
+            }
+            
+        }
+        
+        var holdstate = true;
+        function Hold()
+        {
+            if (holdstate === true)
+            {
+                webphone_api.hold(true);
+                holdstate = false;
+                document.getElementById('btn_hold').innerHTML = 'UnHold';
+            }else
+            {
+                webphone_api.hold(false);
+                holdstate = true;
+                document.getElementById('btn_hold').innerHTML = 'Hold';
+            }
+            
+        }
+        
+        function Chat()
+        {
+            var chatwindow = document.getElementById('chatwindow');
+            if (chatwindow != null)
+            {
+                if (chatwindow.style.display === 'none')
+                {
+                    chatwindow.style.display = 'block';
+                    document.getElementById('btn_chat').innerHTML = 'Close chat';
+                }else
+                {
+                    chatwindow.style.display = 'none';
+                    document.getElementById('btn_chat').innerHTML = 'Chat';
+                }
+            }
+        }
+        
+        function SendChat()
+        {
+            var msgF = document.getElementById('message');
+
+            var to = document.getElementById('destnumber').value;
+            var msg = msgF.value;
+
+            if (typeof (to) === 'undefined' || to === null || to.length < 1)
+            {
+                DisplayEvent('ERROR, Invalid destination number');
+                document.getElementById('destnumber').focus();
+                return;
+            }
+
+            if (typeof (msg) === 'undefined' || msg === null || msg.length < 1)
+            {
+                DisplayEvent('ERROR, Enter chat message to be sent');
+                msgF.focus();
+                return;
+            }
+
+            msgF.value = '';
+
+            AddMessageToHistory('Me', msg);
+
+            webphone_api.sendchat(to, msg);
+        }
+
+        webphone_api.onChat(function (from, msg, line)
+        {
+            if (typeof (from) === 'undefined' || from === null || typeof (msg) === 'undefined' || msg === null) { return; }
+
+            var currdest = document.getElementById('destnumber').value;
+
+            if (typeof (currdest) === 'undefined' || currdest === null || currdest.length < 1)
+            {
+                document.getElementById('destnumber').value = from;
+            }
+
+            AddMessageToHistory(from, msg);
+        });
+
+        function AddMessageToHistory(to, message) // show messages on the page
+        {
+            var sentmsgF = document.getElementById('msg_list');
+            var msgconttent = sentmsgF.innerHTML;
+
+            if (typeof (msgconttent) === 'undefined' || msgconttent === null) { msgconttent = ''; }
+
+            var item = '';
+
+            if (typeof (to) !== 'undefined' && to !== null && to.length > 0)
+            {
+                item = '<b>' + to + ':</b><p>' + message + '</p>';
+            }else
+            {
+                item = '<p>' + message + '</p>';
+            }
+
+            msgconttent = msgconttent + item + '<br />';
+
+            sentmsgF.innerHTML = msgconttent;
+        // scroll to bottom
+            //sentmsgF.scrollTop(sentmsgF.prop("scrollHeight"));
+        }
+        
+        webphone_api.onEvent(function (type, evt)
+        {
+            if (type === 'event')
+            {
+                DisplayEvent(evt);
+            
+                //ProcessEvents(evt);
+            }
+        });
+        
+        function DisplayEvent(evt)
+        {
+            document.getElementById('events').innerHTML = evt;
+        }
+        
+        webphone_api.onRegStateChange(function (state)
+        {
+            if (state === 'registered')
+            {
+                // display supported callfunctions
+                var funcl = webphone_api.getavailablecallfunc(); // possible values: conference,transfer,numpad,mute,hold,chat
+                
+                if (typeof (funcl) !== 'undefined' && funcl !== null && funcl.length > 0 && funcl.indexOf('ERROR') < 0)
+                {
+                    var flist = funcl.split(',');
+                    for (var i = 0; i < flist.length; i++)
+                    {
+                        if (typeof (flist[i]) !== 'undefined' && flist[i] !== null && flist[i].length > 0)
+                        {
+                            document.getElementById('btn_' + flist[i]).style.display = 'block';
+                        }
+                    }
+                }
+            }
+        });
+        
+        webphone_api.onCallStateChange(function (event, direction, peername, peerdisplayname, line, callid)
+        {
+            if (event === 'setup')
+            {
+                document.getElementById('btn_hangup').disabled = false;
+
+                if (direction == 1)
+                {
+                    // means it's outgoing call
+                }
+                else if (direction == 2)
+                {
+                    // means it's icoming call
+                    
+                    document.getElementById('icoming_call_layout').style.display = 'block';
+                }
+                
+                document.getElementById('btn_conference').disabled = false;
+                document.getElementById('btn_transfer').disabled = false;
+                document.getElementById('btn_mute').disabled = false;
+                document.getElementById('btn_hold').disabled = false;
+            }
+            
+            //detecting the end of a call, even if it wasn't successfull
+            if (event === 'disconnected')
+            {
+                document.getElementById('btn_hangup').disabled = true;
+                document.getElementById('icoming_call_layout').style.display = 'none';
+
+                document.getElementById('btn_conference').disabled = true;
+                document.getElementById('btn_transfer').disabled = true;
+                document.getElementById('btn_mute').disabled = true;
+                document.getElementById('btn_hold').disabled = true;
+            
+                // reset to default state, after call ends
+                mutestate = true;
+                document.getElementById('btn_mute').innerHTML = 'Mute';
+                holdstate = true;
+                document.getElementById('btn_hold').innerHTML = 'Hold';
+            }
+        });
+        
+
+/* -- Callback PARAMETERS --
+ * caller: the caller party username
+ * called: called party username
+ * connecttime: milliseconds elapsed between call initiation and call connect
+ * duration: milliseconds elapsed between call connect and hangup (0 for not connected calls. Divide by 1000 to obtain seconds.)
+ * direction: 1 (outgoing), 2 (incoming)
+ * peerdisplayname: is the other party display name if any
+ * reason: disconnect reason as string
+ * line: the CDR refers to this line
+ */
+        webphone_api.onCdr(function (caller, called, connecttime, direction, peerdisplayname, reason, line)
+        {
+            console.log('CDR: caller: ' + caller + ', called: ' + called + ', connecttime: ' + connecttime + ', direction: ' + direction + ', peerdisplayname: ' + peerdisplayname + ', reason: ' + reason + ', line: ' + line);
+            
+            
+        /** Example of sending CDR details to your server with an HTTP POST reques */
+/*            
+            var method = 'POST';
+            var url = 'http://YOURDOMAIN.COM/sendcdr/';
+
+            var xhr = new XMLHttpRequest();
+            if ("withCredentials" in xhr) // XHR for Chrome/Firefox/Opera/Safari.
+            {
+                xhr.open(method, url, true);
+            }
+            else if (typeof XDomainRequest != "undefined") // XDomainRequest for IE.
+            {
+                xhr = new XDomainRequest();
+                xhr.open(method, url);
+            }
+
+            xhr.onload = function()
+            {
+                var asnwer = xhr.responseText;
+                console.log('EVENT, SendCdr request answer: ' + asnwer);
+            };
+
+            xhr.onerror = function(error)
+            {
+                console.log('ERROR, SendCdr failed: ' + error);
+            };
+
+            xhr.timeout = 20000; // set timeout to 20 sec
+            xhr.ontimeout = function (event)
+            {
+                console.log('ERROR, SendCdr request timed out');
+            };
+            
+            var cdrdata = caller + ',' + called + ',' + connecttime + ',' + direction + ',' + peerdisplayname + ',' + reason + ',' + line;
+            xhr.send(cdrdata);
+*/
+        });
+
+        
+        
+        /*
+        function ProcessEvents(evt)
+        {
+            var evtarray = evt.split(',');
+
+            // detecting incoming and outgoing calls
+            if (evtarray[0] === 'STATUS' && evtarray[2] === 'Ringing')
+            {
+                document.getElementById('btn_hangup').disabled = false;
+
+                if (evtarray[5] === '1')
+                {
+                    // means it's outgoing call
+                }
+                else if (evtarray[5] === '2')
+                {
+                    // means it's icoming call
+                    
+                    document.getElementById('icoming_call_layout').style.display = 'block';
+                }
+            }
+            
+            //detecting the end of a call, even if it wasn't successfull
+            if (evtarray[0] === 'STATUS' && (evtarray[2] === 'Finished' || evtarray[2] === 'Call Finished'))
+            {
+                document.getElementById('btn_hangup').disabled = true;
+                document.getElementById('icoming_call_layout').style.display = 'none';
+            }
+        }*/
+    </script>
+</body>
+</html>

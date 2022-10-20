@@ -1,0 +1,1 @@
+These files might be used in old browsers (like IE6, IE7) for the softpone skin.

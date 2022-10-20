@@ -1,0 +1,60 @@
+/* VIDEO ELEMENTS STYLE */
+
+/*
+To set the size of the video cotainers:
+- for remote video set the size (width/height) of this element: #div_video_remote
+- for local video preview set the size (width/height) of this element: .previewvideo
+
+these parameters can also be configured from webphone_api.js:  setvideodisplaysize()
+*/
+
+#div_video
+{
+    width: 100%; height: 200px; -webkit-transition-property: height; -moz-transition-property: height; -o-transition-property: height;
+    -webkit-transition-duration: 2s; -moz-transition-duration: 2s; -o-transition-duration: 2s; text-align: center;
+}
+
+#div_video #div_video_remote { /*position:relative; */ width: 100%; border:0px solid #009; z-index: auto; opacity: 1; float: left; }
+#div_video #video_remote { /*opacity: 0; */background-color: #1d1d1d; -webkit-transition-property: opacity; -webkit-transition-duration: 2s; }
+
+#div_video #div_video_local_wrapper { border:0px solid #009; z-index: 1000; float: left; clear: both; text-align: right; }
+#div_video #div_video_local { margin-left: .2em; border:0px solid #009; z-index: 1000; }
+#div_video #video_local { /*opacity: 0; */background-color: #f00; -webkit-transition-property: opacity; -webkit-transition-duration: 2s;  }
+
+#div_video #div_video_fullscreen_button { float: left; width: 100%; text-align: center; z-index: 1100; }
+#div_video #div_video_fullscreen_button #btn_video_fullscreen { display: inline-block; width: 9em; height: 2.3em; margin-top: .5em; font-size: .8em; z-index: 1110; }
+
+#div_video .full-screen { position: absolute; left: 0; top: 0; width: 100%; height: 100%; overflow: hidden; }
+#div_video .normal-screen { position: relative; }
+#div_video .previewvideo { width: 80px; /*height: 72px;*/ border:0px solid #009; z-index: 1000; position: absolute; margin-top: -52px; margin-bottom: 1em; }
+/*
+#div_video .previewvideo { width: 88px; height: 72px; border:0px solid #009; z-index: 1000; position: absolute; margin-top: -42px; margin-bottom: 1em; }
+*/
+
+/* ----- HTML structure of video elements*/
+
+/*
+    <div id="div_video">
+        <div id="div_video_remote">
+            <video class="video" width="100%" height="100%" id="video_remote" autoplay="autoplay"></video>
+        </div>
+        <div id="div_video_local_wrapper">
+            <iframe class="previewvideo"> </iframe>
+            <div id="div_video_local" class="previewvideo">
+                <video class="video" width="100%" height="100%" id="video_local" autoplay="autoplay" muted="true"></video>
+            </div>
+        </div>
+        <div id="div_video_fullscreen_button">
+            <button id="btn_video_fullscreen" class="ui-btn ui-btn-corner-all ui-btn-b noshadow">' + webphone_api.stringres.get('btn_video_fullscreen') + '</button>
+    </div>
+*/
+
+/*used only for video priview*/
+#preview_div_video_local {
+   border:0px solid #009; z-index: 10000; float: left; clear: both;
+    width: 88px; height: 72px; position: absolute; top: 0;
+}
+#preview_video_local { /*opacity: 0; */background-color: #000000; -webkit-transition-property: opacity; -webkit-transition-duration: 2s; }
+#preview_btn_close {
+    font-size: .8em; background-color: #323232; color: #ffffff;  border: 2px solid #898989; -webkit-border-radius: .15em; border-radius: .15em; cursor: pointer; font-weight: bold; padding: .3em 1em .3em 1em;
+}

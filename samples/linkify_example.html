@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+
+<!-- 
+The webphone can load its parameters also from the webpage URL, so the "linkify.js" just replaces
+all phone numbers on the web page with links which will automatically start the webphone and dial the number.
+
+To use the converter on your web page, just copy the below javascript code into the <head> section of your page,
+replacing the parameters values with your own: your VoIP server IP or domain, SIP account username and password
+
+<script type="text/JavaScript" src="PATH_TO_CONVERTER_JAVASCRIPT_FILE/linkify.js"></script>
+<script type="text/javascript">
+                linkify.webphone_url = 'PATH_TO_WEBPHONE'; // path to the webphone's html page
+                linkify.serveraddress = 'YOURSIPDOMAIN.COM'; // your VoIP server IP address or domain name
+                linkify.username = 'SIP_ACCOUNT_USERNAME'; // SIP account username
+                linkify.password = 'SIP_ACCOUNT_PASSWORD'; // SIP account password
+                linkify.md5 = '';  //use either password or md5 (leave it empty if you set the password)
+</script>
+-->
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Click to call converter</title>
+<script type="text/JavaScript" src="../js/linkify/linkify.js"></script>
+<script type="text/javascript">
+	linkify.webphone_url = 'softphone.html'; // path to the webphone's html page
+	linkify.serveraddress = ''; // your VoIP server IP address or domain name
+	linkify.username = ''; // SIP account username
+	linkify.password = ''; // SIP account password
+	linkify.md5 = '';
+</script>
+</head>
+<body style="margin: 0; font-family: Verdana ; font-size: 12px; line-height: 155%; color:#2e3d47;" spellcheck="false">
+    <div style="font-family: Verdana; font-size: 16px; color:#4eaaec; text-align:center">Linkify</div><br><br>
+    <span>This is a test page to demonstrate how to convert phone numbers to clickable links.</span><br /><br /><br />
+
+    <div>Personal phone number, tel: +(40) 123456789</div>
+    <div>
+        +40123456789<br />
+        Mobile phone number: (888) 283-5051<br />
+        another format: 888-283-5051<br />
+        another format: 8882835051<br />
+        another format: 40 724 123 456 some text...<br />
+    </div>
+    <br /><br />
+    <span>See the source of this page (linkify_example.html) for details.</span>
+</body>
+</html>

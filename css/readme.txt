@@ -1,0 +1,1 @@
+This folder contains CSS files for the webphone skins (loaded only if you use the softphone, click2call or techdemo html)

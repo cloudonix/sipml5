@@ -1,0 +1,30 @@
+.cl_c2k_btn { background: #43b61b; border: 1px solid #cccccc; margin: 0; padding: 0; cursor: pointer; }
+.cl_c2k_btn:hover { filter: Alpha(Opacity=85); opacity: .85; }
+.cl_c2k_btn .cl_c2k_status { font-size: 10px; float: right; margin-right: 3px; white-space: nowrap; overflow-x: hidden; display: inline-block; }
+.cl_c2k_btn .cl_c2k_label { font-size: 16px; white-space: nowrap; overflow-x: hidden; color: #ffffff; display: inline-block; }
+
+
+#demo_text LABEL { display: inline-block; width: 110px; }
+#demo_text INPUT { display: inline-block; width: 150px; margin-top: .3em; }
+.cl_optionsmenu_popup { margin: 0; padding: 0; display: block; }
+.cl_optionsmenu_list { margin: 0; padding: 0; display: block; background: #ccc; border: 1px solid #ccc; border-radius: .3em; float: left; }
+.cl_optionsmenu_list li { margin: 0; padding: 0; width: 100%; display: inline-block; float: left; clear: both; margin-top: 1px; background: #dfdfdf; cursor: pointer; color: #393939; }
+.cl_optionsmenu_list li span { margin: 0; padding: .5em; width: 100%; display: inline-block; float: left; clear: both; font-size: .9em; }
+.cl_optionsmenu_list li:hover { background: #efefef; }
+.cl_chat_box_container { margin: 0; padding: 0; }
+.cl_chat_box { text-align: left; background: #dfdfdf; border: 1px solid #ccc; border-radius: .3em; width: 275px; }
+.cl_chat_box .cl_chat_w_title { font-size: 1em; display: inline-block; margin: .5em; }
+.cl_chat_status { font-size: .8em; display: inline-block; float: right; margin-right: .5em; }
+.cl_btn_chat_collapse { float: right; margin: .5em; border: 0; cursor: pointer; }
+.cl_btn_chat_collapse:hover { filter: Alpha(Opacity=85); opacity: .85; }
+#chat_destination_container { margin-bottom: .5em; }
+#msg_list {
+    margin: 0em 0em .3em .5em; background: #ffffff; overflow-y: auto; overflow-x: hidden; width: 257px; height: 220px; text-align: left;
+    border: 1px solid #ccc; border-radius: .3em;
+}
+#msg_list B { margin-left: .2em; font-size: .8em; }
+#msg_list P { margin-left: .6em; margin-top: 0; margin-bottom: .2em; font-size: .8em; }
+#msg_list .date { margin-top: 0; margin-bottom: .2em; margin-right: .2em; font-weight: bold; font-size: .6em; text-align: right;}
+#msg_spacer { font-size: 0.1em; margin: 0; padding: 0; }
+#send_container { margin-left: .5em; margin-bottom: .5em; }
+#message { width: 200px; }

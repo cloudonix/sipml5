@@ -1,0 +1,859 @@
+/* Put your custom CSS here */
+
+.ui-body-c, .ui-overlay-c {	/*background:#ff0000;*/ }
+.ui-content { padding:0; }
+
+body{
+    
+}
+
+#phone_app_main_container{
+    background-color: #1d1d1d !important;
+    width:100%;                   /* text area width */
+    height:100%;
+    text-align:center;
+    padding:0px;     /* image height is 200px (bottom 20px are overlapped with text) */
+    margin:0px;
+    
+/* position in the center of the screen */
+   /* position:absolute;
+    left:0;
+    top:0;*/
+   float: left;
+}
+
+#phone_app_main_container ::-webkit-scrollbar { background: #1d1d1d; }
+#phone_app_main_container ::-webkit-scrollbar-thumb { background: #3c3c3c; /*-webkit-border-radius: 1ex; -webkit-box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.75);*/ }
+#phone_app_main_container ::-webkit-scrollbar-corner { background: #000; }
+
+#js_not_enabled_settings, #js_not_enabled_dialpad, #js_not_enabled{
+    float: left; clear: both; width: 100%; height: 100%; background: #1d1d1d; color: #f00; text-transform: none;
+}
+
+#loading_bg_txt { font-size: 1.2em; width: 100%; text-align: center; margin-top: 3em; text-transform: none; color: #989898; }
+
+.ui-page { -webkit-backface-visibility: hidden; } 
+
+.ui-input-text
+{
+    width: 100% !important;
+    /*padding: 0.4em 0!important; */
+}
+
+.page_title{
+    text-align:center; margin:0px; padding:0px; font-size: 1em; font-weight: bold; color:#31b6e7; text-decoration:none; text-shadow:0 0 0;
+}/*
+.brandname {
+	text-align:center; margin:0px; padding:0px; font-size: .9em; font-weight: bold; text-decoration:none; text-shadow:0 0 0;
+}
+.brandname_left { color:#ffffff; }
+.brandname_right { color:#31b6e7; }
+*/
+.status_container {
+	margin:0; padding:0em 0em .1em 0em; width:100%; text-decoration:none; /*text-shadow:0 0 0;*/ font-size: .8em; font-weight: normal;
+}
+.status { float:left; margin-left: .15em; width:60%; text-align:left; white-space:nowrap; overflow:hidden;
+         height: 1.2em; max-height: 1.2em; /*force single line even if <br>*/
+}
+.curr_user { float:right; margin-right: .15em; text-align:right; white-space:nowrap; overflow:hidden; }
+.img_encrypt { margin-left: .15em; padding: 0; float: left; border: 0; display: none; }
+
+#calledcaller { float:left; margin-left: .15em; width:60%; text-align:left; white-space:nowrap; overflow:hidden; }
+#call_duration { float:right; margin-right: .15em; width:37%; text-align:right; white-space:nowrap; overflow:hidden; }
+#status_call { float:left; clear:both; width:100%; text-align:center; white-space:nowrap; overflow:hidden; }
+
+.dialog_content { font-size:1.2em; }
+
+.all_app_pages{
+	text-transform: none; /* background:#000000;*/ overflow: hidden;
+}
+
+.modalWindow{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    z-index: 1500;
+    background: #181818;
+    opacity: 1;
+}
+
+.ui-loader{
+    z-index: 1501;
+}
+
+#settings_additional_header{
+	margin:0px; padding:0px;
+}
+LI#settings_footer { padding: 0; }
+LI#settings_footer BUTTON { float: left; width: 100%; margin-bottom: 0; }
+/*LI#settings_footer BUTTON { float: left; width: 50%; margin-bottom: 0; }*/
+
+LI#qrcode_layout { padding: 0; text-align: center; }
+LI#qrcode_layout BUTTON { width: 60%; margin-bottom: 1em; margin-top: 1em; margin-left: 20%; }
+
+LI#newuser_container { padding: 0; }
+.settings_links { display: inline-block; margin-top: 2em; padding: 0; font-size: .9em; text-shadow:0 0 0; font-weight: normal !important; }
+
+.header_text { background: #001a22;  color: #ffffff; font-weight: normal; font-size: .8em; text-decoration:none; text-shadow:0 0 0; }
+.footer_text { background: #001a22;  color: #ffffff; font-weight: normal; font-size: .8em; text-decoration:none; text-shadow:0 0 0; }
+
+.advert_container { margin: 0; padding: 0; overflow: hidden; width: 100%; height: 40px; display: none; }
+.advert_container .advert_frame { margin: 0; padding: 0; border: 0; overflow: hidden; width: 100%; height: 40px; }
+
+.additional_header_left{
+    text-align:left; margin: 0; padding: 0; float:left; width: 40%;
+}
+
+.additional_header_middle{
+    text-align:center; margin: 0; padding: 0; float:left; width: 26%; line-height: 2.1em;
+    color: #31b6e7; font-size: .9em; white-space:nowrap; overflow:hidden;
+    /*display: none;*/
+}
+
+.additional_header_right{
+    text-align: right; margin: 0; padding: 0; float:right; width: 34%;
+}
+
+#page_message .additional_header_left, #page_settings .additional_header_left { width: 20%; }
+#page_message .additional_header_middle, #page_settings .additional_header_middle { width: 60%; }
+#page_message .additional_header_right, #page_settings .additional_header_right { width: 20%; }
+
+/*
+.additional_header_left .homepage_link,
+.additional_header_left .homepage_link:hover
+.additional_header_left .homepage_link:visited{
+    line-height: 1.9em;
+    text-decoration:none; text-shadow:0 0 0;
+}
+.additional_header_left IMG{
+    border:0; vertical-align:middle;
+}*/
+.additional_header_left SPAN{
+    line-height: 1.5em; color: #31b6e7; display: inline-block; overflow-x: hidden; margin-left: .3em; margin-bottom: 0; padding-bottom: 0; padding-top: .3em;
+    text-decoration:none; text-shadow:0 0 0; font-weight: normal; font-size: .9em;
+}
+
+.additional_header_left .btn_header_back, .additional_header_left .btn_header_back .ui-btn {
+    margin: 0em; background: transparent !important; font-weight: normal !important; border: none;
+    padding-top: .6em;
+    padding-bottom: .4em;
+    padding-left: .5em;
+    padding-right: .5em;
+    display: inline-block;
+    text-decoration: none;
+    text-align: left;
+}
+
+.additional_header_left .btn_header_back SPAN {
+    color: #ffffff; line-height: 1.3em;
+}
+
+.additional_header_left .btn_header_back B{
+    font-size: 1.1em;
+}
+
+.additional_header_left .btn_header_back:hover{
+    font-style: italic;
+    /*text-decoration: underline !important;*/
+}
+
+.additional_header_left .btn_header_back SPAN{
+    margin: 0; font-size: 1.7em; font-family: monospace, sans-serif;
+}
+
+.additional_header_left .page_title_small{
+    font-size: .9em; color: #31b6e7;
+}
+
+.additional_header_left DIV { float: left; }
+.additional_header_left DIV IMG {  } /* for presence*/
+
+.additional_header_left .adhead_custom_brand { display: inline-block; float: none; position: relative; top: -0.9em; color: #ff9900; }
+
+#msg_title IMG { display: inline-block; margin-top: .2em; float: left; padding: 0; border: 0; } /* for presence*/
+
+.all_app_pages .notification{
+    margin: 0; padding: 0; width: 40%; height: 2.3em; float: left; line-height: 1.2em; overflow: hidden;
+    text-align: center; font-size: .8em; font-weight: normal; color: #ff0000; cursor: pointer;
+    /*display: none;*/
+}
+
+.all_app_pages .notification:hover{
+    cursor: pointer; background: #62d8ff; filter: Alpha(Opacity=7); opacity: .7;
+}
+
+.btn_toolbar_menu{
+    padding: 0px; margin: 0px;
+}
+
+.options_menu{ min-width:15em; position:relative; top: .6em; }
+
+.ui-popup-screen { top: -1px; } /* fix: scroll bar appearing when popups are oppened; even Menu*/
+
+.additional_header_right IMG{
+	border:0px; vertical-align:middle;
+}
+
+.navigation_bar UL LI { display: block; } /*fix for IE 10 line-height */
+.navigation_bar .ui-btn { padding-top: .2em; padding-bottom: .2em; }
+
+.separator_color_bg{
+	margin:0; padding:0; border:0; width:100%; height:.1em; clear:both; background:#000;
+}
+
+.separator_line_thick{
+	margin:0; padding:0; border:0; width:100%; height: .1em; clear:both;
+}
+
+.extra_header{
+	margin:0; padding:0; border:0; width:100%; clear:both;
+}
+
+.separator_line_chooseengine{
+    margin:0; padding:0; border:0; width:100%; height: .1em; clear:both; background: #dddddd;
+}
+
+#choose_engine .serator_span { font-size: 14px; }
+#choose_engine SPAN { /*line-height: 4em;*/ padding: 1.5em; background: #eeeeee; display: inline-block; width: 100%;  vertical-align: middle; text-indent: -.9em !important; }
+#choose_engine_container { font-size: 1.2em; }
+#choose_engine_container #checkbox_ignore_container LABEL { font-weight: normal; font-size: .7em; }
+
+/*custom login page*/
+
+#page_settings_content #loginpage_container{
+    margin: 0em 2em 0em 2em; padding: 0; border: 0; display: inline-block;
+}
+
+/*!!!! doesn't work in IE*/
+#page_settings_content #loginpage_container #loginpage{
+    /*position: absolute; 
+    top: 35%;
+    left: 0%;
+    height: 30%;
+    width: 100%;
+    margin: -50% 0% 0% 0%;*/
+}
+
+#page_settings_content #loginpage_container .ui-input-text{
+    margin-top: .8em; display: inline-block;
+}
+#page_settings_content #loginpage_container #lp_btn_login{
+    margin-top: 1.5em; font-weight: normal;
+}
+#page_settings_content #loginpage_container #lp_btn_custom{
+    margin-top: 1.5em; font-weight: normal;
+}
+#page_settings_content #loginpage_container A{
+    display: inline-block; margin-top: 1.5em; text-shadow:0 0 0; font-weight: normal; font-size: .9em;
+}
+#loginpage_container #logologinpage{
+    text-decoration:none; text-shadow:0 0 0; color: #ffffff; font-size: 1.8em;
+}
+
+
+#phone_number_container { margin:0; padding:0; border:0; background: url(../../images/texture_bg_dial.png) repeat #001a22; }
+#phone_number_container .ui-input-text, #phone_number_container .ui-input-text:focus{
+	display:inline; border: none; box-shadow: none; text-decoration:none; text-shadow:0 0 0; text-align:left; font-size: 1.3em;
+        background: transparent; /*background: #ccc; filter: Alpha(Opacity=9); opacity: .9;*/
+}
+
+#phone_number_container #phone_number { margin-left: 12%; } /* align number to middle*/
+/*
+#phone_number_container ::-webkit-input-placeholder { color: #bbb; font-size: .8em; font-style: italic; }
+#phone_number_container :-moz-placeholder  { color: #bbb; font-size: .8em; font-style: italic; }
+#phone_number_container ::-moz-placeholder  { color: #bbb; font-size: .8em; font-style: italic; }
+#phone_number_container :-ms-input-placeholder  { color: #bbb; font-size: .8em; font-style: italic; margin-top: .7em; margin-bottom: .7em; }
+*/
+#phone_number_container ::placeholder  { color: #bbb; font-size: .8em; font-style: italic; margin-top: .7em; margin-bottom: .7em; }
+
+#phone_number_container .ui-block-a { width: 80%; }
+#phone_number_container .ui-block-b { width: 20%; height: 100%; }
+
+#phone_number_container .ui-btn { margin:0; height: 100%; }
+/*#phone_number_container .ui-btn-inner { margin:0; vertical-align: middle; }*/
+#phone_number_container #disprate_container { clear: both; font-size: .8em; }
+
+/*#phone_number_div { margin:0; padding:0;  width:80%; float:left; }
+#btn_backspace_div { margin:0; padding:0; width:20%; float:left; height: 100%; }*/
+#btn_backspace { border-bottom: none; background: none; }
+#btn_backspace IMG { padding-top: 1.3em; padding-bottom: 1.2em; }
+
+#page_dialpad{ margin:0; padding:0; border:0; }
+#dialpad_header{ margin:0; padding:0; border:0; }
+#dialpad_footer, #settings_footer, #aec_footer, #acc_footer{ margin:0; padding:0; border:0; }
+
+#page_dialpad_content{ margin:0; padding:0; border:0; }
+
+#dialpad_btn_grid, #dialpad_call_grid, #numpad_btn_grid { background: url(../../images/texture_bg_dial.png) repeat #001a22; }
+#page_dialpad_content #phone_number_container .ui-btn, #dialpad_btn_grid .ui-btn, #dialpad_footer .ui-btn {
+    padding:0; margin:0; border-width: .1em; background: transparent; border:0; /*border:1px solid #f00;*/
+}
+#page_dialpad_content #phone_number_container .ui-btn:hover, #dialpad_btn_grid .ui-btn:hover, #dialpad_footer .ui-btn:hover {
+    /*padding:0; margin:0; border-width: .1em; background: #62d8ff; filter: Alpha(Opacity=7); opacity: .7; border:0; text-shadow:0 0 0;
+    padding:0; margin:0; border-width: .1em; background: #ffffff; filter: Alpha(Opacity=1); opacity: .1; border:0; text-shadow:0 0 0;
+    */
+    padding:0; margin:0; border-width: .1em; background: #001a22; filter: Alpha(Opacity=5); opacity: .5; border:0; text-shadow:0 0 0;
+}
+/*#page_addeditcontact_content { background: #f00; }*/
+#dialpad_footer, #dialpad_call_grid { /* workaround for footer dissapearing and moving*/
+    /*position: fixed;*/
+    z-index: 0;
+    bottom: 0;
+    width: 100%;
+
+    /*
+    float: left;
+    display: block;
+    position: relative;
+    background: #f00;
+    top: 10px;
+    */
+}
+/* workaround for footer dissapearing and moving
+#page_addeditcontact_content { position: relative; background: #f00; }
+#aec_footer { 
+    z-index: 0;
+    bottom: 0;
+    width: 100%;
+    position: absolute;
+}*/
+#dialpad_footer #dialpad_call_grid #btn_call .ui-btn:hover {
+    background: #54a337;
+}
+/*choose engine row*/
+#page_settings_content #settings_engine { float: left; margin: 0; padding: 0; display: block; width: 100%; background: #f6f6f6; }
+#page_settings_content #settings_copyright { display: block; width: 100%; float: left; margin-bottom: .1em; padding: 0; text-shadow: 0 0 0; text-align: right; }
+#page_settings_content #settings_copyright A { font-weight: normal; font-size: .7em; display: inline-block; margin-right: .4em; text-decoration: none; }
+
+#dialpad_header .btn_engine { margin: 0; float: left; padding: 0; }
+#page_settings_content .btn_engine { margin: 0; float: left; padding: 0; }
+
+#dialpad_header .btn_engine:hover { margin: 0; filter: Alpha(Opacity=5); opacity: .5; }
+#page_settings_content .btn_engine:hover { margin: 0; filter: Alpha(Opacity=5); opacity: .5; }
+
+#dialpad_header .engine_title { font-size: 1.1em; }
+#page_settings_content .engine_title { font-size: .9em; }
+
+#dialpad_header .engine_msg { font-size: .8em; }
+#page_settings_content .engine_msg { font-size: .6em; }
+
+#btn_dialpad_engine_close { float: left; margin: 0; display: inline-block; border: 0; }
+#btn_settings_engine_close { float: left; margin: 0; display: inline-block; border: 0; }
+
+#dialpad_header .btn_engine, #settings_engine .btn_engine { width: 85%; }
+#btn_dialpad_engine_close { width: 14%; height: 2.2em; }
+#btn_settings_engine_close { width: 14%; height: 2.65em; }
+
+
+
+
+#dialpad_btn_grid .ui-btn SPAN, #numpad_btn_grid .ui-btn SPAN {
+    margin: 0; padding: 0; font-size: 2.4em; font-weight: normal; color: #31b6e7;
+}
+#dialpad_btn_grid .ui-btn .number, #numpad_btn_grid .ui-btn .number {
+    margin: 0; padding: 0; font-size: 2.4em; font-weight: lighter;
+}
+#dialpad_btn_grid .ui-btn .smalltext, #numpad_btn_grid .ui-btn .smalltext {
+    margin: 0em 0em 0em .3em; padding: 0; font-size: .7em; font-weight: bold; color: #aaa;
+}
+
+#dialpad_list .ui-link-inherit { padding:.2em .5em .2em 0em; }
+#dialpad_list .ch_anchor { padding-top: .3em; padding-bottom: .3em; }
+#dialpad_list .ch_anchor:hover { padding-top: .3em; padding-bottom: .3em; }
+#page_dialpad_content .ch_type { margin:.5em .8em 0em 0em; padding:0; float:left; }
+#page_dialpad_content .ch_data { margin:0; padding:0; float:left; /*background: #f00;*/ }
+#page_dialpad_content .ch_numberonly { margin:.7em 0em .7em 0em; padding: 0; float: left; font-size: .9em; font-weight:normal; color:#31b6e7; }
+#page_dialpad_content .ch_data .ch_name { font-size: .9em; font-weight:normal; color:#31b6e7; }
+#page_dialpad_content .ch_data .ch_number { font-size: .8em; font-weight:normal; margin-top: .3em; }
+#page_dialpad_content .ch_data .ch_duration { font-size:.7em; font-weight:normal; }
+#page_dialpad_content .ch_date { margin:1em 0em 0em 0em; padding:0; float:right; font-size:.7em; font-weight:normal; }
+#page_dialpad_content .ch_presence { margin:.7em 0em 0em .8em; padding:0; float:right; font-size:.7em; font-weight:normal; }
+
+#page_dialpad_content .ch_ctname { margin:.7em 0em .7em 0em; padding: 0; float: left; font-size: .9em; font-weight:normal; color:#31b6e7; }
+#page_dialpad_content .ch_ctnumber { margin:1em 0em .7em 1.5em; padding: 0; float: left; font-size: .8em; font-weight:normal; }
+
+#numpad { margin:0; padding:0; display:none; }
+#numpad_number_container { margin:0; padding:0; border:0; width:100%; background: url(../../images/texture_bg_dial.png) repeat #000000; }
+
+#numpad_number_container SPAN{
+	border: 0; text-decoration:none; text-shadow:0 0 0; text-align:center; font-size: 1.3em;
+}
+
+
+.noshadow {
+  -webkit-box-shadow: none !important;
+ box-shadow: none !important;
+}
+
+/* removes the blue halo glow from jQuery Mobile input elements that receive focus */
+.ui-focus {
+  -webkit-box-shadow: none !important;
+ box-shadow: none !important;
+}
+
+/*#dialpad_btn_grid .ui-btn-inner {  white-space: normal; }*/
+
+/*#dialpad_btn_grid .ui-btn-inner{ font-weight:normal; padding:0; }*/
+
+#dialpad_call_grid .ui-btn{ padding:0; margin: 0; border-width: .1em; }/*margin: .5em 0 0 0;*/
+#dialpad_call_grid  .ui-block-a{ width:20%; }
+#dialpad_call_grid  .ui-block-b{ width:60%; }
+#dialpad_call_grid  .ui-block-c{ width:20%; }
+#dialpad_call_grid .ui-btn-inner{ font-size: 2.2em; font-weight:normal; padding:0; }
+#dialpad_call_grid IMG { border:0; vertical-align:middle; }
+
+#dialpad_call_grid  .ui-block-a IMG { padding-top: .8em; padding-bottom: .8em; }
+#dialpad_call_grid  .ui-block-b IMG { padding-top: .2em; padding-bottom: .2em; }
+#dialpad_call_grid  .ui-block-c IMG { padding-top: .8em; padding-bottom: .8em; }
+
+/*#dialpad_btn_grid TR{ height:76px; }*/
+
+#page_contactdetails_content{ text-shadow: 0 0 0; }
+/*#contact_name{ color:#ffffff; margin:0; padding:0 0 0 1em; text-align:left; height:3em; line-height:3em; font-size:1.3em; background: url(../../images/texture_bg_dial.png) repeat #001a22; }*/
+#contact_name{ color:#ffffff; margin:0; padding:0em 0em 0em 1em; float: left; width: 100%; text-align:left; font-size:1.3em; background: url(../../images/texture_bg_dial.png) repeat #001a22; }
+#contact_name P { display: inline-block; width: 66%; float: left; }
+#contact_favorite { float: left; margin-left: .1em; margin-top: .8em; }
+#contact_favorite IMG { border: none; cursor: pointer; }
+#contact_blocked { float: left; margin-top: 1.1em; margin-left: .5em; width: 10%; }
+#contact_blocked_img { border: none; display: none; }
+
+#page_contactdetails_content .cd_container{ margin:0; padding:0; width:100%; float:left; clear:both; border-bottom: .1em solid #004357; }
+#page_contactdetails_content .cd_call{ width:100%; margin:.4em 0em .4em 0em; padding:0; float:left; }
+#page_contactdetails_content .cd_data {	margin:0em 0em 0em 1em; padding:0; float:left; }
+#page_contactdetails_content .cd_type{ text-align:left; font-size:1.1em; color: #ffffff; }
+#page_contactdetails_content .cd_number{ text-align:left; font-size:1.2em; color:#31b6e7; }
+#page_contactdetails_content .cd_icon { margin:0 .4em 0 0; padding:0; float:right; height:4em; line-height:4em; }
+#page_contactdetails_content .cd_icon IMG { vertical-align:middle; }
+
+/*#page_contactdetails_content .cd_msg { width:20%; margin:.4em 0em .4em 0em; padding:0; float:left; }
+#page_contactdetails_content .cd_msg_icon { margin:0; padding:0; width:100%; float:right; height:4em; line-height:4em; }
+#page_contactdetails_content .cd_msg_icon IMG { vertical-align:middle; }
+*/
+#page_contactdetails_content .cd_call:hover,
+#page_contactdetails_content .cd_msg:hover { cursor:pointer; background:#62d8ff; filter: Alpha(Opacity=7); opacity: .7; }
+#page_contactdetails_content .cd_button { text-align:center; font-size:1.2em; color:#ffffff; }
+
+
+#callhistorylist_list .ui-link-inherit { padding:.2em .5em .2em 0em; }
+#callhistorylist_list .ch_anchor { padding-top: .3em; padding-bottom: .3em; }
+#page_callhistorylist_content .ch_type { margin:.5em .8em 0em .8em; padding:0; float:left; }
+#page_callhistorylist_content .ch_data { margin:0; padding:0; float:left; /*background: #f00;*/ }
+#page_callhistorylist_content .ch_data .ch_name { font-size: .9em; font-weight:normal; color:#31b6e7; }
+#page_callhistorylist_content .ch_data .ch_number { font-size: .8em; font-weight:normal; }
+#page_callhistorylist_content .ch_data .ch_duration { font-size:.7em; font-weight:normal; }
+#page_callhistorylist_content .ch_date { margin:3em 0em 0em 0em; padding:0; float:right; font-size:.7em; font-weight:normal; }
+
+
+#page_callhistorydetails_content{ text-shadow:none; }
+#ch_contact_name{ color:#ffffff; margin:0; padding:0 0 0 1em; text-align:left; height:3em; line-height:3em; font-size:1.3em; background: url(../../images/texture_bg_dial.png) repeat #001a22; }
+
+#page_callhistorydetails_content .ch_container{ margin:0; padding:0; width:100%; float:left; clear:both; border-bottom: .1em solid #004357; }
+#page_callhistorydetails_content .ch_call{ width:100%; margin:.4em 0em .4em 0em; padding:0; float:left; }
+#page_callhistorydetails_content .ch_data {	margin:0em 0em 0em 1em; padding:0; float:left; }
+#page_callhistorydetails_content .ch_type{ text-align:left; font-size:1.2em; color: #ffffff; }
+#page_callhistorydetails_content .ch_number{ text-align:left; font-size:1.1em; color:#31b6e7; }
+#page_callhistorydetails_content .ch_icon { margin:0 .4em 0 0; padding:0; float:right; height:4em; line-height:4em; }
+#page_callhistorydetails_content .ch_icon IMG { vertical-align:middle; }
+
+/*#page_callhistorydetails_content .ch_msg { width:20%; margin:.4em 0em .4em 0em; padding:0; float:left; }
+#page_callhistorydetails_content .ch_msg_icon { margin:0; padding:0; width:100%; float:right; height:4em; line-height:4em; }
+#page_callhistorydetails_content .ch_msg_icon IMG { vertical-align:middle; }
+*/
+#page_callhistorydetails_content .ch_call:hover,
+#page_callhistorydetails_content .ch_msg:hover { cursor:pointer; background:#62d8ff; filter: Alpha(Opacity=7); opacity: .7; }
+
+
+#page_call_content { margin:0; padding:0; width:100%; }
+#page_call_content #contact_image { margin:0; padding:0; width:100%; float: left; } /*height:150px; line-height:150px;*/
+#page_call_content #contact_image #contact_image_img { border:0; vertical-align:middle; }
+#page_call_content #page_call_peer_details, #page_call_content #page_call_additional_info, #page_call_content #display_notmain_account {
+    font-size: .9em; text-align: center; margin-left: 2em; margin-right: 2em; text-decoration:none; text-shadow:0 0 0;
+}
+
+#page_call_content #callfunctions_layout { margin:0; padding:0; border:0; width:100%; float:left; background: url(../../images/texture_bg_dial.png) repeat #001a22; }
+#page_call_content .callfunc_btn_container { float:left; /*width:16.3%;*/ }
+#page_call_content .ui-btn { padding:0; margin:0; }
+#page_call_content .ui-btn-inner { padding:0; margin:0; border:0; }
+#page_call_content #btn_audiodevice, #page_call_content #btn_audiodevice .ui-btn { margin: 0; padding: .5em; font-weight: normal; display: inline-block; }
+
+#page_call_content #volumecontrols { margin: 0; padding: 0; float: left; width: 100%; }
+#page_call_content #volumecontrols .volume_labels { margin: 0; padding: 0; float: left; width: 27%; text-align: right; height: 3em; line-height: 3em; font-size: .9em; }
+#page_call_content #volumecontrols .volume_sliders { margin: 0 0 0 .3em; padding: 0; float: left; width: 70%; }
+#page_call_content #volumecontrols .volume_sliders INPUT,
+#volumecontrols .volume_sliders .ui-btn:focus { box-shadow: none; text-decoration:none; text-shadow:0 0 0; }
+#volumecontrols .volume_sliders .ui-bar-inherit { background: #787878; }
+#volumecontrols .volume_sliders .ui-slider-handle { margin-top: -0.7em; }
+
+#callfunctions_layout .ui-btn-inner IMG { padding:.8em 0em .8em 0em; margin:0; border:0; }
+#callfunctions_layout .callfunc_spacer { margin:0; padding:0; width: .1em; height: 3em; float:left; }
+#callfunctions_layout .callfunc_status { height:.5em; width:100%; display: block; }
+#callfunctions_layout .callfunc_status_on { background:#62d8ff; filter: Alpha(Opacity=70);	opacity: .7; }
+/*
+#dialpad_btn_grid .ui-btn{ padding:0; margin:0; border:0; }
+#dialpad_btn_grid .ui-btn-inner{ font-size: 2.5em; font-weight:normal; padding:0; }
+*/
+#page_call_content .callfunc_btn IMG { border:0; }
+#callfunctions_layout .ui-btn { background: transparent; }
+#callfunctions_layout .ui-btn:hover { background:#62d8ff; filter: Alpha(Opacity=70);	opacity: .7; }
+
+#page_call_content #btn_hangup { background: url(../../images/texture_bg_endcall.png) repeat #ff0000; border: 0; }
+#page_call_content #btn_hangup:hover { background:#ff0000; filter: Alpha(Opacity=70);	opacity: .7; }
+
+#page_call_content #mlcontainer { margin: 0; padding: 0; text-align: center; width: 100%; float: left; /*background: #f00;*/ }
+#mlcontainer .line_btn, #mlcontainer .ui-btn { margin:0em .2em 0em 0em; padding:0; width: 5em; display: inline-block; font-size: .7em; border: 0; }
+#mlcontainer .line_status { height:.4em; width:100%; display: block; }
+#mlcontainer .line_status_on { background:#62d8ff; filter: Alpha(Opacity=70);	opacity: .7; }
+#mlcontainer .ui-btn .line_text { padding:.4em 0em .4em 0em; margin:0; display: inline-block; font-weight: normal; }
+
+
+#acceptreject_layout .ui-btn{ padding:0; margin: 0; border:0; }/*margin: .5em 0 0 0;*/
+#acceptreject_layout  .ui-block-a{ width:50%; }
+/*#acceptreject_layout  .ui-block-b{ width:20%; }*/
+#acceptreject_layout  .ui-block-c{ width:50%; }
+
+#page_call_content #hangup_layout { display:none; }
+#page_call_content #callfunctions_layout { display:none; }
+#page_call_content #acceptreject_layout { display:none; }
+#page_call_content #mline_layout { display:none; }
+
+#acceptreject_layout .ui-block-a BUTTON { background: url(../../images/texture_bg_accept.png) repeat #000000; }
+#acceptreject_layout .ui-block-a BUTTON:hover { background:#0d0; filter: Alpha(Opacity=70); opacity: .7; }
+
+/*#acceptreject_layout .ui-block-b .ui-btn-up-a { background: url(../../images/texture_bg_grey.png) repeat #000000; }*/
+
+#acceptreject_layout .ui-block-c BUTTON { background: url(../../images/texture_bg_endcall.png) repeat #ff0000; }
+#acceptreject_layout .ui-block-c BUTTON:hover { background:#f00; filter: Alpha(Opacity=70); opacity: .7; }
+
+/*multiline incoming calls*/
+#mline_layout .ui-btn{ padding:0; margin: 0; border:0; }/*margin: .5em 0 0 0;*/
+#mline_layout  .ui-block-a{ width:42%; }
+#mline_layout  .ui-block-b{ width:42%; }
+#mline_layout  .ui-block-c{ width:16%; }
+
+#mline_layout .ui-block-a BUTTON { background: url(../../images/texture_bg_accept.png) repeat #000000; }
+#mline_layout .ui-block-a BUTTON:hover { background:#0d0; filter: Alpha(Opacity=70); opacity: .7; }
+
+#mline_layout .ui-block-b BUTTON { background: url(../../images/texture_bg_endcall.png) repeat #ff0000; }
+#mline_layout .ui-block-b BUTTON:hover { background:#f00; filter: Alpha(Opacity=70); opacity: .7; }
+
+#mline_layout .ui-block-c BUTTON { background: url(../../images/texture_bg_dial.png) repeat #001a22; }
+#mline_layout .ui-block-c BUTTON:hover { background:#001a22; filter: Alpha(Opacity=50); opacity: .5; }
+
+
+#numpad_btn_grid .ui-btn{ padding:0; margin:0; border-width: .1em; }
+#numpad_btn_grid .ui-btn SPAN { font-size: 2.4em; font-weight: normal; }
+
+DIV.clear_float{ width:100%; clear:both; }
+
+UL#contactslist_list { width:100%; padding:0px; margin:0px; font-weight: normal; overflow-y: auto; }
+UL#contactslist_list LI A { font-weight: normal; font-size: .9em; padding-top: 1em; padding-bottom: 1em;}
+UL#callhistorylist_list { width:100%; padding:0px; margin:0px; overflow-y: auto; }
+UL#settings_list { width:100%; padding:0px; margin:0px; overflow-y: auto; }
+UL#dialpad_list { width:100%; padding:0px; margin:0px; overflow-y: auto; }
+UL#filters_list { width:100%; padding:0px; margin:0px; overflow-y: auto; }
+
+UL#settings_list LI A { line-height: 1; padding: .6em 0em .6em .8em; font-weight: normal; }
+
+UL#settings_list .sett_text { width: 85%; float: left; margin: 0; padding: 0; }
+UL#settings_list .sett_image { float: left; width: 15%; margin: 0; padding: 0; }
+UL#settings_list .sett_image IMG { float: right; margin-right: .6em; margin-top: .4em; border: 0; }
+
+UL#settings_list .sett_display_name { color:#31b6e7; font-size: .9em; }
+UL#settings_list .sett_comment { font-size: .7em; white-space: pre-wrap; }
+
+/*UL#contactslist_list .ui-filterable,
+//UL#contactslist_list .ui-filterable .ui-input-search { margin: 0px; padding: 0px; background: #ff0000; }*/
+
+.ui-header H1.adialog_title { color:#31b6e7; font-size: .9em; width: 80%; margin-left: 0; }
+.adialog_content { margin: .8em; }
+.adialog_content_select { margin: 0; }
+.adialog_content SPAN { font-size: .8em; }
+.adialog_2button { width: 49%; margin: 0em 0em .1em 0em; padding-left: 0; padding-right: 0; }
+.adialog_3button { width: 32%; margin: 0em 0em .1em 0em; padding-left: 0; padding-right: 0; }
+
+.adialog_btn_nexttoinput .ui-input-text { width: 73% !important; float: left; margin-right: .5em; }
+.adialog_btn_nexttoinput .setting_item_input_class { width: 23% !important; }
+#setting_item_srvaddrpart { float:left; margin-top: 1.1em; margin-right: 1em; text-align: left; font-size: 1em; font-weight: bold; }
+.adialog_btn_nexttoinput .btn_nexttoinput { width: 20%; /*padding-top: .3em; padding-bottom: .2em;*/ padding: 0; }
+
+.adialog_alert { padding: 1em; text-align: left; }
+.messagePopup .ui-content { overflow-y: auto; overflow-x: hidden; /*max-height: 300px !important; */}
+.messagePopup, .messagePopup .ui-content { background: #ffffff !important; }
+#choose_engine { background-color: #1d1d1d !important; } /* popup*/
+
+#page_addeditcontact_content { text-shadow:0 0 0; }
+#page_addeditcontact_content .aec_label { color:#31b6e7; text-align: left; margin-left: .4em; margin-top: .4em; }
+#page_addeditcontact_content #aec_name_section { padding-left: .6em; padding-right: .6em; }
+#page_addeditcontact_content #aec_add_section { margin-top: .4em; }
+#aec_add_section .aec_label { width: 85%; display: inline-block; }
+#aec_add_section #aec_add { width: 10%; display: inline-block; text-align: center; margin: 0; }
+#aec_add_section #aec_add .ui-btn { margin: 0; }
+#page_addeditcontact_content .aec_numbers { text-align: left;  padding-left: .6em; }
+.aec_numbers .aec_phonetype { width: 28%; margin: 0; font-weight: normal; display: inline-block; }
+.aec_numbers .ui-input-text { width: 55% !important; display: inline-block; font-size: 1.1em; margin-left: .2em; }
+.aec_numbers INPUT { display: inline-block; } /*needed for proper display in Firefox*/
+.aec_numbers .minus_btn { display: inline-block; text-align: center; width: 12%; margin: 0; }
+.aec_numbers .minus_btn .ui-btn { margin: 0; }
+#page_addeditcontact #aec_footer { margin: 0; padding: 0; }
+#page_addeditcontact #aec_footer .ui-btn { width: 49%; margin: 0; font-size: 1em; }
+
+#page_addeditcontact_content #aec_add_deatils { margin-bottom: .7em; }
+#aec_add_deatils #aec_label_details { width: 81%; display: inline-block; color:#31b6e7; text-align: left; margin-left: .4em; }
+#aec_add_deatils #aec_add_detailsbtn { width: 10%; display: inline-block; text-align: center; margin: 0; }
+#aec_add_deatils #aec_add_detailsbtn .ui-btn { margin: 0; }
+#page_addeditcontact_content #aec_details_separator { margin: 1em .5em 1em .5em; width: auto; }
+#page_addeditcontact_content .aec_details { text-align: left;  padding-left: .6em; }
+.aec_details LABEL { width: 27%; margin: 0; font-weight: normal; display: inline-block; color:#31b6e7; }
+.aec_details .ui-input-text { width: 67% !important; display: inline-block; font-size: 1.1em; margin-left: .2em; }
+.aec_details INPUT { display: inline-block; } /*needed for proper display in Firefox*/
+
+
+
+
+
+
+
+
+#page_accounts_content { text-shadow:0 0 0; }
+#page_accounts_content #acc_add{ color:#ffffff; margin:0; padding:0em 0em 0em 1em; float: left; width: 100%; text-align:left; font-size:1.3em; background: url(../../images/texture_bg_dial.png) repeat #001a22; }
+#page_accounts_content #acc_add P { display: inline-block; width: 80%; float: left; font-size: .9em; }
+#page_accounts_content #acc_add_right { float: left; margin-left: .1em; margin-top: .4em; }
+#page_accounts_content #acc_add_right button { cursor: pointer; }
+#page_accounts_content #text_instructions { color: #ffffff; font-size: .85em; margin-left: .3em; margin-right: .3em; margin-bottom: .3em; text-align: left; font-weight: normal; }
+
+
+#page_accounts_content #acc_list {  }
+#page_accounts_content .acc_item { }
+.acc_item .acc_control { display: inline-block; float: left; width: 27%; margin: 0; padding: 0; }
+.acc_item .acc_control .acc_checkbox { margin-top: 1em; margin-left: .8em; margin-bottom: 1.3em; }
+.acc_item .acc_control .acc_radio { margin-top: 1em; margin-left: 1.5em; }
+.acc_item .acc_control .ui-checkbox input, .acc_item .acc_control .ui-radio input { position: relative; display: block; float: left; padding: 0; }
+.acc_item .acc_username { width: 60%; display: inline-block; float: left; color:#31b6e7; text-align: left; margin-left: 0em; margin-top: 1.6em; }
+.acc_item .acc_remove { width: 12%; display: inline-block; float: left; text-align: center; margin-top: 1.1em; }
+.acc_item .acc_remove .ui-btn { margin: 0; }
+
+#page_accounts_content #aec_details_separator { margin: 1em .5em 1em .5em; width: auto; }
+
+
+
+
+
+
+#page_messagelist_content #btn_newmessage { color: #31b6e7; margin-left: .1em; width: 99%; margin-top: 0px; margin-bottom: 0px; }
+#page_messagelist_content #messagelist_list { margin: 0px; padding: 0px; overflow-y: auto; }
+#page_messagelist_content .msg_anchor { padding: .9em; }
+#page_messagelist_content .msg_name { float: left; font-weight: normal; font-size: .9em; color: #31b6e7; }
+#page_messagelist_content .new_msg_count { float: left; margin-left: .3em; font-weight: normal; font-size: .8em; color: #f00; }
+#page_messagelist_content .msg_type { float: right; font-weight: normal; font-size: .8em; }
+#messagelist_list .ui-li-count { color: #ff0000; right: auto; margin-left: .5em; }
+
+#page_message_content #msgpick_container { margin: 0; padding: 0; }
+#msgpick_container .ui-input-text { width: 79% !important; float: left; margin-right: .3em; margin-top: 0px; margin-left: .1em; }
+#msgpick_container #btn_msgpick { width: 17%; /*padding-top: .3em; padding-bottom: .2em;*/ padding: 0; margin: 0; }
+#page_message_content #msg_list {
+    background: #ffffff; overflow-y: auto; overflow-x: hidden; width: 100%; text-align: left;
+}
+
+#page_message_content #msg_list B { margin-left: .2em; font-size: .9em; }
+#page_message_content #msg_list P { margin-left: .6em; margin-top: 0; margin-bottom: .2em; font-size: .9em; }
+#page_message_content #msg_list .date { margin-top: 0; margin-bottom: .2em; margin-right: .2em; font-weight: bold; font-size: .7em; text-align: right;}
+#page_message_content #msg_list .sent_status { 
+    margin-top: 0; margin-bottom: .2em; margin-right: .4em; text-align: right; float: right;
+}
+#page_message_content #msg_spacer { font-size: 0.1em; margin: 0; padding: 0; }
+#page_message_content #msg_textarea_container { margin: 0; padding: 0; float: left; width: 100%; background: #ffffff; }
+
+#msg_textarea_container #msg_textarea_left { float: left; margin: 0; padding: 0; width: 79%; }
+#msg_textarea_container #msg_textarea_right { float: right; margin: 0; width: 19%; height: 5.4em; position: relative; }
+
+#msg_textarea_container .ui-input-text { margin: 0; }
+/*#msg_textarea_container #msg_textarea {
+    margin: 0; height: 5em !important; max-height: 5em !important; border: none; resize: none; overflow-x: hidden; overflow-y: auto; font-size: .9em;
+}*/
+#msg_textarea_container #msg_textarea { /*used for DIV contenteditable, not textarea*/
+    margin: 0; height: 5.4em !important; max-height: 5.4em !important; border: none; resize: none; overflow-x: hidden; overflow-y: auto; font-size: 1em;
+    text-align: left;
+}
+#msg_textarea_container #btn_msgsend { margin: 0; padding: 0; position: absolute; bottom: .2em; right: .2em; }
+#msg_textarea_container #msg_charcount { font-size: .7em; font-weight: bold; position: absolute; right: .2em; top: 1em; }
+
+#msg_textarea_container #msg_charcount { display: none; }
+#msg_textarea_container #msg_btn_sendfile {  width: 2em; height: 2.4em; padding: .2em 0em .2em 0em; position: absolute; right: .2em; top: -.5em; }
+
+#msg_textarea_container #msg_btn_smiley { width: 2.2em; padding: .5em 0em .2em .1em; position: absolute; right: 2.5em; top: -0.4em; background: transparent; border: 0; }
+#msg_textarea_container #msg_btn_smiley:hover { border: 1px solid transparent; }
+#msg_textarea_container #msg_btn_smiley #msg_btn_smiley_img { border: none; margin: 0; padding: 0; }
+#msg_textarea_container #smiley_container { border: none; margin: 0; padding: 0; z-index: 10000; position: absolute; right: .15em; bottom: 2.8em;
+    width: 11em; background: #fff; border: .1em solid #e8e8e8; -webkit-border-radius: .15em; border-radius: .15em; }
+#msg_textarea_container #smiley_title_container { margin: 0em 0em .8em 0em; padding: .1em 0em .15em 0em; width: 100%; display: block; float: left; background: #efefef; }
+#msg_textarea_container #smiley_title_container #smiley_hint { margin: .1em 0em 0em .2em; padding: 0; font-size: .8em; display: inline-block; float: left; }
+#msg_textarea_container #smiley_title_container #msg_btn_smiley_close { margin: 0; padding: 0; width: 1.4em; font-size: .8em; color: #000; float: right; }
+#msg_textarea_container #smiley_title_container #msg_btn_smiley_close:hover { text-decoration: underline; }
+#msg_textarea_container .btn_emoti_icon { margin: 0; padding: 0; width: 30px; height: 30px; display: inline-block; background: transparent; border: none;
+    -webkit-box-shadow: none !important; box-shadow: none !important; }
+#msg_textarea_container .btn_emoti_icon:hover { background: #e1e1e1; }
+#msg_textarea_container .btn_emoti_icon IMG { border: none; }
+#msg_textarea_container #msg_gradient { font-size: .1em;
+    background: #31b6e7 /*{a-body-background-color}*/;
+    border: none /*{a-body-border}*/;
+    color: #fff /*{a-body-color}*/;
+    text-shadow: 0 /*{a-body-shadow-x}*/ 1px /*{a-body-shadow-y}*/ 0 /*{a-body-shadow-radius}*/ #111 /*{a-body-shadow-color}*/;
+    /* Copied from 1.3 custom theme: */
+    background-image: -webkit-gradient(linear, left top, left bottom, from( #31b6e7 ), to( #ffffff )); /* Saf4+, Chrome */
+    background-image: -webkit-linear-gradient( #31b6e7, #ffffff ); /* Chrome 10+, Saf5.1+ */
+    background-image: -moz-linear-gradient( #31b6e7, #ffffff ); /* FF3.6 */
+    background-image: -ms-linear-gradient( #31b6e7, #ffffff ); /* IE10 */
+    background-image: -o-linear-gradient( #31b6e7, #ffffff ); /* Opera 11.10+ */
+    background-image: linear-gradient( #31b6e7, #ffffff );
+}
+
+#page_logview_content { text-decoration:none; text-shadow:0 0 0; }
+#sendtosupport_container { margin: 0; padding: 0; width: 100%; float: left; }
+#sendtosupport_container #btn_loghelp, #btn_loghelp .ui-btn { width: 3em; display: inline-block; float: left; margin: 0 0 .1em .1em; padding: 0; }
+#sendtosupport_container #support_selectall { float: left; margin-left: 1em; margin-top: .7em; margin-bottom: .5em; font-size: .9em; }
+#sendtosupport_container #sendtosupport { float: right; margin-right: 1em; margin-top: .7em; margin-bottom: .5em; font-size: .9em; }
+#sendtosupport_container #btn_sendlog {
+    display: inline-block; float: right; margin-right: .5em; margin-top: .3em; margin-bottom: .4em; font-size: .9em; padding: .5em;
+    font-weight: bold; color: #ffffff; border: 0px; -webkit-border-radius: .15em; border-radius: .15em; background: #31b6e7; cursor: pointer;
+}
+#sendtosupport_container #btn_sendlog:hover { filter: Alpha(Opacity=7); opacity: .7; }
+
+#lview_disable { float: left; margin: 0; padding: 0; }
+#lview_disable .ui-checkbox { margin: .3em 0em 0em .4em; }
+#lview_disable LABEL { display: inline-block; -webkit-border-radius: .2em; border-radius: .2em; }
+
+#log_text{
+    text-align: left; /*white-space: nowrap;*/ font-size: .8em; margin-left: .2em; margin-right: .2em; padding: 0px;
+    border: none; resize: none; display: inline-block; float: left; /*overflow-x: auto;  overflow-y: auto;*/
+}
+
+#page_newuser_content FORM { margin-left: .5em; margin-right: .5em; padding: 0; text-align: left; }
+#page_newuser_content SPAN { text-decoration:none; text-shadow:0 0 0; color: #31b6e7; text-align: left; font-size: .9em; }
+#page_newuser_content .ui-input-text { margin: 0 0 .6em 0; padding: 0; }
+
+#page_newuser #newuser_footer { margin: 0; padding: 0; }
+#page_newuser #newuser_footer .ui-btn { width: 49%; margin: 0; font-size: 1em; }
+
+#page_smscodeverify_content #sms_instructions { color: #ffffff; font-size: .85em; margin-left: .3em; margin-right: .3em; margin-top: .6em; text-align: center; font-weight: normal; }
+#page_smscodeverify_content .ui-input-text { margin: 2em 2% 0 2%; padding: 0; width: 96% !important; }
+#page_smscodeverify_content #sms_code_field { text-align: center; }
+
+#page_smscodeverify #smscodeverify_footer { margin: 0; padding: 0; }
+#page_smscodeverify #smscodeverify_footer .ui-btn { width: 49%; margin: 0; font-size: 1em; }
+
+#btn_buynow, #btn_buynow .ui-btn {
+    background: #ce5353; color: #fefefe; font-size: .8em; font-weight: normal; width: auto; -webkit-border-radius: .7em; border-radius: .7em;
+}
+#btn_buynow:hover, #btn_buynow .ui-btn:hover { background: #ba4b4b; }
+.about_item { width: 100%; margin-top: 1em; }
+.about_item2 { width: 100%; margin-top: 2em; }
+
+.notification_panel { padding: 0; margin: 0; background: rgba(63,65,63,0.6); }
+.not_panel_title { width: 100%; margin: 0; padding: 0; text-align: center; line-height: 2em; background: #575957; border-bottom: .5em solid #575957; color: #fff; }
+.notification_list, .notification_panel .ui-panel-inner { display: inline-block; margin: 0px; padding:0px; width:100%; overflow-y: auto; }
+.notification_list { display: inline-block;  margin: 0 !important; }
+.notification_list LI, .notification_list LI A { filter: Alpha(Opacity=9.9); opacity: .99; }
+.not_header_btn { margin: 0em 1.5em 0em 0em; }
+.not_btn_counter {
+    display: inline-block; margin-right: 4.3em; margin-top: -4.5em; background: #f00; z-index: 1000; color: #ffffff;
+    border: 0; -webkit-border-radius: .8em; border-radius: .8em; font-size: .6em;
+}
+#dialpad_message_counter{
+    display: inline-block; margin-right: 0; margin-top: -2.3em; background: #f00; z-index: 1000; color: #ffffff;
+    border: 0; -webkit-border-radius: .8em; border-radius: .8em; font-size: .6em;
+}
+#dialpad_voicemail_counter{
+    display: inline-block; position: initial; margin-left: 5.2em; margin-top: -5em; background: #f00; z-index: 1000; color: #ffffff;
+    border: 0; -webkit-border-radius: .8em; border-radius: .8em; font-size: .6em; float: left;
+}
+#page_messagelist .not_btn_counter { margin-top: -1.5em; } /*margins are different for page messagelist*/
+
+.not_close_btn { position: absolute; bottom: .1em; left: 14.8em; }
+
+.notification_list .nt_title { font-size: .9em; font-weight:normal; color:#31b6e7; }
+.notification_list .nt_desc { font-size: .8em; font-weight:normal; margin-top: .3em; margin-bottom: .6em; white-space: pre-wrap; }
+.notification_list .nt_date { margin: 0; padding:0; float:right; font-size:.65em; font-weight:normal; position: absolute; bottom: 0.5em; right: 1.7em; }
+.notification_list .nt_menu { padding: 0em 1.5em 0em 1.5em !important; }
+
+#page_filetransfer_content { padding-left: .3em; padding-top: 0em; }
+#page_filetransfer_content FORM { padding-right: .3em; }
+#page_filetransfer_content #filetransf_container { margin: 0; padding: 0; }
+#filetransf_container .ui-input-text { width: 76% !important; float: left; margin-right: .3em; margin-top: 0px; margin-left: .5em; }
+#filetransf_container #btn_filetransfpick { width: 17%; /*padding-top: .3em; padding-bottom: .2em;*/ padding: 0; margin: 0; }
+#page_filetransfer_content FORM .ui-btn { display: inline-block; width: 30%; margin-top: 1.5em; }
+#page_filetransfer_content #ftranf_iframe_container { width: 100%; }
+#page_filetransfer_content #ftranf_status { color:#31b6e7; text-decoration:none; text-shadow:0 0 0; font-weight: normal; font-size: .9em; }
+
+#page_startpage #startpage_footer { margin: 0; padding: 0; text-align: right; padding-right: .4em; }
+#page_startpage #startpage_footer .ui-btn { width: auto; margin: 0; font-size: .9em; padding: .65em; margin-top: .2em; }
+
+#page_filters_content { text-shadow:0 0 0; }
+#page_filters_content .filters_label { color:#31b6e7; text-align: left; margin-left: .4em; margin-top: .4em; }
+#page_filters_content #filters_add_section { margin-top: .5em; margin-bottom: .5em; }
+#filters_add_section .filters_label { width: 85%; display: inline-block; }
+#filters_add_section #filters_add { width: 10%; display: inline-block; text-align: center; margin: 0; }
+#filters_add_section #filters_add .ui-btn { margin: 0; }
+
+#page_filters_content .r_what { width:100%; float: left; font-size: .9em; font-weight:normal; }
+#page_filters_content .r_with { width:100%; float: left; font-size: .9em; font-weight:normal; }
+#page_filters_content .r_minlen { width:50%; float: left; font-size: .9em; font-weight:normal; margin-top: .8em; }
+#page_filters_content .r_maxlen { width:50%; float: left; font-size: .9em; font-weight:normal; margin-top: .8em; }
+.r_what SPAN, .r_with SPAN, .r_minlen SPAN, .r_maxlen SPAN { color:#31b6e7; font-size: 1.05em; }
+.filter_left_container { text-align: left; width: 70%; float: left; margin: 0; padding-left: .5em; line-height: 2.4em; }
+.filter_right_container { text-align: left; width: 25%; float: left; margin: 0; }
+
+.audio_left_container { text-align: left; width: 35%; float: left; margin: .5em 0em .5em 0em; padding-left: .5em; }
+.audio_right_container { text-align: left; width: 60%; float: left; margin: .5em 0em .5em 0em; }
+
+#audio_mic_label, #audio_rec_label { font-size: .9em; display: inline-block; margin-top: 2.3em; }
+#audio_ring_label { font-size: .9em; display: inline-block; margin-top: 1.3em; }
+.audio_devider { float: left; clear: both; background: #cecece; width: 100%; height: .1em; }
+
+#webcallme_textarea
+{
+    width: 100%; margin: 0; height: 12em !important; max-height: 12em !important; border: none; resize: none; overflow-x: hidden; overflow-y: auto; font-size: .9em;
+}
+
+/* disable text selection on whole page*/
+* {
+   -ms-user-select: none; /* IE 10+ */
+   -moz-user-select: -moz-none;
+   -khtml-user-select: none;
+   -webkit-user-select: none;
+   user-select: none;
+}
+
+/* enable test selction in logview window an text input elements*/
+#msg_list p, #log_text, .ui-input-text, INPUT {
+   -ms-user-select: auto;
+   -moz-user-select: text !important;
+   -khtml-user-select: auto;
+   -webkit-user-select: auto;
+   user-select: auto;
+}
+
+.ui-flipswitch .ui-btn.ui-flipswitch-on {
+text-indent: -9.6em;
+}
+.ui-flipswitch .ui-flipswitch-off {
+text-indent: 1em;
+}
+
+.ui-flipswitch {
+width: 12.875em; margin: .5em 0em 0em 0em; padding: 0;
+}
+.ui-flipswitch.ui-flipswitch-active {
+padding-left: 11em;
+width: 1.875em;
+}
+@media (min-width: 28em) {
+/* Repeated from rule .ui-flipswitch above*/
+.ui-field-contain > label + .ui-flipswitch {
+width: 1.875em;
+}
+}
+
+#page_extra1_content, #page_extra2_content, #page_extra3_content, #page_extra4_content, #page_extra5_content {
+    text-decoration:none; text-shadow:0 0 0; color: #eee; }
+
+/* VIDEO ELEMENTS STYLE is defined in css/video.css */

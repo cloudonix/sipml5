@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+
+<!-- 
+Webphone demo: A simple SIP client implementation to demonstrate the webphone capabilities.
+
+For a ready to use dialer use the "softphone.html" instead of this.
+For more simple examples to start with, have a look at the "basic_example.html".
+ -->
+
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+    <link rel="shortcut icon" href="favicon.ico"/>
+    <title>Webphone Demo</title>
+    <link rel="stylesheet" href="../css/techdemo_example/techdemo_example.css" />
+    <script type="text/javascript" src="../js/techdemo_example/jquery-1.9.1.min.js"></script>
+    <script type="text/javascript" src="../webphone_api.js?jscodeversion=160"></script>
+    <script type="text/javascript" src="../js/techdemo_example/picoModal.js?jscodeversion=160"></script>
+    <script type="text/javascript" src="../js/techdemo_example/stringres.js?jscodeversion=160"></script>
+    <script type="text/javascript" src="../js/techdemo_example/techdemo_example.js?jscodeversion=160"></script>
+    
+    <link rel="stylesheet" href="../css/softphone/mainlayout.css" />
+
+</head>
+<body style="font-family: Verdana ; font-size: 12px; color:#2e3d47;" spellcheck="false">
+<div style="font-family: Verdana; font-size: 16px; color:#4eaaec; text-align:center; margin-top:10px">Tech demo</div><br><br>
+<!--<div id="header">&nbsp;</div>-->
+<div id="content">
+    <div style="width: 100%;">A simple webphone demo implementation:</div>
+    <br />
+    <div id="left_column">
+        <div id="registration_box">
+            <h1>Registration</h1>
+            <div class="separator"><!--//--></div>
+            <div id="status">&nbsp;</div>
+            <div class="reg_form">
+                <label for="serveraddress" title="SIP server IP address or domain name">SIP Server address: </label>
+                <input type="text" placeholder="SIP server address" id="serveraddress" value="" title="SIP server IP address or domain name" autocapitalize="off" />
+            </div>
+            <div class="reg_form">
+                <label for="username" title="SIP account username">Username: </label>
+                <input type="text" placeholder="Username" id="username" value="" title="SIP account username" autocapitalize="off" />
+            </div>
+            <div class="reg_form">
+                <label for="password" title="SIP account password">Password: </label>
+                <input type="password" placeholder="Password" id="password" value="" title="SIP account password" autocapitalize="off" />
+            </div>
+            <div id="advancedsett" class="btn_container">
+                <a href="javascript:;" id="btn_advanced_sett" onclick="ShowHideAdvancedSettings();" title="Show additional configuration">Show more settings</a>&nbsp;
+            </div>
+            <div id="login" class="btn_container">
+                <button class="btn" onclick="Start();" title="Login with above SIP account">Register</button>&nbsp;
+            </div>
+            <br />
+            <div class="reg_form">
+                <label for="destinationnr" title="SIP URI, username, extension or phone number">Destination: </label>
+                <input type="text" placeholder="Call to" id="destinationnr" value="" title="SIP URI, username, extension or phone number" autocapitalize="off"/>
+            </div>
+
+            <div id="call" class="btn_container">
+                <button class="btn" onclick="Call();" title="Initiate call to destination SIP URI or number">Call</button>&nbsp;&nbsp;
+                <button class="btn" onclick="Hangup();" title="Disconnect call">Hangup</button>&nbsp;&nbsp;
+                <button class="btn" onclick="ShowHideChat();" title="Show/Hide chat window">Chat</button>
+            </div>
+            <div id="chat_box" style="display: none;">
+                <div class="separator"><!--//--></div>
+                <h1>Chat</h1>
+                <div class="separator"><!--//--></div>
+                <!--<div class="reg_form" id="chat_destination_container">
+                    <label for="destinationchat" title="Send chat to destination SIP URI or number">Destination: </label>
+                    <input type="text" placeholder="Chat to" id="destinationchat" value="" title="SIP URI, username, extension or phone number" />
+                </div>-->
+                <div id="msg_list">
+                    <!--<b>Me:</b><p>Hello, how are you? Hello, how are you? Hello, how are you? Hello, how are you? Hello, how are you today?</p><p class="date">Jun 05, 2014 11:59</p>-->
+                </div>
+                <div id="send_container">
+                    <input type="text" placeholder="Compose" id="message" value="" title="Enter the chat to be sent" autocapitalize="off" />&nbsp;
+                    <button class="btn" onclick="SendChat()" title="Send chat message">Send</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="right_column" style="display: none;">
+        <h1>Other settings</h1>
+        <div id="settings_list">
+        </div>
+        <div id="save_settings" class="btn_container">
+            <div id="adv_text">There are <a href="https://www.mizu-voip.com/Portals/0/Files/Webphone_Documentation.pdf" target="_blank" title="Documentation">many more</a> configurations which can be set from "webphone_config.js"
+            </div>
+            <button class="btn" id="btn_save_settings" onclick="SaveSettings();" title="Save settings">Save</button>&nbsp;&nbsp;
+        </div>
+    </div>
+    <div id="video_container" style="display: none;"></div>
+</div>
+<iframe allow="microphone *; camera *; autoplay *" allowfullscreen="true" sandbox="allow-forms allow-modals allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts" style="display:none" height="0" width="0" id="loader"></iframe>
+</body>
+</html>

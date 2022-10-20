@@ -1,0 +1,27 @@
+.pico-content {
+    margin: 0; padding: 0; background: #ffffff; color: #212121; font-family: sans-serif;
+    border: .15em solid #d8d8d8; -webkit-border-radius: .4em; border-radius: .4em;
+}
+.pmodal_header {
+    height: 2.2em; line-height: 2.2em; margin: 0; background: #e8e8e8; text-align: center;
+    color: #212121; font-weight: bold;
+}
+.pmodal_content {
+    font-size: .8em;
+}
+.pmodal_footer {
+    height: 2.2em; margin: 0; background: #e8e8e8; text-align: center; color: #ffffff; font-weight: bold;
+}
+.pmodal_footer BUTTON {
+    width: 50%; height: 2.28em; margin-top: .1em; font-size: .9em; color: #212121; font-weight: bold;
+    background: #cecece; border: .1em solid #b8b8b8; border-radius: .2em; cursor: pointer;
+}
+
+.pmodal_footer_3btn {
+    height: 2.2em; margin: 0; background: #e8e8e8; text-align: center; color: #ffffff; font-weight: bold;
+}
+
+.pmodal_footer_3btn BUTTON {
+    width: 31%; height: 2.28em; margin: .1em; font-size: .9em; color: #212121; font-weight: bold;
+    background: #cecece; border: .1em solid #b8b8b8; border-radius: .2em; cursor: pointer; padding-right: .8em;
+}

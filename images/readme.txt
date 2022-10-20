@@ -1,0 +1,1 @@
+This folder contains image resources for the webphone (most of them are loaded only if you use the softphone skin -softphone.html)

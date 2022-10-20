@@ -1,0 +1,73 @@
+body { margin: auto; padding: 0; text-align: center; font-family: sans-serif, serif; }
+#header { background: #2f2f2f; width: 100%; height: 3em; }
+#content { margin: .1em auto auto auto; padding: 0; width: 700px; } 
+
+#left_column { width: 45%; float: left; margin-left: 27%; }
+#registration_box { text-align: left; background: #dfdfdf; border: 1px solid #ccc; border-radius: .3em; }
+#chat_box { /*text-align: left; background: #dfdfdf; border: 1px solid #ccc; border-radius: .3em; margin-top: .8em;*/ }
+#right_column { width: 49%; margin-left: .8em; float: left; text-align: left; background: #dfdfdf; border: 1px solid #ccc; border-radius: .3em;}
+
+#settings_list { overflow-y: auto; height: 208px; border-top: .1em solid #ccc; border-bottom: .1em solid #ccc; }
+.separator { border-bottom: 1px solid #ccc; }
+h1 { font-size: 1.5em; color: #333333; margin: .3em 0em .3em.7em; }
+INPUT { border: 1px solid #ccc; border-radius: .3em; height: 1.5em; margin-top: .4em; padding: .15em; }
+
+#status { margin-left: 10em; margin-bottom: .7em; font-size: .75em; white-space: nowrap; overflow-x: hidden; }
+#staus2 { font-size: .75em; white-space: nowrap; overflow-x: hidden; }
+
+.reg_form { margin-left: .5em; }
+.reg_form LABEL { width: 135px; display: inline-block; font-size: .9em; }
+.reg_form INPUT { width: 147px; display: inline-block; }
+
+.sett_form { margin-left: .5em; }
+.sett_form LABEL { width: 160px; display: inline-block; font-size: .9em; }
+.sett_form INPUT { width: 157px; display: inline-block; }
+.sett_form SELECT { width: 153px; display: inline-block; margin-top: .5em; margin-bottom: .1em; height: 2em; }
+.sett_form SPAN { font-size: .75em; font-style: italic; display: inline-block; margin-top: .5em; }
+
+.codec_form LABEL { width: 80px; display: inline-block; font-size: .9em; }
+.codec_form INPUT { width: 47px; display: inline-block; }
+
+.btn { font-size: .8em; padding: .4em 1em .4em 1em; cursor: pointer; background: #2f2f2f; border: .15em solid #4f4f4f; border-radius: .3em; color: #fff; }
+.btn:hover { color: #ddd; background: #111; border: .15em solid #2f2f2f; }
+
+#btn_codec { width: 153px; white-space: nowrap; overflow-x: hidden; margin-top: .3em; height: 1.8em; }
+
+.btn_container { padding: .5em; text-align: right; }
+.btn_container A { font-size: .7em; color: #0000ee; }
+.btn_container A:hover { font-style: italic; }
+
+#chat_destination_container { margin-top: 1em; }
+#msg_list {
+    margin: .5em 0em .3em .5em; background: #ffffff; overflow-y: auto; overflow-x: hidden; width: 274px; height: 160px; text-align: left;
+    border: 1px solid #ccc; border-radius: .3em;
+}
+#msg_list B { margin-left: .2em; font-size: .8em; }
+#msg_list P { margin-left: .6em; margin-top: 0; margin-bottom: .2em; font-size: .8em; }
+#msg_list .date { margin-top: 0; margin-bottom: .2em; margin-right: .2em; font-weight: bold; font-size: .6em; text-align: right;}
+#msg_spacer { font-size: 0.1em; margin: 0; padding: 0; }
+
+#send_container { margin-left: .5em; margin-bottom: .5em; }
+#message { width: 203px; }
+
+#adv_text { margin-bottom: .5em; padding: 0; text-align: left; width: 80%; float: left; font-size: .85em; }
+#adv_text A { font-size: 1em; display: inline; line-height: 1.4em; }
+#btn_save_settings { display: inline-block; float: left; margin-left: .5em; margin-right: 0; }
+/*below code probably not needed...*/
+.box{
+            width:325px;
+            height:200px;
+            float:left;
+            margin:10px;
+            border:1px solid #ccc;
+            overflow:auto;
+        }
+br{ clear:both}
+
+.customModal {
+                padding: 120px;
+                background: #fff;
+                border-radius: 10px;
+                color: #333;
+                box-shadow: 0 0 8px 0 #000;
+            }
