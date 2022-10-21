@@ -26,7 +26,7 @@ BUILD_BY      = "J.Hiott";
    09/19/2017     V2.1.0. Add stack back trace to Logger. Roap and SansayWebSBCClient class
                   accept custom start/stop_ring and start/stop_ringback callbacks.
                   ChanWebSocket.open() can accept port number in the server parameter
-                  such as websbc.sansay.com:8889 if no port given it will default to 9998
+                  such as websbc.sansay.com:8889 if no port given it will default to 443
    02/01/2018     V2.2.0 make DTMF handling configurable through SansayWebSBCClient()
                   instantiation.
    02/20/2018     V2.2.1. add support for FireFox version 56 and above
@@ -786,7 +786,7 @@ ChanWebSocket.prototype.open = function(sig_server, sig_controller_path, user_id
 
   var server_config = sig_server.split(/\:/);
   if (server_config.length < 2 || isNaN(parseInt(server_config[1])))
-    this.sock = new WebSocket("wss://" + server_config[0] + ":9998/" + sig_controller_path, "sansay-roap", "test");  // origin=test
+    this.sock = new WebSocket("wss://" + server_config[0] + ":443/" + sig_controller_path, "sansay-roap", "test");  // origin=test
   else
     this.sock = new WebSocket("wss://" + sig_server + "/" + sig_controller_path, "sansay-roap", "test");  // origin=test
 
