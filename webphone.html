@@ -24,9 +24,13 @@
         <div class="col-sm-2 ringplan">
         &nbsp;
         </div>
+      </div>
+      <div class="row">
         <div class="col-sm-2">
           <h1 class="sansay-heading-color">Ringplan Webphone</h1>
         </div>
+      </div>
+      <div class="row">
         <div id="login-msg" class="col-md-6 alert alert-info" style="margin: 12px 10px 5px 10px;">
           Please login with extension and secret from the Ringplan Portal
         </div>
@@ -36,20 +40,13 @@
         <div class="col-sm-2">
           <div>User ID</div>
           <div><input id='user_id' type='text'></div>
-        </div>
-        <div class="col-sm-2">
           <div>Password</div>
           <div><input id='user_pwd' type='password'></div>
-        </div>
-        <div style="display:none;" class="col-sm-2">
-          <div>CID</div>
-          <div><input id='user_cname' type='text'></div>
-        </div>
-        <div style= "display:none;" class="col-sm-2">
-          <div>Domain</div>
-          <div><input id='user_domain' type='text'></div>
-        </div>
-        <div class="col-sm-2">
+          <div style="display:none;" >
+            <div>CID</div>
+            <div><input id='user_cname' type='text'></div>
+            <div>Domain</div>
+            <div><input id='user_domain' type='text'></div>
           <div style="padding-top: 8px;">
             <a class='btn btn-primary' href="javascript: login()" id='login-btn'>Log in</a>
             <a class='btn btn-warning' href='javascript: logout()' id='logout-btn' style='display: none'>Log out</a>
