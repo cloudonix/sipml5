@@ -1,15 +1,10 @@
       <div class="row" id="webphone-icon">
         <div class='col-md-3'>
-          <span id='show-phone' class='stack fa-lg text-info' style="display: none">
-            <a href='#' onclick='$("#webphone-keypad").parent().webphone.show()'>
-              <i class='fa fa-squareo'></i>
-              <i class='fa phone '></i>
-            </a>
-            <p>Click to show Dial Pad</p>
+          <span id='show-phone' class='text-info' style="display: none">
+            <p>Phone Connected</p>
+            <a class="btn btn-primary" onclick='$("#webphone-keypad").parent().webphone.show()'>Show Dialpad</a>
           </span>
-          <span id='inactive-phone' class='stack fa-lg' title='Webphone service not available'>
-            <i class='fa phone text-info'></i>
-            <i class='fa ban text-danger'></i>
+          <span id='inactive-phone' class='text-info' title='Webphone service not available'>
             <p>Phone Not Connected</p>
           </span>
         </div>
