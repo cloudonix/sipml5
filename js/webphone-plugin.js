@@ -35,7 +35,7 @@
       ring.setAttribute('preload', true);
 //      ring.setAttribute('autoplay', false);
       ring.setAttribute('loop', true);
-      ring.src = 'sansay/av/sansay-ring.wav';
+      ring.src = 'av/sansay-ring.wav';
       ring.load();
       ring.pause();
       document.body.appendChild(ring);
@@ -48,7 +48,7 @@
       ringback.setAttribute('preload', true);
 //      ringback.setAttribute('autoplay', false);
       ringback.setAttribute('loop', true);
-      ringback.src = 'sansay/av/sansay-ringback.wav';
+      ringback.src = 'av/sansay-ringback.wav';
       ringback.load();
       ringback.pause();
       document.body.appendChild(ringback);
@@ -61,7 +61,7 @@
       busy.setAttribute('preload', true);
 //      busy.setAttribute('autoplay', false);
       busy.setAttribute('loop', true);
-      busy.src = 'sansay/av/sansay-fastbusy.wav';
+      busy.src = 'av/sansay-fastbusy.wav';
       busy.load();
       busy.pause();
       //document.body.appendChild(busy);
@@ -104,7 +104,7 @@
 
 
   function _fSansayUiLogoInit() {
-    $(".webphone-logo").attr("src", "/sansay/img/Omnipluslogov2.png?" + new Date().getTime());
+    $(".webphone-logo").attr("src", "/css/img/RingPlanheader.png?" + new Date().getTime());
   }
 
   function _fSansayUiKeypadInit() {
@@ -482,7 +482,7 @@ console.log(rvw + "x" + rvh)
     }
 
     // load pkg js files
-    $.getScript('sansay/js/detect-mobile.js', function() {
+    $.getScript('js/detect-mobile.js', function() {
       _vSansayUiIsMobile = jQuery.browser.mobile;
     });
 
@@ -505,7 +505,7 @@ console.log(rvw + "x" + rvh)
     // NOTE: should let the container set the z-index. the users have more understanding of the order
     //       they can decide what work better. it's more appropriate that way.
     //this.css('z-index', '1030');
-    this.load("sansay/webphone-plugin.html", function() {
+    this.load("webphone-plugin.html", function() {
       // post load initialization
 
       if (options != undefined && options.position == "left")
@@ -572,8 +572,8 @@ console.log(rvw + "x" + rvh)
           theme = "light";
       }
     }
-    $("<link/>", {rel: "stylesheet", type: "text/css", href: "sansay/css/webphone-" + theme + ".css"}).appendTo("head");
-    $("<link/>", {rel: "stylesheet", type: "text/css", href: "sansay/css/font-awesome.min.css"}).appendTo("head");
+    $("<link/>", {rel: "stylesheet", type: "text/css", href: "css/webphone-" + theme + ".css"}).appendTo("head");
+    $("<link/>", {rel: "stylesheet", type: "text/css", href: "css/font-awesome.min.css"}).appendTo("head");
   }
 
   var __caplock = false;      // we need to detect the caplock state entering show()
