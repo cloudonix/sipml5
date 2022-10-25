@@ -36,7 +36,7 @@
         </div>
       </div>
     </div>
-    <div id='my-container' class='container' style="top: 52px; position: fixed; width: 100%; z-index: 1030">
+    <div id='my-container' class='container'>
     </div>
     <div class="container">
       <div class="row">
@@ -51,13 +51,15 @@
             <div>Domain</div>
             <div><input id='user_domain' type='text'></div>
           </div>
+        </div>
+        <div class="col-sm-2" id="logbtn">
           <div style="padding-top: 8px;">
             <a class='btn btn-primary' href="javascript: login()" id='login-btn'>Log in</a>
             <a class='btn btn-warning' href='javascript: logout()' id='logout-btn' style='display: none'>Log out</a>
           </div>
         </div>
-      <</div>
-      <div class="row">
+      </div>
+      <div class="row" style="display:none;">
         <div class="col-md-6" id="devbuttons">
           <a class="btn btn-primary" href="javascript: devlogin()">Test Login</a>
           <a class="btn btn-primary" href="javascript: devlogin()">Test Logout</a>
