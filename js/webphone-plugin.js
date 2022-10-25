@@ -70,6 +70,39 @@
     _oSansayClient.setRingTones('websbc-ring', 'websbc-ringback');
   }
 
+  // initialization
+  function _fSansayUiAudioElementsInit() {
+	var local_media_dom_id = "sansay_default_voice_only_local";
+
+    // create the DOM and make it hidden if it does not already exist
+    var local_media = document.getElementById(this.local_media_dom_id);
+    if (local_media == null) {
+      webrtc_logger.debug("creating local dom element for voice only call");
+      local_media = document.createElement('audio');
+      local_media.setAttribute('autoplay', 'true');
+      local_media.setAttribute('muted', 'true');
+      local_media.muted = 'true';
+      local_media.setAttribute('id', local_media_dom_id);
+      local_media.style.display = 'none';
+      document.body.appendChild(local_media);
+    }
+
+	var remote_media_dom_id = "sansay_default_voice_only_remote";
+
+    // create the DOM and make it hidden if it isnt already existed
+    remote_media = document.getElementById(remote_media_dom_id);
+    if (remote_media == null) {
+      webrtc_logger.debug("creating remote dom element for voice only call");
+      remote_media = document.createElement('audio');
+      remote_media.setAttribute('autoplay', 'true');
+      remote_media.setAttribute('id', remote_media_dom_id);
+      remote_media.style.display = 'none';
+      document.body.appendChild(remote_media);
+    }
+
+  }
+
+
   function _fSansayUiLogoInit() {
     $(".webphone-logo").attr("src", "/sansay/img/Omnipluslogov2.png?" + new Date().getTime());
   }
@@ -417,14 +450,15 @@ console.log(rvw + "x" + rvh)
 
       cb(false);
     }
+	
+	$('body').on('click', '.webphone-answer-key', __answer);
+	$('body').on('click', '.webphone-reject-key', __reject);
+	
+	$('#show-phone').hide();
+	$('#webphone-keypad').hide();       // do this just in case
+	$('.webphone-caller-id b').html(caller)
+	$('#webphone-incoming-call').show();
 
-    $('body').on('click', '.webphone-answer-key', __answer);
-    $('body').on('click', '.webphone-reject-key', __reject);
-
-    $('#show-phone').hide();
-    $('#webphone-keypad').hide();       // do this just in case
-    $('.webphone-caller-id b').html(caller)
-    $('#webphone-incoming-call').show();
   }
 
   $.fn.webphone = function(server, options) {
@@ -437,7 +471,7 @@ console.log(rvw + "x" + rvh)
     _oSansayClientPool = [];
     if (Array.isArray(server)) {
       for (var i=0; i<server.length; i++) {
-        _oSansayClientPool[i] = new SansayWebSBCClient(server[i], false);
+        _oSansayClientPool[i] = new SansayWebSBCClient(server[i], true);
         _oSansayClientPool[i].setStunServers([{urls: 'stun:' + server[i]}])
       }
       _oSansayClient = _oSansayClientPool[0];
@@ -503,6 +537,9 @@ console.log(rvw + "x" + rvh)
     // initialize default ringtones
     _fSansayUiRingTonesInit();
 
+	// initialize voice only media elements
+	_fSansayUiAudioElementsInit();
+
     // defaults
     var theme = "dark";
 
@@ -544,6 +581,7 @@ console.log(rvw + "x" + rvh)
     $('input').attr('disabled', true);
     $('#show-phone').hide();
     $('#webphone-keypad').show();
+	$(document).unbind('keydown');
     //$(document).bind('keypress', function(e) {
     $(document).keydown(function(e) {
       var cur_digits = $('.webphone-digits').html().replace(/\s/g, '');
@@ -557,13 +595,28 @@ console.log(rvw + "x" + rvh)
       else if (e.which == 13) {
         _fSansayUiCallKey();
       }
+	  else if (e.which == 27) {
+        console.log(e.key + " was pressed! Hiding keypad");
+        $('#webphone-container').webphone.hide();
+      }
       else {
-        if (e.which != 16) {
-          key = String.fromCharCode(e.which);
-          if (e.shiftKey != true && __caplock != true)
+        if (e.which != 16 
+				&& (   (e.which >= 96 && e.which <= 105)	// numpad numbers && special chars
+					|| (e.which >= 48 && e.which <= 57)		// toppad numbers
+					|| (e.which >= 65 && e.which <= 90)		// letters
+					|| e.which == 106						// numpad *
+					|| e.which == 107						// numpad +
+					|| e.which == 109						// numpad -
+					|| e.which == 163						// #
+					|| e.which == 187						// = and +
+					|| e.which == 189						// - and _
+				)) {
+          key = e.key;
+          if (e.shiftKey != true && __caplock != true) {
             key = key.toLowerCase();
-          else if (e.which == 187)
-            key = '+';
+		  } else if (e.which == 187) {
+			key = '+';
+		  }
 
           if (key != " ") {
             _fSansayUiRegularKey(key);
@@ -603,8 +656,11 @@ console.log(rvw + "x" + rvh)
         clearTimeout(_vSansayClientConnTimer);
         $('#inactive-phone').hide();
         $('#show-phone').show();
-        if (typeof login_success === "function")
+        if (typeof login_success === "function") {
           login_success();
+		  $("#show-phone a").click();
+		  setTimeout(function() { $("#webphone-keypad").parent().webphone.hide(); }, 500)
+		}
       }
       else {
         $('#show-phone').hide();
@@ -635,23 +691,42 @@ console.log(rvw + "x" + rvh)
     function __incoming_call_cancel() {
 
     }
-    _oSansayClient.login({user_id:         user,
-                          secret:          pwd,
-                          cname:           cname,
-                          domain:          domain,
-                          login_fail_cb:   __login_fail,
-                          conn_status_cb:  __conn_status_change,
-                          media: {
-                            incoming_session_cb: __incoming_call,
-                            incoming_cancel_cb:  function() {},
-                            end_session_cb:      __call_end,
-                            error_cb:            function() {}
-                          }});
+    _oSansayClient.login(
+		{
+				user_id:         user,
+                secret:          pwd,
+                cname:           cname,
+                domain:          domain,
+                login_fail_cb:   __login_fail,
+                conn_status_cb:  __conn_status_change,
+                media: {
+                  incoming_session_cb: __incoming_call,
+                  incoming_cancel_cb:  function() {},
+                  end_session_cb:      __call_end,
+                  error_cb:            function() {}
+                },
+				auto_answer_ui_handler: function(remote_user, ctype) {
+					_vSansayUiVideoCall = 0;
+      				if (ctype == "VIDEO") {
+      				  _vSansayUiVideoCall = 1;
+      				  _fSansayUiVideoPanel();
+      				  _oSansayClient.setMediaElements("local-side-video", "remote-side-video");
+      				}
+      				_vSansayUiCallStateActive = 1;
+
+					$('.webphone-digits').html(remote_user);
+					$("#webphone-keypad").parent().webphone.show()
+					_fSansayUiCallStateHandling(1, remote_user);
+				}
+	});
 
     _vSansayClientConnTimer = setTimeout(__login_fail, 5000);
   }
 
   $.fn.webphone.logout = function() {
+    if (_vSansayUiCallStateActive) {
+	  _oSansayClient.endRTCSession();
+	}
     _oSansayClient.logout();
     $('#show-phone').hide();
     $('#inactive-phone').show();

@@ -1,6 +1,6 @@
 /**********************************************************************************
 
-    Copyright 2013-2018 Sansay Inc. All Rights Reserved
+    Copyright 2013-2022 Sansay Inc. All Rights Reserved
 
     INFORMATION IN THIS DOCUMENT IS PROVIDED IN CONNECTION WITH SANSAY PRODUCTS,
     NO LICENSE, EXPRESS OR IMPLIED, BY SANSAY OR OTHERWISE, TO ANY INTELLECTUAL
@@ -13,8 +13,8 @@
 
 ***********************************************************************************/
 
-BUILD_VERSION = "2.3.2";
-BUILD_DATE    = "Wed May 16 15:21:00 PDT 2018";
+BUILD_VERSION = "2.3.3";
+BUILD_DATE    = "Wed Dec 22 08:20:11 PDT 2021";
 BUILD_BY      = "J.Hiott";
 
 /*
@@ -26,7 +26,7 @@ BUILD_BY      = "J.Hiott";
    09/19/2017     V2.1.0. Add stack back trace to Logger. Roap and SansayWebSBCClient class
                   accept custom start/stop_ring and start/stop_ringback callbacks.
                   ChanWebSocket.open() can accept port number in the server parameter
-                  such as websbc.sansay.com:8889 if no port given it will default to 9998
+                  such as websbc.sansay.com:8889 if no port given it will default to 80
    02/01/2018     V2.2.0 make DTMF handling configurable through SansayWebSBCClient()
                   instantiation.
    02/20/2018     V2.2.1. add support for FireFox version 56 and above
@@ -35,8 +35,13 @@ BUILD_BY      = "J.Hiott";
    03/23/2018     V2.3.0 supports MicroSoft Edge web browser
    03/27/2018     V2.3.1 supports Apple Safari
    05/16/2018     V2.3.2 supports Refresh Reconnect using cookies that store credentials.
+   12/22/2021     V2.3.3 Auto-Answer is fully functional if URI includes 'auto-answer=1'
+   					and auto-login is supported if URI includes 'user=', 'pass=' and
+					'domain=' with optional 'cname='
 ==================================================================================
 */
+
+const AUTO_ANSWER = false;
 
 /********************************************************************
  trace log
@@ -472,7 +477,7 @@ WebRTC.prototype.open = function(media_avail_handler, media_not_avail_handler, i
 
     self.attachMediaStream(remote_media, event.stream);
   };
-/*
+
   this.peerConnection.onconnectionstatechange = function(e) {
     console.log("Event: onconnectionstatechange");
     console.log(e);
@@ -490,7 +495,7 @@ WebRTC.prototype.open = function(media_avail_handler, media_not_avail_handler, i
     //if (e.srcElement.iceConnectionState){
     //self.setHoldState(0);
     //}
-  };*/
+  };
 };
 
 WebRTC.prototype.close = function() {
@@ -738,7 +743,7 @@ ChanWebSocket.prototype.open = function(sig_server, sig_controller_path, user_id
 
   var server_config = sig_server.split(/\:/);
   if (server_config.length < 2 || isNaN(parseInt(server_config[1])))
-    this.sock = new WebSocket("wss://" + server_config[0] + ":9998/" + sig_controller_path, "sansay-roap", "test");  // origin=test
+    this.sock = new WebSocket("wss://" + server_config[0] + ":443/" + sig_controller_path, "sansay-roap", "test");  // origin=test
   else
     this.sock = new WebSocket("wss://" + sig_server + "/" + sig_controller_path, "sansay-roap", "test");  // origin=test
 
@@ -917,6 +922,7 @@ function Roap(use_info_method) {
   this.incomingCallCancelHandler  = null;
   this.postCallHandler            = null;
   this.errorHandler               = null;
+  this.handleUIOnAutoAnsweredCall = null;
 
   this.ring_dom_id                = null;
   this.ringback_dom_id            = null;
@@ -1158,18 +1164,24 @@ Roap.prototype.msgHandler = function(self, data) {
         roap_logger.warning("Setting ctype = 'VIDEO'");
         ctype = 'VIDEO';
       }
-// HACK HACK
-msg.sdp = msg.sdp.replace(/a=setup:active/, 'a=setup:actpass'); //\r\na=iceRestart:true');
-//msg['action'] = 'auto-pickup';
+	// HACK HACK
+	msg.sdp = msg.sdp.replace(/a=setup:active/, 'a=setup:actpass'); //\r\na=iceRestart:true');
 
-//TODO::: Add code to store fingerprint on unload and relpace on autopickup.
-//msg.sdp = msg.sdp.replace(/a=fingerprint:/, 'a=setup:actpass');
-//console.log(msg.sdp.indexOf("a=fingerprint:"));
-//console.log(msg.sdp.substring(msg.sdp.indexOf("a=fingerprint:"), msg.sdp.indexOf("a=setup:")));
+	// AUTO-ANSWER if URI has 'auto-answer=1'
+	if (AUTO_ANSWER || 
+			( window.location.search.length > 1 && window.location.search.toLowerCase().indexOf('auto-answer=1') > -1) ) {
+		console.log('DETECTED AUTO-ANSWER: TRUE, SETTING "auto-pickup" in STATE MACHINE');
+		msg['action'] = 'auto-pickup';
+	}
 
-//console.log("****************************")
-//console.log(JSON.stringify(msg, null, 1))
-//console.log("****************************")
+	//TODO::: Add code to store fingerprint on unload and relpace on autopickup.
+	//msg.sdp = msg.sdp.replace(/a=fingerprint:/, 'a=setup:actpass');
+	//console.log(msg.sdp.indexOf("a=fingerprint:"));
+	//console.log(msg.sdp.substring(msg.sdp.indexOf("a=fingerprint:"), msg.sdp.indexOf("a=setup:")));
+
+console.log("****************************")
+console.log(JSON.stringify(msg, null, 1))
+console.log("****************************")
       // async incomingCallHandler
       if (self.incomingCallHandler != null) {
         //self.startRing();
@@ -1178,6 +1190,13 @@ msg.sdp = msg.sdp.replace(/a=setup:active/, 'a=setup:actpass'); //\r\na=iceResta
 
         if (msg.action !== undefined && msg.action === 'auto-pickup') {
             self.smExec("E_MSG_RECV_OFFER", msg);
+			if (self.handleUIOnAutoAnsweredCall != undefined && self.handleUIOnAutoAnsweredCall != null
+					&& (typeof self.handleUIOnAutoAnsweredCall === "function") ) {
+				setTimeout(function() {
+					console.log("REMOTE USER: " + remote_user);
+					self.handleUIOnAutoAnsweredCall(remote_user, ctype);
+				}, 2000);
+			}
         }
         else {
           self.startRing();
@@ -1640,7 +1659,7 @@ Roap.prototype.smExec = function(event, msg) {
 };
 
 // ROAP external APIs
-Roap.prototype.init = function(user_id, media_engine, sig_chan, incoming_call_cb, end_call_cb, error_cb, cancel_cb, start_ring, stop_ring, start_ringback, stop_ringback) {
+Roap.prototype.init = function(user_id, media_engine, sig_chan, incoming_call_cb, end_call_cb, error_cb, cancel_cb, start_ring, stop_ring, start_ringback, stop_ringback, auto_answer_ui_handler) {
   this.user_id            = user_id;
   this.mediaEngine        = media_engine;
   this.sigChan            = sig_chan;
@@ -1662,6 +1681,8 @@ Roap.prototype.init = function(user_id, media_engine, sig_chan, incoming_call_cb
     this.start_ringback = start_ringback;
   if (typeof stop_ringback === "function")
     this.stop_ringback = stop_ringback;
+  if (typeof auto_answer_ui_handler === "function")
+    this.handleUIOnAutoAnsweredCall = auto_answer_ui_handler;
 
   this.sigChan.attachSM("CALL", this);
   //this.sigChan.registerExitHandler(function() { console.log("my sigChan is closing..."); })
@@ -1994,15 +2015,23 @@ SansayWebSBCClient.prototype.login = function(init_params) {
       typeof init_params.media.end_session_cb != "undefined" &&
       init_params.media.end_session_cb != null) {
     roap_logger.debug("initializing call engine");
-    this.roap.init(init_params.user_id, this.media, this.sigChan,
-                     init_params.media.incoming_session_cb, init_params.media.end_session_cb,
-                     init_params.media.error_cb, init_params.media.incoming_cancel_cb,
-                     init_params.media.start_ring, init_params.media.stop_ring,
-                     init_params.media.start_ringback, init_params.media.stop_ringback);
+    this.roap.init( init_params.user_id,
+					this.media,
+					this.sigChan,
+                    init_params.media.incoming_session_cb,
+					init_params.media.end_session_cb,
+                    init_params.media.error_cb,
+					init_params.media.incoming_cancel_cb,
+                    init_params.media.start_ring,
+					init_params.media.stop_ring,
+                    init_params.media.start_ringback,
+					init_params.media.stop_ringback,
+					init_params.auto_answer_ui_handler);
     this.rtc = 1;
   }
-  else
+  else {
     roap_logger.error("initialize call engine fails. missing one or more parameters");
+  }
 
   var self = this;
   window.onbeforeunload = function() {
