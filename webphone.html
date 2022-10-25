@@ -40,7 +40,7 @@
     </div>
     <div class="container">
       <div class="row">
-        <div class="col-sm-2">
+        <div class="col-sm-2" id="reginfo">
           <div>User ID</div>
           <div><input id='user_id' type='text'></div>
           <div>Password</div>
@@ -55,6 +55,12 @@
             <a class='btn btn-primary' href="javascript: login()" id='login-btn'>Log in</a>
             <a class='btn btn-warning' href='javascript: logout()' id='logout-btn' style='display: none'>Log out</a>
           </div>
+        </div>
+      <</div>
+      <div class="row">
+        <div class="col-md-6" id="devbuttons">
+          <a class="btn btn-primary" href="javascript: devlogin()">Test Login</a>
+          <a class="btn btn-primary" href="javascript: devlogin()">Test Logout</a>
         </div>
       </div>
     </div>
@@ -111,12 +117,14 @@
               $('#login-btn').hide();
               $('#logout-btn').show();
               $('#login-msg').hide();
+              $('#reginfo').hide();
             },
             function() {
               $('#logout-btn').hide();
               $('#login-btn').show();
               //alert("Disconnected from server");
               $('#login-msg').show();
+              $('#reginfo').show();
             });
           else
             $('#my-container').webphone.login(user, pwd, cname);
@@ -126,6 +134,22 @@
           $('#my-container').webphone.logout();
           $('#logout-btn').hide();
           $('#login-btn').show();
+          $('#reginfo').show();
+        }
+
+        // dev test functions
+
+        function devlogin() {
+          $('#login-btn').hide();
+          $('#logout-btn').show();
+          $('#login-msg').hide();
+          $('#reginfo').hide();
+        }
+
+        function devlogout() {
+          $('#logout-btn').hide();
+          $('#login-btn').show();
+          $('#reginfo').show();
         }
     </script>
   </body>

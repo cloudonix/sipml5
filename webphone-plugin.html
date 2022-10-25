@@ -1,20 +1,22 @@
       <div class="row" id="webphone-icon">
-        <div class='col-md-offset-11 col-md-1 text-right'>
+        <div class='col-md-1 text-right'>
           <span id='show-phone' class='fa-stack fa-lg text-info' style="display: none">
             <a href='#' onclick='$("#webphone-keypad").parent().webphone.show()'>
               <i class='fa fa-square-o fa-stack-2x'></i>
               <i class='fa fa-phone fa-stack-1x'></i>
             </a>
+            <p>Click to show Dial Pad</p>
           </span>
-          <span id='inactive-phone' class='fa-stack fa-lg' data-toggle='tooltip' data-placement="left" title='Webphone service not available'>
+          <span id='inactive-phone' class='fa-stack fa-lg' title='Webphone service not available'>
             <i class='fa fa-phone fa-stack-1x text-info'></i>
             <i class='fa fa-ban fa-stack-2x text-danger'></i>
+            <p>Phone Not Connected</p>
           </span>
         </div>
       </div>
 
       <div class="row" id="webphone-incoming-call" style="display: none;">
-        <div class="webphone-panel col-md-offset-9 col-md-3">
+        <div class="webphone-panel col-md-3">
           <div class='row' style='margin-top: 20px'>
             <div>
               <p class='text-center'>INCOMING CALL</p>
@@ -41,7 +43,7 @@
       </div>
 
       <div class="row" id="webphone-video" style="display: none;">
-        <div class="webphone-video-frame webphone-panel col-md-offset-9 col-md-3">
+        <div class="webphone-video-frame webphone-panel col-md-3">
           <div class="webphone-video-top-overlay row">
             <div class="col-md-12">
               <div class="row">
@@ -80,7 +82,7 @@
       </div>
 
       <div class="row" id="webphone-keypad" style="display: none">
-        <div class="webphone-panel col-md-offset-9 col-md-3">
+        <div class="webphone-panel col-md-3">
           <div class='row'>
             <div class="pull-left" style="margin-left: 8px;">
               <img class="webphone-logo" />
