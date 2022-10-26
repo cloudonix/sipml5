@@ -133,17 +133,19 @@
                 <input id='user_pwd' type='password'>
                 <br>Domain<br>
                 <input id='user_domain' type='text' style="width:250px">
-                <div style="padding-top: 8px;">
-                  <a class='btn btn-primary' href="javascript: login()" id='login-btn'>Log in</a>
-                  <a class='btn btn-warning' href='javascript: logout()' id='logout-btn' style='display: none'>Log out</a>
-                </div>
+                <br>
+                <br>
+                <a class='btn btn-primary' href="javascript: login()" id='login-btn'>Log in</a>
               </div>
-            </div>
+            </div>  
             <div id='my-container' class='container RPinnercontainer'>
             </div>
+            <a class='btn btn-warning' href='javascript: logout()' id='logout-btn' style='display: none'>Log out</a>
           </div>
         </div>
       </div>
+      <h3>DEV Buttons</h3>
+      <a class='btn btn-warning' href='javascript: logout()'>Log out</a>
     </div>
     
     
@@ -253,29 +255,22 @@
           var domain = $('#user_domain').val();
           if (domain.length > 0)
             $('#my-container').webphone.login(user, pwd, cname, domain, function() {
-              $('#login-btn').hide();
               $('#logout-btn').show();
-              $('#login-msg').hide();
-              $('#reginfo').hide();
               $('#RPmanualform').hide();
             },
             function() {
               $('#logout-btn').hide();
-              $('#login-btn').show();
               //alert("Disconnected from server");
-              $('#login-msg').show();
-              $('#reginfo').show();
-              $('#RPmanualform').hide();
+              $('#RPmanualform').show();
             });
           else
             $('#my-container').webphone.login(user, pwd, cname);
-            $('#RPmanualform').hide();
+            
         }
 
         function logout() {
           $('#my-container').webphone.logout();
           $('#logout-btn').hide();
-          $('#login-btn').show();
           $('#RPmanualform').show();
         }
 
@@ -307,6 +302,7 @@
         function RPmanuallogin() {
           $('#RPLogin').hide();
           $('#RPmanualform').show();
+          $('#RPlogincontrol').show();
         }
 
 
