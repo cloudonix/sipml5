@@ -104,7 +104,7 @@
 
 
   function _fSansayUiLogoInit() {
-    $(".webphone-logo").attr("src", "/css/img/ringplan-icon_40x40.png");
+    $(".webphone-logo").attr("src", "./css/img/ringplan-icon_40x40.png");
   }
 
   function _fSansayUiKeypadInit() {

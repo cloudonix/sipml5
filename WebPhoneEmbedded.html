@@ -10,6 +10,13 @@
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.0.2/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.7/cerulean/bootstrap.min.css" type="text/css"/>
     <style>
+      .RPclient{
+        width: 400px;
+        margin-top: 15px;
+        margin-bottom: 15px;
+        color: lightgrey ;
+      }
+
       .ringplan{
         background-image: url(css/img/RingPlanheader_2_600x.png);
         background-size: cover;
@@ -17,10 +24,131 @@
         width: 600px;
         align-self: left;
       }
+
+      .RPheader{
+        background-image: url(./css/img/rpclient-header.png);
+        height: 600px;
+        background-repeat: no-repeat;
+        background-size: contain;
+
+      }
+
+      .RPhspace{
+        height: 85px;
+      }
+
+      .RPbspace{
+        height: 400px;
+      }
+
+      .RPinnercontainer{
+        width: 360px;
+      }
+
+      .RPTitle{
+        color: white;
+        text-align: center;
+        margin-bottom: 25px;
+        width: auto;
+      }
+
+      .RPlogin{
+        height: 350px;
+        text-align: center;
+        background-color: white;
+        padding: 5px;
+        vertical-align: text-top;
+      }
+
+      .RPloginbuttons{
+        height:130px;
+        text-align: center;
+        vertical-align: center;
+      }
+
+      .RPloginbutton{
+        height:120px;
+        width: 300px;
+        text-align: center;
+
+        background-image: url(./css/img/RingPlan\ ZTelco\ cobrand\ 2-01.png);
+        background-size: 250px; ;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-color: lightgray;
+      }
+
+      .RPmanualbutton{
+        height: 120px;
+        width: 300px;
+        text-align: center;
+        vertical-align: center;
+        color: black;
+        
+      }
+
+      .RPclosebutton{
+        text-align: right;
+        align-self: right;
+        width: 300px;
+        margin-right: 10px;
+      }
     </style>
   </head>
 
-  <body>
+  <body style="background-color: black ;">
+    <div class="container RPclient">
+      <div class="well RPheader">
+        <div class="row">
+          <div class="span RPhspace">
+          </div> 
+          <div class="span">
+            <h1 class="RPTitle">RingPlan WebPhone</h1>
+          </div>
+        </div>
+        <div class="row">
+          <div id="functions" class="container RPinnercontainer"> 
+            <div id="RPLogin" class="well RPlogin" style="">
+                <h1>Login</h1>
+              <div class="row RPloginbuttons">
+                <a class="btn btn-light RPloginbutton" href="javascript: RPmrplogin()"></a>
+              </div>
+              <div class="row RPloginbuttons">
+                <a class="btn btn-primary RPmanualbutton" href="javascript: RPmanuallogin()"><h1>Manual Login</h1></a>
+              </div>
+            </div>
+            <div id="RPloginerror" class="well RPlogin" style="display: none">
+            
+              <a class="RPclosebutton pull-right" href="javascript: RPLoginHome()"><strong>X</strong></a>
+              <h1 style="color:red ;">ERROR</h1>
+              <br>
+              <h3>Login type not yet supported, please use manual login.</h3>
+            </div>
+            <div id="RPmanualform" class="well RPlogin" style="display: none">
+              <h2>Manual Login</h2>
+              <div style="text-align: left; color: black;">
+                <br>Extension<br>
+                <input id='user_id' type='text'>
+                <br>Secret<br>
+                <input id='user_pwd' type='password'>
+                <br>Domain<br>
+                <input id='user_domain' type='text' style="width:250px">
+                <div style="padding-top: 8px;">
+                  <a class='btn btn-primary' href="javascript: login()" id='login-btn'>Log in</a>
+                  <a class='btn btn-warning' href='javascript: logout()' id='logout-btn' style='display: none'>Log out</a>
+                </div>
+              </div>
+            </div>
+            <div id='my-container' class='container RPinnercontainer'>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+<!--
     <div class='container ringplan'>
       <div class="row" style="height:200px">
         &nbsp;
@@ -63,13 +191,18 @@
           </div>
         </div>
       </div>
-      <div class="row" style="display:none;">
+      <div class="row" style="">
         <div class="col-md-6" id="devbuttons">
           <a class="btn btn-primary" href="javascript: devlogin()">Test Login</a>
           <a class="btn btn-primary" href="javascript: devlogin()">Test Logout</a>
         </div>
       </div>
     </div>
+
+
+
+
+ -->
     <script src='./websbc-client.js'></script>
     <script src='./webphone-plugin.js'></script>
     <script>
@@ -124,6 +257,7 @@
               $('#logout-btn').show();
               $('#login-msg').hide();
               $('#reginfo').hide();
+              $('#RPmanualform').hide();
             },
             function() {
               $('#logout-btn').hide();
@@ -131,16 +265,18 @@
               //alert("Disconnected from server");
               $('#login-msg').show();
               $('#reginfo').show();
+              $('#RPmanualform').hide();
             });
           else
             $('#my-container').webphone.login(user, pwd, cname);
+            $('#RPmanualform').hide();
         }
 
         function logout() {
           $('#my-container').webphone.logout();
           $('#logout-btn').hide();
           $('#login-btn').show();
-          $('#reginfo').show();
+          $('#RPmanualform').show();
         }
 
         // dev test functions
@@ -157,6 +293,23 @@
           $('#login-btn').show();
           $('#reginfo').show();
         }
+
+        function RPmrplogin() {
+          $('#RPLogin').hide();
+          $('#RPloginerror').show();
+        }
+
+        function RPLoginHome() {
+          $('#RPloginerror').hide();
+          $('#RPLogin').show();
+        }
+        
+        function RPmanuallogin() {
+          $('#RPLogin').hide();
+          $('#RPmanualform').show();
+        }
+
+
     </script>
   </body>
 </html>
