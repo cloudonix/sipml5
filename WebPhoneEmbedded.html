@@ -332,6 +332,7 @@
       <h3>DEV Buttons</h3>
       <a class='btn btn-warning' href='javascript: logout()'>Log out</a>
       <a class='btn btn-primary' href='javascript: RPdevhideall()'>hide all elements</a>
+      <a class='btn btn-primary' href='javascript: RPdevconnect()'>connect WebSBC</a>
     </div>
     <script src='./websbc-client.js'></script>
     <script src='./webphone-plugin.js'></script>
@@ -439,8 +440,20 @@
           $('#RPmanualform').hide();
           $('#RPlogincontrol').show();
           $('#RPloginerror').hide();
-
+          $('#show-phone').hide();
+          $('#inactive-phone').hide();
+          $('#webphone-incoming-call').hide();
+          $('#webphone-video').hide();
+          $('#webphone-video-main').hide();
+          $('#webphone-video-bottom-overlay').hide();
+          $('#webphone-keypad').hide();
         }
+
+        function RPdevconnect(){
+          $('#show-phone').show();
+          $('#inactive-phone').hide();
+        }
+
 
     </script>
   </body>
