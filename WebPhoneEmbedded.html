@@ -125,6 +125,7 @@
               <h3>Login type not yet supported, please use manual login.</h3>
             </div>
             <div id="RPmanualform" class="well RPlogin" style="display: none">
+              <a class="RPclosebutton pull-right" href="javascript: RPLoginHome()"><strong>X</strong></a>
               <h2>Manual Login</h2>
               <div style="text-align: left; color: black;">
                 <br>Extension<br>
@@ -146,65 +147,8 @@
       </div>
       <h3>DEV Buttons</h3>
       <a class='btn btn-warning' href='javascript: logout()'>Log out</a>
+      <a class='btn btn-primary' href='javascript: RPdevhideall()'>hide all elements</a>
     </div>
-    
-    
-    
-<!--
-    <div class='container ringplan'>
-      <div class="row" style="height:200px">
-        &nbsp;
-      </div>
-      <div class="row">
-        <div class="col-md-3">
-          <h1 style="color: white;">Ringplan Webphone</h1>
-        </div>
-      </div>
-      <div class="row">
-        <div id="login-msg" class="col-md-3 alert alert-info" style="margin: 12px 10px 5px 10px;">
-          Please login with extension and secret from the Ringplan Portal
-        </div>
-      </div>
-    </div>
-    <br>
-    <div id='my-container' class='container'>
-    </div>
-    <br>
-    <div class="container">
-      <div class="row">
-        <div class="col-sm-2" id="reginfo">
-          <div>Extension</div>
-          <div><input id='user_id' type='text'></div>
-          <div>Secret</div>
-          <div><input id='user_pwd' type='password'></div>
-          <div style="display:none;" >
-            <div>CID</div>
-            <div><input id='user_cname' type='text'></div>
-            <div>Domain</div>
-            <div><input id='user_domain' type='text'></div>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-sm-2" id="logbtn">
-          <div style="padding-top: 8px;">
-            <a class='btn btn-primary' href="javascript: login()" id='login-btn'>Log in</a>
-            <a class='btn btn-warning' href='javascript: logout()' id='logout-btn' style='display: none'>Log out</a>
-          </div>
-        </div>
-      </div>
-      <div class="row" style="">
-        <div class="col-md-6" id="devbuttons">
-          <a class="btn btn-primary" href="javascript: devlogin()">Test Login</a>
-          <a class="btn btn-primary" href="javascript: devlogin()">Test Logout</a>
-        </div>
-      </div>
-    </div>
-
-
-
-
- -->
     <script src='./websbc-client.js'></script>
     <script src='./webphone-plugin.js'></script>
     <script>
@@ -296,15 +240,22 @@
 
         function RPLoginHome() {
           $('#RPloginerror').hide();
+          $('#RPmanualform').hide();
           $('#RPLogin').show();
         }
         
         function RPmanuallogin() {
           $('#RPLogin').hide();
           $('#RPmanualform').show();
-          $('#RPlogincontrol').show();
         }
 
+        function RPdevhideall() {
+          $('#RPLogin').hide();
+          $('#RPmanualform').hide();
+          $('#RPlogincontrol').show();
+          $('#RPloginerror').hide();
+
+        }
 
     </script>
   </body>
