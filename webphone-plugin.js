@@ -482,7 +482,7 @@ console.log(rvw + "x" + rvh)
     }
 
     // load pkg js files
-    $.getScript('js/detect-mobile.js', function() {
+    $.getScript('detect-mobile.js', function() {
       _vSansayUiIsMobile = jQuery.browser.mobile;
     });
 
