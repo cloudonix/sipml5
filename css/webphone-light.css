@@ -8,7 +8,7 @@
   display: block;
   top: 7em;
   left: 2em;
-  text-decoratoin: none;
+  text-decoration: none;
   z-index: 500;
 }
 
@@ -20,6 +20,7 @@
   opacity: 0.96; 
   background-color: #ececec;
   min-height: 375px;
+  color: #0171AF;
 }
 
 .webphone-display {
@@ -35,7 +36,7 @@
 
 .webphone-key {
   cursor:        pointer;
-  color:         #1c1c1c;
+  color:         #0171AF;
   padding-top:   0.3em;
   height:        50px;
   font-size:     30px;
@@ -51,7 +52,7 @@
 }
 .webphone-fkey {
   cursor:        pointer;
-  color:         #1c1c1c;
+  color:         #0171AF;
 }
 .webphone-fkey-alt {
   background-color:   #ffa500;
@@ -76,7 +77,7 @@
 }
 .webphone-ckey-voice {
   cursor: pointer;
-  color: #1c1c1c;
+  color: #0171AF;
   border-right: 1px solid #3c3c3c;
   min-height: 58px;
   font-size: 30px;
@@ -85,16 +86,11 @@
 
 .webphone-ckey-video {
   cursor: pointer;
-  color: #1c1c1c;
+  color: #0171AF;
   font-size: 30px;
   padding-left: 30px;
   padding-top: 8px;
   font-weight: 100;
-  //text-align: center;
-}
-
-.webphone-elapse-time {
-
 }
 
 .webphone-inactive {
@@ -167,7 +163,6 @@
   margin: 0;
 }
 .webphone-video-bottom-overlay-btn {
-  //background: #b40000;
   border: 2px solid #b40000;
   border-radius: 8px;
   color: #b40000;
