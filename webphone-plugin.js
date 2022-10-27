@@ -572,7 +572,7 @@ console.log(rvw + "x" + rvh)
           theme = "light";
       }
     }
-    $("<link/>", {rel: "stylesheet", type: "text/css", href: "css/webphone-" + theme + ".css"}).appendTo("head");
+    $("<link/>", {rel: "stylesheet", type: "text/css", href: "css/webphone-light.css"}).appendTo("head");
     $("<link/>", {rel: "stylesheet", type: "text/css", href: "css/font-awesome.min.css"}).appendTo("head");
   }
 

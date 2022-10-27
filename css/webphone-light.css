@@ -19,7 +19,7 @@
 .webphone-panel {
   opacity: 0.96; 
   background-color: #ececec;
-  min-height: 500px;
+  min-height: 375px;
 }
 
 .webphone-display {
@@ -36,8 +36,8 @@
 .webphone-key {
   cursor:        pointer;
   color:         #1c1c1c;
-  padding-top:   0.8em;
-  height:        78px;
+  padding-top:   0.3em;
+  height:        50px;
   font-size:     30px;
 }
 .webphone-key i {
