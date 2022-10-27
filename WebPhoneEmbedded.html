@@ -156,6 +156,7 @@
       <a class='btn btn-primary' href='javascript: RPdevhideall()'>hide all elements</a>
       <a class='btn btn-primary' href='javascript: RPdevdisconnect()'>disconnect WebSBC</a>
       <a class='btn btn-primary' href='javascript: RPdevconnect()'>connect WebSBC</a>
+      <a class='btn btn-primary' href='javascript: RPdevcall()'>Incoming Call</a>
     <script src='./websbc-client.js'></script>
     <script src='./webphone-plugin.js'></script>
     <script>
@@ -290,6 +291,9 @@
           $('#logout-btn').hide();
         }
 
+        function RPdevcall() {
+          $('#webphone-incoming-call').show();
+        }
     </script>
   </body>
 </html>
