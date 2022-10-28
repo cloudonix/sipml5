@@ -55,11 +55,10 @@
     vertical-align: center;
   }
 
-  .RPloginbutton{
+  #myringplan.RPloginbutton{
     height:120px;
     width: 300px;
     text-align: center;
-
     background-image: url(./img/RingPlan\ ZTelco\ cobrand\ 2-01.png);
     background-size: 250px; ;
     background-position: center;
