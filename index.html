@@ -1,15 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
 <head>
-
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ringplan Websockets</title>
+    <link rel="stylesheet" href="css/login.css"/>
 </head>
 <body>
-    here is some text so it does not just load a page with a link
-<br>
-    <a href="webphone.html" 
-target="popup" 
-onclick="window.open('/webphone.html','popup','width=600,height=60'); return false;">
-Link Text goes here...
-</a>
-<br>
-<a href="javascript:window.open('webphone.html','mypopuptitle','width=600,height=600')">open popup</a>
-
+    <div id="main">
+        <div class="content">
+            <div class="logo-container">
+                <img src="/images/logo.svg"/>
+            </div>
+            <div class="buttons">
+                <button id="ringplan-btn">
+                    <img src="/images/ringplan-sm.svg"/>
+                    <span>Continue with Ringplan</span>
+                </button>
+                <button id="extension-btn">
+                    <img src="/images/extension.svg"/>
+                    <span>Login to extension</span>
+                </button>
+            </div>
+        </div>
+    </div>
+<script src="/js/login.js"></script>
 </body>
+</html>
+
