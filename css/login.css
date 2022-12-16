@@ -1,0 +1,131 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;1,300&display=swap");
+
+@keyframes slideUp {
+  0% {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Roboto", sans-serif;
+}
+#main {
+  width: 100%;
+  height: 100vh;
+  background: #0061a3;
+  display: grid;
+  place-items: center;
+}
+
+.logo-container {
+  display: flex;
+  justify-content: center;
+}
+
+.buttons {
+  margin-top: 200px;
+  display: flex;
+  flex-direction: column;
+  gap: 45px;
+}
+
+button {
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+
+#ringplan-btn {
+  background-color: white;
+  display: flex;
+  align-items: center;
+  border-radius: 14px;
+  gap: 10px;
+  padding: 10px 41px;
+  justify-content: center;
+  color: #00a2dd;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 20px;
+}
+
+#extension-btn {
+  background-color: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fdfdfd;
+  gap: 13px;
+  border: 1px solid #ffffff;
+  border-radius: 6px;
+  font-weight: 500;
+  font-size: 20px;
+  padding: 12px 41px;
+  line-height: 20px;
+  transition: background-color 0.3s ease;
+  height: 64px;
+}
+
+#extension-btn:hover {
+  background-color: white;
+  border: none;
+  color: #00a2dd;
+}
+
+#extension-btn:hover img {
+  filter: invert(1);
+}
+
+.logo-container {
+  opacity: 0;
+  animation: slideUp .6s cubic-bezier(0.4, 0, 0.2, 1) 500ms forwards;
+}
+
+.buttons {
+  opacity: 0;
+  animation: fadeIn 1s cubic-bezier(0.4, 0, 0.2, 1) 500ms forwards;
+}
+
+@media only screen and (max-width: 400px) {
+  .content {
+    padding: 0 15px;
+  }
+  #ringplan-btn,
+  #extension-btn {
+    padding: 10px 20px;
+    font-size: 16px;
+  }
+  #ringplan-btn img {
+    width: 35px;
+  }
+  #extension-btn {
+    height: 50px;
+  }
+  .buttons {
+    gap: 20px;
+  }
+
+  #ringplan-btn span{
+    padding-top: 3px;
+  }
+}
