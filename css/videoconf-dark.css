@@ -1,7 +1,7 @@
 .videoconf-video-panel {
   background: #0c0c0c;
   opacity: 0.85;
-//  padding-bottom: 20px;
+  padding-bottom: 20px;
 }
 
 .videoconf-participant-panel {
@@ -30,7 +30,7 @@
   padding: 0;
   height: 500px;
   width: 100%;
-//  border-top: 1px solid #ffffff;
+  border-top: 1px solid #ffffff;
   border-right: 1px solid #acacac;
 }
 .videoconf-zoom-pane {
@@ -57,8 +57,8 @@
 
 .videoconf-video-pane {
   position: relative;
-  height: 100%;    //150px;
-  width: 100%;     //180px;
+  height: 100%;    
+  width: 100%;     
 }
 
 .videoconf-video-overlay-text {

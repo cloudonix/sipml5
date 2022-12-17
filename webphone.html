@@ -1,162 +1,138 @@
 <!DOCTYPE html>
-<html lang='en'>
+<html lang="en">
   <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <title>Ringplan WebPhone</title>
-    <link rel="stylesheet" href="css/demo.css" type="text/css"/>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.7.2/jquery.min.js" ></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.0.2/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.7/cerulean/bootstrap.min.css" type="text/css"/>
-    <style>
-      .ringplan{
-        background-image: url(css/img/RingPlanheader_2_600x.png);
-        background-size: cover;
-        height: auto;
-        width: 600px;
-        align-self: left;
-      }
-    </style>
+    <link rel="stylesheet" href="css/demo.css" type="text/css" />
+    <script
+      type="text/javascript"
+      src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.7.2/jquery.min.js"
+    ></script>
   </head>
 
   <body>
-    <div class='container ringplan'>
-      <div class="row" style="height:200px">
-        &nbsp;
-      </div>
-      <div class="row">
-        <div class="col-md-3">
-          <h1 style="color: white;">Ringplan Webphone</h1>
+    <div class="header-section">
+      <div class="header-content">
+        <div>
+          <img src="images/ringplan-md.svg" />
         </div>
+        <h1>Ringplan Webphone</h1>
       </div>
-      <div class="row">
-        <div id="login-msg" class="col-md-3 alert alert-info" style="margin: 12px 10px 5px 10px;">
-          Please login with extension and secret from the Ringplan Portal
+      <div class="header-img-wrapper">
+        <img src="images/ringplan-header.png" />
+      </div>
+    </div>
+    <div id="my-container" class="container"></div>
+    <div id="main">
+      <h1>Login with extension and secret</h1>
+
+      <div id="login-extension">
+        <div class="input-wrapper">
+          <label for="user_id">Extension</label>
+          <input
+            type="text"
+            id="user_id"
+            placeholder="Enter extension here..."
+          />
+        </div>
+        <div class="input-wrapper">
+          <label for="user_domain">Server address</label>
+          <input
+            type="text"
+            id="user_domain"
+            placeholder="Enter server address"
+          />
+        </div>
+        <div class="input-wrapper">
+          <label for="user_pwd">Secret</label>
+          <input
+            type="password"
+            id="user_pwd"
+            placeholder="Enter secret code here..."
+          />
+        </div>
+        <div style="display: none"><input id="user_cname" type="text" /></div>
+        <div id="btn-wrapper">
+          <button id="login-btn">Login</button>
         </div>
       </div>
     </div>
-    <br>
-    <div id='my-container' class='container'>
-    </div>
-    <br>
-    <div class="container">
-      <div class="row">
-        <div class="col-sm-2" id="reginfo">
-          <div>Extension</div>
-          <div><input id='user_id' type='text'></div>
-          <div>Secret</div>
-          <div><input id='user_pwd' type='password'></div>
-          <div style="display:none;" >
-            <div>CID</div>
-            <div><input id='user_cname' type='text'></div>
-            <div>Domain</div>
-            <div><input id='user_domain' type='text'></div>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-sm-2" id="logbtn">
-          <div style="padding-top: 8px;">
-            <a class='btn btn-primary' href="javascript: login()" id='login-btn'>Log in</a>
-            <a class='btn btn-warning' href='javascript: logout()' id='logout-btn' style='display: none'>Log out</a>
-          </div>
-        </div>
-      </div>
-      <div class="row" style="display:none;">
-        <div class="col-md-6" id="devbuttons">
-          <a class="btn btn-primary" href="javascript: devlogin()">Test Login</a>
-          <a class="btn btn-primary" href="javascript: devlogin()">Test Logout</a>
-        </div>
-      </div>
-    </div>
-    <script src='./websbc-client.js'></script>
-    <script src='./webphone-plugin.js'></script>
+ 
     <script>
-        window.onload = function() {
-	        // Set the prefilled domain here
-	        $('#user_domain').val('zraytechnoloDoobh.ringplan.com')
-          // set the websocket servr address here
-          $('#my-container').webphone(["sip.ringplan.com"]);
+      function setCookie(cname, cvalue, exSeconds) {
+          var d = new Date();
+          d.setTime(d.getTime() + exSeconds * 1000);
+          var expires = "expires=" + d.toUTCString();
+          var cookie = cname + "=" + cvalue + ";" + expires + ";path=/"; // + cname;
+          console.log(cookie);
+          document.cookie = cookie;
+        }
+    </script>
+    <script type="text/javascript">
+      window.onload = function () {
+        $("#user_domain").val("zraytechnoloDoobh.ringplan.com");
 
-          var uname, pass, cname, domain;
-          console.log(uname = getCookie("user_id"));
-          console.log(pass = getCookie("secret"));
-          console.log(cname = getCookie("cname"));
-          console.log(domain = getCookie("domain"));
+        let loginBtn = document.getElementById("login-btn");
+        loginBtn.onclick = () => {
+          login();
+        };
+        let uname = "",
+          pass = "",
+          cname = "",
+          domain = "";
 
-          if (window.location.search.length > 1
-				  && window.location.search.toLowerCase().indexOf('user=') > -1
-				  && window.location.search.toLowerCase().indexOf('pass=') > -1) {
-            var query_params = window.location.search.split('&')
-			      for (var i = 0; i < query_params.length; i++) {
-			        if (query_params[i].toLowerCase().indexOf('user=') > -1) {
-				        uname = query_params[i].split('=')[1];
-			           }
-			         else if (query_params[i].toLowerCase().indexOf('pass=') > -1) {
-				        pass = query_params[i].split('=')[1];
-			          }
-			        else if (query_params[i].toLowerCase().indexOf('cname=') > -1) {
-				        cname = query_params[i].split('=')[1].replace('%20', ' ');
-			          }
-			        else if (query_params[i].toLowerCase().indexOf('domain=') > -1) {
-				        domain = query_params[i].split('=')[1];
-			          }
-			        }
-		        }
-		      if (uname.length > 1 && pass.length > 1){
-		        $('#user_id').val(uname);
-		        $('#user_pwd').val(pass);
-		        $('#user_cname').val(cname);
-		        $('#user_domain').val(domain);
-		        setTimeout(login(), 500);
-		        }
-          };
+        if (
+          window.location.search.length > 1 &&
+          window.location.search.toLowerCase().indexOf("user=") > -1 &&
+          window.location.search.toLowerCase().indexOf("pass=") > -1
+        ) {
+          var query_params = window.location.search.split("&");
+          for (var i = 0; i < query_params.length; i++) {
+            if (query_params[i].toLowerCase().indexOf("user=") > -1) {
+              uname = query_params[i].split("=")[1];
+            } else if (query_params[i].toLowerCase().indexOf("pass=") > -1) {
+              pass = query_params[i].split("=")[1];
+            } else if (query_params[i].toLowerCase().indexOf("cname=") > -1) {
+              cname = query_params[i].split("=")[1].replace("%20", " ");
+            } else if (query_params[i].toLowerCase().indexOf("domain=") > -1) {
+              domain = query_params[i].split("=")[1];
+            }
+          }
+        }
+        if (uname.length > 1 && pass.length > 1) {
+          $("#user_id").val(uname);
+          $("#user_pwd").val(pass);
+          $("#user_cname").val(cname);
+          $("#user_domain").val(domain);
+          setTimeout(login(), 500);
+        }
+      };
 
-        function login() {
-          var user = $('#user_id').val();
-          var pwd = $('#user_pwd').val();
-          var cname = $('#user_cname').val();
-          var domain = $('#user_domain').val();
-          if (domain.length > 0)
-            $('#my-container').webphone.login(user, pwd, cname, domain, function() {
-              $('#login-btn').hide();
-              $('#logout-btn').show();
-              $('#login-msg').hide();
-              $('#reginfo').hide();
-            },
-            function() {
-              $('#logout-btn').hide();
-              $('#login-btn').show();
-              //alert("Disconnected from server");
-              $('#login-msg').show();
-              $('#reginfo').show();
-            });
-          else
-            $('#my-container').webphone.login(user, pwd, cname);
+      async function login() {
+        let user = $("#user_id").val();
+        let pwd = $("#user_pwd").val();
+        let cname = $("#user_cname").val();
+        let domain = $("#user_domain").val();
+
+        if (!user || !pwd) {
+          console.log("wrong credentials");
+          return;
         }
 
-        function logout() {
-          $('#my-container').webphone.logout();
-          $('#logout-btn').hide();
-          $('#login-btn').show();
-          $('#reginfo').show();
-        }
+        setCookie("user_id", user, 300);
+        setCookie("secret", pwd, 300);
+        setCookie("cname", cname, 300);
+        setCookie("domain", domain, 300);
 
-        // dev test functions
+        const data = await fetch("/dialpad/index.html");
+        const html = await data.text();
 
-        function devlogin() {
-          $('#login-btn').hide();
-          $('#logout-btn').show();
-          $('#login-msg').hide();
-          $('#reginfo').hide();
-        }
-
-        function devlogout() {
-          $('#logout-btn').hide();
-          $('#login-btn').show();
-          $('#reginfo').show();
-        }
+        document.open();
+        document.write(html);
+        document.close();
+      }
     </script>
   </body>
 </html>

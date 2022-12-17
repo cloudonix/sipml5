@@ -634,10 +634,14 @@ console.log(rvw + "x" + rvh)
     $(document).unbind('keydown');
   }
 
-  $.fn.webphone.login = function(user, pwd, cname, domain, login_success, login_fail, conn_status_change) {
+  $.fn.webphone.login = function(user, 
+    pwd, 
+    cname, 
+    domain, 
+    login_success, 
+    login_fail, conn_status_change) {
     if (typeof user === "undefined" || user.length === 0 ||
         typeof pwd === "undefined" || pwd.length === 0 ) {
-      // debug log here
       return false;
     }
 
@@ -651,6 +655,7 @@ console.log(rvw + "x" + rvh)
     function __conn_status_change(status) {
       // NOTE: for multi-homing so we need to use this as an indicator to switch
       //
+     
       _vSansayClientConnUp = (status == 'connected') ? true : false;
       if (_vSansayClientConnUp) {
         clearTimeout(_vSansayClientConnTimer);
