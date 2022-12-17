@@ -6,10 +6,6 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <title>Ringplan WebPhone</title>
     <link rel="stylesheet" href="css/demo.css" type="text/css" />
-    <script
-      type="text/javascript"
-      src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.7.2/jquery.min.js"
-    ></script>
   </head>
 
   <body>
@@ -59,80 +55,6 @@
         </div>
       </div>
     </div>
- 
-    <script>
-      function setCookie(cname, cvalue, exSeconds) {
-          var d = new Date();
-          d.setTime(d.getTime() + exSeconds * 1000);
-          var expires = "expires=" + d.toUTCString();
-          var cookie = cname + "=" + cvalue + ";" + expires + ";path=/"; // + cname;
-          console.log(cookie);
-          document.cookie = cookie;
-        }
-    </script>
-    <script type="text/javascript">
-      window.onload = function () {
-        $("#user_domain").val("zraytechnoloDoobh.ringplan.com");
-
-        let loginBtn = document.getElementById("login-btn");
-        loginBtn.onclick = () => {
-          login();
-        };
-        let uname = "",
-          pass = "",
-          cname = "",
-          domain = "";
-
-        if (
-          window.location.search.length > 1 &&
-          window.location.search.toLowerCase().indexOf("user=") > -1 &&
-          window.location.search.toLowerCase().indexOf("pass=") > -1
-        ) {
-          var query_params = window.location.search.split("&");
-          for (var i = 0; i < query_params.length; i++) {
-            if (query_params[i].toLowerCase().indexOf("user=") > -1) {
-              uname = query_params[i].split("=")[1];
-            } else if (query_params[i].toLowerCase().indexOf("pass=") > -1) {
-              pass = query_params[i].split("=")[1];
-            } else if (query_params[i].toLowerCase().indexOf("cname=") > -1) {
-              cname = query_params[i].split("=")[1].replace("%20", " ");
-            } else if (query_params[i].toLowerCase().indexOf("domain=") > -1) {
-              domain = query_params[i].split("=")[1];
-            }
-          }
-        }
-        if (uname.length > 1 && pass.length > 1) {
-          $("#user_id").val(uname);
-          $("#user_pwd").val(pass);
-          $("#user_cname").val(cname);
-          $("#user_domain").val(domain);
-          setTimeout(login(), 500);
-        }
-      };
-
-      async function login() {
-        let user = $("#user_id").val();
-        let pwd = $("#user_pwd").val();
-        let cname = $("#user_cname").val();
-        let domain = $("#user_domain").val();
-
-        if (!user || !pwd) {
-          console.log("wrong credentials");
-          return;
-        }
-
-        setCookie("user_id", user, 300);
-        setCookie("secret", pwd, 300);
-        setCookie("cname", cname, 300);
-        setCookie("domain", domain, 300);
-
-        const data = await fetch("/dialpad/index.html");
-        const html = await data.text();
-
-        document.open();
-        document.write(html);
-        document.close();
-      }
-    </script>
+    <script src="js/webphone.js"></script>
   </body>
 </html>
