@@ -1,6 +1,11 @@
 document.addEventListener("DOMContentLoaded", () => {
   let extensionBtn = document.getElementById("extension-btn");
-  extensionBtn.onclick = function () {
-    window.open("../webphone.html", "Ringplan login", "width=600,height=600");
+  let ringplanBtn = document.getElementById("ringplan-btn");
+
+  extensionBtn.onclick = async () => {
+    window.location = "/webphone.html"
+  };
+  ringplanBtn.onclick = () => {
+    console.log("adsadasd");
   };
 });
