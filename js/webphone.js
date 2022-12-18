@@ -51,12 +51,21 @@ async function login() {
 
 window.onload = function () {
   let userDomain = document.getElementById("user_domain");
+  let errorMessage = document.getElementById("error-message");
   userDomain.value = "zraytechnoloDoobh.ringplan.com";
 
   let uname = getCookie("user_id") || "",
     pass = getCookie("secret") || "",
     cname = getCookie("cname") || "",
     domain = getCookie("domain") || "";
+
+  const urlSearchParams = new URLSearchParams(window.location.search);
+
+  const params = Object.fromEntries(urlSearchParams.entries());
+
+  if (params.error) {
+    errorMessage.style.display = "inline";
+  }
 
   if (
     window.location.search.length > 1 &&
@@ -87,7 +96,7 @@ window.onload = function () {
     password.value = pass;
     cnameInput.value = cname;
     domainInput.value = domain;
-    login()
+    login();
   }
 };
 

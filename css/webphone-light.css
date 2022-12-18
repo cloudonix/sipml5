@@ -28,11 +28,7 @@
   color:      #cccccc;
 }
 
-.webphone-digits {
-  font-size: 40px;
-  min-height: 57px;
-  vertical-align: middle;
-}
+
 
 .webphone-key {
   cursor:        pointer;

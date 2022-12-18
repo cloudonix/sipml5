@@ -1,11 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
   <head>
     <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Dialpad</title>
-    <link rel="stylesheet" href="../css/dialpad.css" type="text/css" />
+    <link rel="stylesheet" href="../css/main.css" />
     <script
     type="text/javascript"
     src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.7.2/jquery.min.js"
@@ -14,15 +13,68 @@
       type="text/javascript"
       src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.0.2/js/bootstrap.min.js"
     ></script>
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.7/cerulean/bootstrap.min.css"
-      type="text/css"
-    />
   </head>
-  <body>
-    <div id="my-container" class="container"></div>
-    <button id="logout">Log out</button>
+
+  <body class="m-0 !font-body antialiased font-normal text-base leading-default">
+    <aside
+      class="max-w-62.5 ease-nav-brand z-990 fixed inset-y-0 block w-full -translate-x-full flex-wrap items-center justify-between overflow-y-auto border-0 bg-white p-0 antialiased
+       shadow-none transition-transform duration-200 md:left-0 md:translate-x-0"
+    >
+      <div class="w-40 mt-6 mx-auto">
+        <img
+          class="w-full h-full object-cover"
+          src="../images/ringplan-md-blue.svg"
+        />
+      </div>
+
+      <div
+        class="items-center mt-12 block w-auto max-h-screen h-sidenav grow basis-full"
+      >
+        <ul class="flex flex-col pl-0 mb-0">
+          <li
+            class="mt-0.5 cursor-pointer w-full px-6 py-3 flex gap-16 items-center text-[#0D0D54] font-bold bg-[#F7F7FB] border-r-4 border-[#3B9EF7]"
+          >
+            <div>
+              <img src="../images/phone.svg" />
+            </div>
+            <span>Phone</span>
+          </li>
+          <li
+            class="mt-0.5 cursor-pointer w-full px-6 py-3 flex gap-5 items-center font-bold bg-white"
+          >
+            <div>
+              <img src="../images/settings.svg" />
+            </div>
+            <span>Settings</span>
+          </li>
+        </ul>
+      </div>
+    </aside>
+    <main
+      class="ease-soft-in-out bg-[#fafafa] xl:ml-62.5 relative h-full max-h-screen rounded-xl transition-all duration-200"
+    >
+      <div
+        class="bg-[#F6F8FC] flex items-center 
+        shadow-nav
+        justify-between w-full px-10 py-4 mx-auto flex-wrap-inherit"
+      >
+        <h3 class="font-bold text-2xl">Phone</h3>
+        <div
+          class="rounded-3.5xl flex items-center gap-4 px-6 py-2 cursor-pointer border border-[#B7B7B7]"
+        >
+          <div class="rounded-full w-4 h-4 bg-[#6FC316]"></div>
+          <span>2001</span>
+          <div>
+            <img src="../images/chevron-down.svg" />
+          </div>
+        </div>
+      </div>
+
+      <div class="w-full px-6 py-6 mx-auto">
+        <div id="my-container" class="container flex items-center justify-center"></div>
+        <button class="hidden" id="logout">Log out</button>
+      </div>
+    </main>
     <script src="../lib/websbc-client.js"></script>
     <script src="../lib/webphone-plugin.js"></script>
     <script src="../js/init-dialpad.js"></script>
