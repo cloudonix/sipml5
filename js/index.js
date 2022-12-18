@@ -3,9 +3,10 @@ document.addEventListener("DOMContentLoaded", () => {
   let ringplanBtn = document.getElementById("ringplan-btn");
 
   extensionBtn.onclick = async () => {
-    window.location = "/webphone.html"
+    window.location = "/webphone.html";
   };
   ringplanBtn.onclick = () => {
     console.log("adsadasd");
   };
 });
+
