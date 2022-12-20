@@ -6,10 +6,9 @@ document.addEventListener("DOMContentLoaded", () => {
   let container = $("#my-container");
   let logoutBtn = document.getElementById("logout");
   let extensionOpts = document.getElementById("extension-options")
-  
-  logoutBtn.onclick = () => {
-    logout();
-  };
+  // logoutBtn.onclick = () => {
+  //   logout();
+  // };
   container.webphone(["sip.ringplan.com"]);
 
   container.webphone.login(
@@ -18,7 +17,7 @@ document.addEventListener("DOMContentLoaded", () => {
     cname,
     domain.length > 0 ? domain : null,
     () => {
-      logoutBtn.style.display = "block";
+      // logoutBtn.style.display = "block";
       const urlSearchParams = new URLSearchParams(window.location.search);
       const params = Object.fromEntries(urlSearchParams.entries());
       extensionOpts.innerText = user
