@@ -5,7 +5,8 @@ document.addEventListener("DOMContentLoaded", () => {
   let domain = getCookie("domain");
   let container = $("#my-container");
   let logoutBtn = document.getElementById("logout");
-
+  let extensionOpts = document.getElementById("extension-options")
+  
   logoutBtn.onclick = () => {
     logout();
   };
@@ -20,6 +21,7 @@ document.addEventListener("DOMContentLoaded", () => {
       logoutBtn.style.display = "block";
       const urlSearchParams = new URLSearchParams(window.location.search);
       const params = Object.fromEntries(urlSearchParams.entries());
+      extensionOpts.innerText = user
       if (params.error) {
         urlSearchParams.delete("error");
         history.pushState({}, "", window.location.pathname);
