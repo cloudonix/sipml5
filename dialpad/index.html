@@ -36,6 +36,7 @@
       >
         <ul class="flex flex-col pl-0 mb-0">
           <li
+            id="phone-tab"
             class="mt-0.5 cursor-pointer w-full px-6 py-3 flex gap-16 items-center text-[#0D0D54] font-bold bg-[#F7F7FB] border-r-4 border-[#3B9EF7]"
           >
             <div>
@@ -43,43 +44,64 @@
             </div>
             <span>Phone</span>
           </li>
-          <li
-            class="mt-0.5 cursor-pointer w-full px-6 py-3 flex gap-5 items-center font-bold bg-white"
-          >
-            <div>
-              <img src="../images/settings.svg" />
+          <ul id="settings-tab">
+            <li
+              class="mt-0.5 cursor-pointer w-full px-6 py-3 flex gap-5 items-center font-bold bg-white"
+            >
+              <div>
+                <img class="grayscale" src="../images/settings.svg" />
+              </div>
+              <span>Settings</span>
+            </li>
+            <div id="settings-submenu" class="mt-4.5 pl-12 pr-4 hidden">
+                  <li class="font-medium p-3 bg-[#F7F7FB] cursor-pointer text-[#0D0D54] rounded-xl">Version info</li>
+                  <li class="font-medium p-3 cursor-pointer">Logout</li>
             </div>
-            <span>Settings</span>
-          </li>
+          </ul>
         </ul>
       </div>
     </aside>
     <main
+      id="main"
       class="ease-soft-in-out bg-[#fafafa] xl:ml-62.5 relative h-full max-h-screen rounded-xl transition-all duration-200"
     >
       <div
         class="bg-[#F6F8FC] flex items-center 
         shadow-nav
-        justify-between w-full px-10 py-4 mx-auto flex-wrap-inherit"
+        justify-between w-full px-10 h-16 mx-auto flex-wrap-inherit"
       >
-        <h3 class="font-bold text-2xl">Phone</h3>
+        <h3 class="font-bold text-2xl" id="page-title">Phone</h3>
         <div
+          id="extension-options"
           class="rounded-3.5xl flex items-center gap-4 px-6 py-2 cursor-pointer border border-[#B7B7B7]"
         >
           <div class="rounded-full w-4 h-4 bg-[#6FC316]"></div>
-          <span id="extension-options"></span>
+          <span></span>
           <div>
             <img src="../images/chevron-down.svg" />
           </div>
         </div>
       </div>
 
-      <div class="w-full px-6 py-6 mx-auto">
+      <div id="main-wrapper" class="w-full px-6 py-6 mx-auto">
         <div id="my-container" class="container flex items-center justify-center"></div>
+        <div id="settings-info" class="hidden justify-center
+         items-center bg-white flex-col rounded-2.5 w-full p-4 max-w-md mx-auto shadow-info">
+            <div>
+              <img src="/images/ringplan-big.svg"/>
+            </div>
+            <h3 class="mt-2 font-medium leading-7.5 text-[#3C3C3C]">Current Version v2.2.1</h3>
+            <h3 class="mt-2 font-medium leading-7.5 text-[#C4C4C4]">Latest Version v2.2.1</h3>
+            <a 
+            href="https://ringplan.com" 
+            target="_blank"
+            class="text-[#00A2DD] no-underline mt-6 font-medium">https://ringplan.com</a>
+            <span class="my-3 text-[#3C3C3C]">2020-2022 Ringplan</span>
+          </div>
       </div>
     </main>
     <script src="../lib/websbc-client.js"></script>
     <script src="../lib/webphone-plugin.js"></script>
-    <script src="../js/init-dialpad.js"></script>
+    <script src="../js/dialpad.js"></script>
   </body>
 </html>

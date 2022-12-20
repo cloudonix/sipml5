@@ -599,6 +599,7 @@ module.exports = {
       8: "8px",
     },
     boxShadow: {
+      'info':'6px 5px 7px 5px rgba(0, 0, 0, 0.1)',
       'nav':'0px 2px 2px rgba(0, 0, 0, 0.1)',
       "soft-xxs": "0 1px 5px 1px #ddd",
       "soft-xs":
@@ -942,6 +943,7 @@ module.exports = {
       "5/6": "83.333333%",
       full: "100%",
       sidenav: "calc(100vh - 370px)",
+      main:'calc(100vh - 100px)',
       screen: "100vh",
       min: "min-content",
       max: "max-content",
