@@ -20,7 +20,7 @@ module.exports = {
       transparent: colors.transparent,
       black: colors.black,
       white: colors.white,
-
+      'modal': 'rgba(0, 0, 0, 0.25);',
       slate: {
         DEFAULT: colors.slate,
         50: "#f8fafc",

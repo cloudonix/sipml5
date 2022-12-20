@@ -1,6 +1,8 @@
 let classesStr = `items-center text-[#0D0D54] font-bold bg-[#F7F7FB] border-r-4 border-[#3B9EF7]`
 let activeClasses = classesStr.split(" ")
-console.log(activeClasses);
+let subMenuClassesStr = `bg-[#F7F7FB] text-[#0D0D54]`
+let activeSubMenuClasses = subMenuClassesStr.split(" ")
+
 document.addEventListener("DOMContentLoaded", () => {
   let user = getCookie("user_id");
   let secret = getCookie("secret");
@@ -16,9 +18,12 @@ document.addEventListener("DOMContentLoaded", () => {
   let mainContainer = document.getElementById("main")
   let settingsInfo = document.getElementById("settings-info")
   let mainWrapper = document.getElementById("main-wrapper")
-  // logoutBtn.onclick = () => {
-  //   logout();
-  // };
+  let logoutPopupTrigger = document.getElementById("logout-trigger")
+  let modal = document.getElementById("logout-modal")
+  let logoutConfirm = document.getElementById("logout-confirm")
+  let logoutCancel = document.getElementById("logout-cancel")
+  let cancelIcon = document.getElementById("cancel-icon")
+  let versionInfoBtn = document.getElementById("version-info")
 
   const manualLogout = async () => {
     const data = await fetch("/webphone.html");
@@ -26,6 +31,15 @@ document.addEventListener("DOMContentLoaded", () => {
     document.open();
     document.write(html);
     document.close();
+  }
+
+  const cancelLogout = () => {
+    modal.classList.remove('grid')
+    modal.classList.add('hidden')
+    pageTitle.innerText = 'Settings - Version Info'
+    settingsInfo.classList.remove('!hidden')
+    versionInfoBtn.classList.add(...activeSubMenuClasses)
+    logoutPopupTrigger.classList.remove(...activeSubMenuClasses)
   }
 
   if(!user || !secret){
@@ -40,7 +54,6 @@ document.addEventListener("DOMContentLoaded", () => {
     cname,
     domain.length > 0 ? domain : null,
     () => {
-      // logoutBtn.style.display = "block";
       const urlSearchParams = new URLSearchParams(window.location.search);
       const params = Object.fromEntries(urlSearchParams.entries());
       extensionOpts.querySelector("span").innerText = user
@@ -119,4 +132,23 @@ document.addEventListener("DOMContentLoaded", () => {
     mainWrapper.classList.remove('h-main', 'grid', 'place-items-center')
   }
 
+  logoutPopupTrigger.onclick = (e) => {
+    e.stopPropagation()
+    modal.classList.remove('hidden')
+    modal.classList.add('grid')
+    pageTitle.innerText = 'Settings - Logout'
+    settingsInfo.classList.add("!hidden")
+    versionInfoBtn.classList.remove(...activeSubMenuClasses)
+    logoutPopupTrigger.classList.add(...activeSubMenuClasses)
+  }
+
+  logoutConfirm.onclick = () => {
+    logout()
+  }
+  logoutCancel.onclick = () => {
+    cancelLogout()
+  }
+  cancelIcon.onclick = () => {
+    cancelLogout()
+  }
 });
