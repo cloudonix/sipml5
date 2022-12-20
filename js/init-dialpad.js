@@ -26,7 +26,6 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     },
     async () => {
-      console.log("jjjjjjjjjjjjjjjjjjjjjjj");
       setCookie("user_id", "", 300);
       setCookie("secret", "", 300);
       setCookie("cname", "", 300);
