@@ -620,6 +620,14 @@ video {
   right: 0.5rem;
 }
 
+.right-\[-20\%\] {
+  right: -20%;
+}
+
+.right-\[-8\%\] {
+  right: -8%;
+}
+
 .z-\[999\] {
   z-index: 999;
 }
@@ -1100,6 +1108,11 @@ video {
   padding-bottom: 1.25rem;
 }
 
+.px-2 {
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+}
+
 .pl-0 {
   padding-left: 0px;
 }
@@ -1460,11 +1473,20 @@ video {
   .md\:h-auto {
     height: auto;
   }
+
+  .md\:px-4 {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
 }
 
 @media (min-width: 992px) {
   .lg\:left-0 {
     left: 0px;
+  }
+
+  .lg\:right-\[-20\%\] {
+    right: -20%;
   }
 
   .lg\:hidden {
@@ -1474,6 +1496,11 @@ video {
   .lg\:translate-x-0 {
     --tw-translate-x: 0px;
     transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+  }
+
+  .lg\:px-6 {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
   }
 }
 
