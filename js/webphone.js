@@ -54,6 +54,9 @@ window.onload = function () {
   let errorMessage = document.getElementById("error-message");
   userDomain.value = "zraytechnoloDoobh.ringplan.com";
 
+
+  // check later document referrer to show or hide the select extensions menu
+
   let uname = getCookie("user_id") || "",
     pass = getCookie("secret") || "",
     cname = getCookie("cname") || "",
