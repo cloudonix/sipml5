@@ -4,25 +4,47 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Dialpad</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;1,300&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;1,300&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="../css/main.css" />
+    <link rel="stylesheet" href="../css/dialpad.css" />
     <script
-    type="text/javascript"
-    src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.7.2/jquery.min.js"
-  ></script>
+      type="text/javascript"
+      src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.7.2/jquery.min.js"
+    ></script>
     <script
       type="text/javascript"
       src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.0.2/js/bootstrap.min.js"
     ></script>
   </head>
 
-  <body class="m-0 !font-body antialiased font-normal text-base leading-default">
+  <body
+    class="m-0 !font-body antialiased font-normal text-base leading-default"
+  >
+    <nav class="flex lg:hidden items-center justify-between px-10 py-5">
+      <div></div>
+      <div class="w-14 h-14">
+        <img class="w-full h-full object-cover" src="/images/ringplan-md.svg" />
+      </div>
+      <input
+        type="checkbox"
+        class="hidden box-border transition-all duration-200 ease-linear"
+        id="hamburger"
+      />
+
+      <label for="hamburger" class="sidebarIconToggle">
+        <div class="spinner diagonal part-1 bg-black dark:bg-white"></div>
+        <div class="spinner horizontal bg-black dark:bg-white"></div>
+        <div class="spinner diagonal part-2 bg-black dark:bg-white"></div>
+      </label>
+    </nav>
     <aside
-      class="max-w-62.5 ease-nav-brand z-990 fixed 
-      inset-y-0 block w-full -translate-x-full 
-      flex-wrap items-center justify-between
-       overflow-y-auto border-0 bg-white p-0 antialiased
-       shadow-none transition-transform duration-200 lg:left-0 lg:translate-x-0"
+      id="sidebar"
+      class="max-w-62.5 ease-nav-brand z-990 fixed inset-y-0 block w-full -translate-x-full flex-wrap items-center justify-between overflow-y-auto border-0 bg-white p-0 antialiased shadow-none transition-transform duration-200 lg:left-0 lg:translate-x-0"
     >
       <div class="w-40 mt-6 mx-auto">
         <img
@@ -54,12 +76,18 @@
               <span>Settings</span>
             </li>
             <div id="settings-submenu" class="mt-4.5 pl-12 pr-4 hidden">
-                  <li id="version-info" 
-                  class="font-medium p-3 cursor-pointer
-                  bg-[#F7F7FB] 
-                   text-[#0D0D54] rounded-xl">Version info</li>
-                  <li id="logout-trigger" 
-                  class="font-medium p-3 cursor-pointer rounded-xl">Logout</li>
+              <li
+                id="version-info"
+                class="font-medium p-3 cursor-pointer bg-[#F7F7FB] text-[#0D0D54] rounded-xl"
+              >
+                Version info
+              </li>
+              <li
+                id="logout-trigger"
+                class="font-medium p-3 cursor-pointer rounded-xl"
+              >
+                Logout
+              </li>
             </div>
           </ul>
         </ul>
@@ -67,12 +95,11 @@
     </aside>
     <main
       id="main"
-      class="ease-soft-in-out bg-[#fafafa] xl:ml-62.5 relative h-full max-h-screen rounded-xl transition-all duration-200"
+      class="ease-soft-in-out bg-[#fafafa] xl:ml-62.5 
+      relative h-full max-h-screen rounded-xl transition-all duration-200"
     >
       <div
-        class="bg-[#F6F8FC] flex items-center 
-        shadow-nav
-        justify-between w-full px-10 h-16 mx-auto flex-wrap-inherit"
+        class="bg-[#F6F8FC] flex items-center shadow-nav justify-between w-full px-10 h-16 mx-auto flex-wrap-inherit"
       >
         <h3 class="font-bold text-2xl" id="page-title">Phone</h3>
         <div
@@ -87,68 +114,100 @@
         </div>
       </div>
 
-      <div id="main-wrapper" class="w-full px-6 py-6 mx-auto">
-        <div id="my-container" class="container flex items-center justify-center"></div>
-        <div id="settings-info" class="hidden justify-center
-         items-center bg-white flex-col rounded-2.5 w-full p-4 max-w-md mx-auto shadow-info">
-            <div>
-              <img src="/images/ringplan-big.svg"/>
-            </div>
-            <h3 class="mt-2 font-medium leading-7.5 text-[#3C3C3C]">Current Version v2.2.1</h3>
-            <h3 class="mt-2 font-medium leading-7.5 text-[#C4C4C4]">Latest Version v2.2.1</h3>
-            <a 
-            href="https://ringplan.com" 
-            target="_blank"
-            class="text-[#00A2DD] no-underline mt-6 font-medium">https://ringplan.com</a>
-            <span class="my-3 text-[#3C3C3C]">2020-2022 Ringplan</span>
+      <div id="main-wrapper" class="w-full mx-auto">
+        <div
+          id="my-container"
+          class="px-2 md:px-4 lg:px-6 py-6 flex items-center justify-center"
+        ></div>
+        <div
+          id="settings-info"
+          class="hidden justify-center items-center bg-white flex-col rounded-2.5 w-full p-4 max-w-md mx-auto shadow-info"
+        >
+          <div>
+            <img src="/images/ringplan-big.svg" />
           </div>
+          <h3 class="mt-2 font-medium leading-7.5 text-[#3C3C3C]">
+            Current Version v2.2.1
+          </h3>
+          <h3 class="mt-2 font-medium leading-7.5 text-[#C4C4C4]">
+            Latest Version v2.2.1
+          </h3>
+          <a
+            href="https://ringplan.com"
+            target="_blank"
+            class="text-[#00A2DD] no-underline mt-6 font-medium"
+            >https://ringplan.com</a
+          >
+          <span class="my-3 text-[#3C3C3C]">2020-2022 Ringplan</span>
+        </div>
       </div>
     </main>
-    <div id="logout-modal" tabindex="-1"
-     class="fixed hidden top-0 w-full h-full place-content-center 
-    bg-modal left-0 right-0 p-4 
-     overflow-x-hidden overflow-y-auto z-[999]
-      md:inset-0 h-modal md:h-full">
+    <div
+      id="logout-modal"
+      tabindex="-1"
+      class="fixed hidden top-0 w-full h-full place-content-center bg-modal left-0 right-0 p-4 overflow-x-hidden overflow-y-auto z-[999] md:inset-0 h-modal md:h-full"
+    >
       <div class="relative w-full h-full max-w-md md:h-auto">
-          <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
-              <button 
-              id="cancel-icon"
-              type="button" class="absolute top-3 right-2.5
-               text-gray-400 bg-transparent
-                hover:bg-gray-200
-                 hover:text-gray-900 rounded-lg 
-                 text-sm p-1.5 ml-auto inline-flex 
-                 items-center dark:hover:bg-gray-800
-                  dark:hover:text-white">
-                  <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
-                  <span class="sr-only">Close modal</span>
-              </button>
-              <div class="py-6 px-10 text-center">
-                  <svg aria-hidden="true" class="mx-auto mb-4 text-gray-400 w-14 h-14 dark:text-gray-200" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                  <h3 class="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400">Are you sure you want to logout?</h3>
-                  <button
-                  id="logout-confirm"
-                  type="button" class="text-white bg-red-600 hover:bg-red-800 
-                  focus:ring-4 focus:outline-none focus:ring-red-300
-                   dark:focus:ring-red-800 font-medium rounded-lg 
-                   text-sm inline-flex items-center px-5 py-2.5 text-center mr-2">
-                      Yes, logout
-                  </button>
-                  <button
-                  id="logout-cancel"
-                  type="button" 
-                  class="text-gray-500 bg-white hover:bg-gray-100 
-                  focus:ring-4 focus:outline-none focus:ring-gray-200
-                   rounded-lg border border-gray-200 
-                   text-sm font-medium px-5 py-2.5
-                    hover:text-gray-900 focus:z-10
-                     dark:bg-gray-700 dark:text-gray-300
-                      dark:border-gray-500 dark:hover:text-white
-                       dark:hover:bg-gray-600 dark:focus:ring-gray-600">No, cancel</button>
-              </div>
+        <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+          <button
+            id="cancel-icon"
+            type="button"
+            class="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-800 dark:hover:text-white"
+          >
+            <svg
+              aria-hidden="true"
+              class="w-5 h-5"
+              fill="currentColor"
+              viewBox="0 0 20 20"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                clip-rule="evenodd"
+              ></path>
+            </svg>
+            <span class="sr-only">Close modal</span>
+          </button>
+          <div class="py-6 px-10 text-center">
+            <svg
+              aria-hidden="true"
+              class="mx-auto mb-4 text-gray-400 w-14 h-14 dark:text-gray-200"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+              ></path>
+            </svg>
+            <h3
+              class="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400"
+            >
+              Are you sure you want to logout?
+            </h3>
+            <button
+              id="logout-confirm"
+              type="button"
+              class="text-white focus:ring-4 focus:outline-none font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center mr-2"
+            >
+              Yes, logout
+            </button>
+            <button
+              id="logout-cancel"
+              type="button"
+              class="text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10"
+            >
+              No, cancel
+            </button>
           </div>
+        </div>
       </div>
-  </div>
+    </div>
     <script src="../lib/websbc-client.js"></script>
     <script src="../lib/webphone-plugin.js"></script>
     <script src="../js/dialpad.js"></script>

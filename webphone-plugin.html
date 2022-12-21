@@ -26,7 +26,7 @@
         </div>
       </div>
 
-      <div class="row" id="webphone-video" style="display: none;">
+      <!-- <div class="row" id="webphone-video" style="display: none;">
         <div class="webphone-video-frame webphone-panel col-md-3">
           <div class="webphone-video-top-overlay row">
             <div class="col-md-12">
@@ -63,31 +63,56 @@
             </div>
           </div>
         </div>
+      </div> -->
+
+      <div class='hidden w-full' id="in-call">
+        <div class="flex flex-col">
+          <div class="flex flex-col pb-6 justify-center items-center relative">  
+            <div>
+              <img src="/images/profile.svg"/>
+            </div>
+            <span id="calling-state" class="text-[#A3A3A3] mt-6">Calling....</span>
+            <h3 class="mt-3 font-medium text-[#0A0A0A] text-xl leading-7.5">Test Mobile 01</h3>
+            <span id="caller-number" class="text-[#9C9C9C] text-sm"></span>
+            <div id="elapse-time" class="pull-left webphone-elapse-time hidden"></div>
+            <div class="relative items-center md:absolute md:left-1 md:top-1 flex gap-2">
+              <img id="network-img" src="/images/wifi.svg"/>
+              <span id="network-status" class="uppercase text-[#00A2DD]"></span>
+            </div>
+          </div>
+          <div class="w-full bg-[#F5F5F5] h-sidenav grid pb-8 px-5 place-items-end">
+            <div class="w-full flex justify-between items-center max-w-md mx-auto py-3">
+              <div id="speaker-btn" class="cursor-pointer w-12 h-12">
+                  <img class="w-full h-full object-contain" src="/images/speaker.svg" />
+              </div>
+              <div id="hang-up" class="bg-[#FF3234] flex justify-center
+               items-center cursor-pointer
+                rounded-full drop-shadow-md w-16 h-16">
+                  <img src="/images/hang-up.svg"/>
+              </div>
+              <div id="webphone-mute-btn" class="cursor-pointer w-12 h-12">
+                <img class="w-full h-full object-contain" src="/images/mute.svg"/>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- <div class="webphone-fkey side-key col-md-4 col-sm-4 col-xs-4" id="webphone-xfer-btn">
+          <p>Transfer</p>
+        </div>
+        <div class="webphone-fkey center-key col-md-4 col-sm-4 col-xs-4" id="webphone-hold-btn">
+          <p id="hold-btn-text">Hold</p>
+          <p id="resume-btn-text" class="webphone-inactive">Resume</p>
+        </div> -->
       </div>
 
       <div id="webphone-keypad" class="flex flex-col h-full justify-center text-white">
-<!--         
+        <!--         
         <div>
           <div id="last-call" class="pull-left" style="padding-left: 15px; min-height: 22px">
             &nbsp;
           </div>
-          <div id="elapse-time" class="pull-left webphone-elapse-time" style="display: none; padding-left: 15px; min-height: 22px">
-          </div>
+         
         </div> -->
-
-        <div class='row webphone-inactive' id="in-call">
-          <div class="webphone-fkey side-key col-md-4 col-sm-4 col-xs-4" id="webphone-xfer-btn">
-            <p>Transfer</p>
-          </div>
-          <div class="webphone-fkey center-key col-md-4 col-sm-4 col-xs-4" id="webphone-hold-btn">
-            <p id="hold-btn-text">Hold</p>
-            <p id="resume-btn-text" class="webphone-inactive">Resume</p>
-          </div>
-          <div class="webphone-fkey side-key col-md-4 col-sm-4 col-xs-4" id="webphone-mute-btn">
-            <p id="mute-btn-text">Mute</p>
-            <p id="unmute-btn-text" class="webphone-inactive">Unmute</p>
-          </div>
-        </div>
 
         <div class="w-full text-center flex flex-col gap-2">
           <div id="no-call" class="relative flex justify-center">
@@ -95,7 +120,7 @@
             mx-2 text-center focus:outline-none min-h-10"></div>
             <div class="hidden cursor-pointer 
             absolute bottom-[-5px]
-             right-[-100px]" id="webphone-backspace-btn">
+             right-[-8%] lg:right-[-20%]" id="webphone-backspace-btn">
               <img src="./images/backspace.svg"/>
             </div>
           </div>
@@ -110,13 +135,6 @@
             <img src="images/dialer.svg" class="w-full h-full object-cover"/>
           </div>
         </div>
-
-        <!-- <div class='row'>
-          <div class="webphone-ckey-voice col-md-12 col-sm-12 col-xs-12" >
-            <p id="call-btn-text" class="text-center">Call</p>
-            <p id="end-call-btn-text" class="text-center webphone-inactive">End Call</p>
-          </div>
-        </div> -->
       </div>
 
  

@@ -105,7 +105,11 @@ window.onload = function () {
 
 document.addEventListener("DOMContentLoaded", () => {
   let loginBtn = document.getElementById("login-btn");
+  let loader = document.getElementById("loading-progress")
   loginBtn.onclick = () => {
+    loader.classList.remove("hidden")
+    loader.classList.add("grid")
+    document.body.classList.add('overflow-hidden')
     login();
   };
 });
