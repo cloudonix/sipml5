@@ -9,7 +9,6 @@ document.addEventListener("DOMContentLoaded", () => {
   let cname = getCookie("cname");
   let domain = getCookie("domain");
   let container = $("#my-container");
-  let logoutBtn = document.getElementById("logout");
   let extensionOpts = document.getElementById("extension-options")
   let phoneTab = document.getElementById("phone-tab")
   let settingsTab = document.getElementById("settings-tab")
@@ -24,6 +23,8 @@ document.addEventListener("DOMContentLoaded", () => {
   let logoutCancel = document.getElementById("logout-cancel")
   let cancelIcon = document.getElementById("cancel-icon")
   let versionInfoBtn = document.getElementById("version-info")
+  let sidebar = document.getElementById("sidebar")
+  let hamburgerBtn = document.getElementById("hamburger")
 
   const manualLogout = async () => {
     const data = await fetch("/webphone.html");
@@ -150,5 +151,8 @@ document.addEventListener("DOMContentLoaded", () => {
   }
   cancelIcon.onclick = () => {
     cancelLogout()
+  }
+  hamburgerBtn.onclick = () => {
+    sidebar.classList.toggle("-translate-x-full")
   }
 });
