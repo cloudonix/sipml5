@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang='en'>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Ringplan WebPhone</title>
+    <link rel="stylesheet" href="./css/demo.css" type="text/css"/>
+    <link rel="stylesheet" href="./css/ringplan.css" type="text/css"/>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.7.2/jquery.min.js" ></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.0.2/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.7/cerulean/bootstrap.min.css" type="text/css"/>
+  </head>
+
+  <body style="background-color: black ;">
+    <div class="container RPclient">
+      <div class="well RPheader">
+        <div class="row">
+          <div class="span RPhspace">
+            <a class='btn btn-warning pull-right RPlogout' href='javascript: logout()' id='logout-btn' style='display: none;'>Log out</a>
+          </div> 
+          <div class="span">
+            <h1 class="RPTitle">RingPlan WebPhone</h1>
+          </div>
+        </div>
+        <div class="row">
+          <div id="functions" class="container RPinnercontainer"> 
+           <div id="RPLogin" class="well RPlogin" style="">
+                <h1>Login</h1>
+              <div class="row RPloginbuttons">
+                <a class="btn btn-light RPloginbutton" id="myringplan" href="javascript: RPmrplogin()"></a>
+              </div>
+              <div class="row RPloginbuttons">
+                <a class="btn btn-primary RPmanualbutton" href="javascript: RPmanuallogin()"><h1>Manual Login</h1></a>
+              </div>
+            </div>
+            <div id="RPloginerror" class="well RPlogin" style="display: none">
+            
+              <a class="RPclosebutton pull-right" href="javascript: RPLoginHome()"><strong>X</strong></a>
+              <h1 style="color:red ;">ERROR</h1>
+              <br>
+              <h3>Login type not yet supported, please use manual login.</h3>
+            </div>
+            <div id="RPmanualform" class="well RPlogin" style="display: none">
+              <a class="RPclosebutton pull-right" href="javascript: RPLoginHome()"><strong>X</strong></a>
+              <h2>Manual Login</h2>
+              <div style="text-align: left; color: black;">
+                <br>Extension<br>
+                <input id='user_id' type='text'>
+                <br>Secret<br>
+                <input id='user_pwd' type='password'>
+                <br>Domain<br>
+                <input id='user_domain' type='text' style="width:250px">
+                <br>
+                <br>
+                <a class='btn btn-primary' href="javascript: login()" id='login-btn'>Log in</a>
+              </div>
+            </div>
+          </div> 
+          <div id='my-container' class='container RPinnercontainer'>    
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--      <h3>DEV Buttons</h3>
+      <a class='btn btn-warning' href='javascript: RPdevlogout()'>Log out</a>
+      <a class='btn btn-primary' href='javascript: RPdevhideall()'>hide all elements</a>
+      <a class='btn btn-primary' href='javascript: RPdevdisconnect()'>disconnect WebSBC</a>
+      <a class='btn btn-primary' href='javascript: RPdevconnect()'>connect WebSBC</a>
+      <a class='btn btn-primary' href='javascript: RPdevcall()'>Incoming Call</a>
+    -->
+    <script src='./websbc-client.js'></script>
+    <script src='./webphone-plugin.js'></script>
+    <script>
+        window.onload = function() {
+	        // Set the prefilled domain here
+	        $('#user_domain').val('zraytechnoloDoobh.ringplan.com')
+          // set the websocket servr address here
+          $('#my-container').webphone(["sip.ringplan.com"]);
+
+          var uname, pass, cname, domain;
+          console.log(uname = getCookie("user_id"));
+          console.log(pass = getCookie("secret"));
+          console.log(cname = getCookie("cname"));
+          console.log(domain = getCookie("domain"));
+
+          if (window.location.search.length > 1
+				  && window.location.search.toLowerCase().indexOf('user=') > -1
+				  && window.location.search.toLowerCase().indexOf('pass=') > -1) {
+            var query_params = window.location.search.split('&')
+			      for (var i = 0; i < query_params.length; i++) {
+			        if (query_params[i].toLowerCase().indexOf('user=') > -1) {
+				        uname = query_params[i].split('=')[1];
+			           }
+			         else if (query_params[i].toLowerCase().indexOf('pass=') > -1) {
+				        pass = query_params[i].split('=')[1];
+			          }
+			        else if (query_params[i].toLowerCase().indexOf('cname=') > -1) {
+				        cname = query_params[i].split('=')[1].replace('%20', ' ');
+			          }
+			        else if (query_params[i].toLowerCase().indexOf('domain=') > -1) {
+				        domain = query_params[i].split('=')[1];
+			          }
+			        }
+		        }
+		      if (uname.length > 1 && pass.length > 1){
+		        $('#user_id').val(uname);
+		        $('#user_pwd').val(pass);
+		        $('#user_cname').val(cname);
+		        $('#user_domain').val(domain);
+		        //disabled autologin
+            //setTimeout(login(), 500);
+		        }
+          };
+
+        function login() {
+          var user = $('#user_id').val();
+          var pwd = $('#user_pwd').val();
+          var cname = $('#user_cname').val();
+          var domain = $('#user_domain').val();
+          if (domain.length > 0)
+            $('#my-container').webphone.login(user, pwd, cname, domain, function() {
+              $('#logout-btn').show();
+              $('#functions').hide();
+            },
+            function() {
+              $('#logout-btn').hide();
+              //alert("Disconnected from server");
+              $('#functions').show();
+            });
+          else
+            $('#my-container').webphone.login(user, pwd, cname);
+            
+        }
+
+        function logout() {
+          $('#my-container').webphone.logout();
+          $('#logout-btn').hide();
+          $('#functions').show();
+        }
+
+
+        function RPmrplogin() {
+          $('#RPLogin').hide();
+          $('#RPloginerror').show();
+        }
+
+        function RPLoginHome() {
+          $('#RPloginerror').hide();
+          $('#RPmanualform').hide();
+          $('#RPLogin').show();
+        }
+        
+        function RPmanuallogin() {
+          $('#RPLogin').hide();
+          $('#RPmanualform').show();
+        }
+
+        function RPdevhideall() {
+          $('#RPLogin').hide();
+          $('#RPmanualform').hide();
+          $('#RPlogincontrol').hide();
+          $('#RPloginerror').hide();
+          $('#show-phone').hide();
+          $('#inactive-phone').hide();
+          $('#webphone-incoming-call').hide();
+          $('#webphone-video').hide();
+          $('#webphone-video-main').hide();
+          $('#webphone-video-bottom-overlay').hide();
+          $('#webphone-keypad').hide();
+        }
+
+        function RPdevconnect(){
+          $('#show-phone').show();
+          $('#inactive-phone').hide();
+          $('#logout-btn').show();
+        }
+
+        function RPdevlogout() {
+          $('#logout-btn').hide();
+          $('#RPLogin').show();
+        }
+
+        function RPdevdisconnect(){
+          $('#show-phone').hide();
+          $('#inactive-phone').show();
+          $('#logout-btn').hide();
+        }
+
+        function RPdevcall() {
+          $('#webphone-incoming-call').show();
+        }
+          
+    </script>
+  </body>
+</html>
