@@ -1,9 +1,3 @@
-* {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-}
-
-#logout {
-    display: none;
+#logout-confirm {
+    background: linear-gradient(101.26deg, #83D929 14.93%, #0099D1 80.68%);
 }
