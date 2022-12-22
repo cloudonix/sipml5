@@ -21,7 +21,7 @@ document.addEventListener("DOMContentLoaded", () => {
   let modal = document.getElementById("logout-modal")
   let logoutConfirm = document.getElementById("logout-confirm")
   let logoutCancel = document.getElementById("logout-cancel")
-  let cancelIcon = document.getElementById("cancel-icon")
+ 
   let versionInfoBtn = document.getElementById("version-info")
   let sidebar = document.getElementById("sidebar")
   let hamburgerBtn = document.getElementById("hamburger")
@@ -149,9 +149,7 @@ document.addEventListener("DOMContentLoaded", () => {
   logoutCancel.onclick = () => {
     cancelLogout()
   }
-  cancelIcon.onclick = () => {
-    cancelLogout()
-  }
+
   hamburgerBtn.onclick = () => {
     sidebar.classList.toggle("-translate-x-full")
   }
