@@ -39,6 +39,7 @@ const logout = async () => {
   $("#my-container").webphone.logout();
   $("#dialpad-content").addClass("hidden");
   $("#login-content").removeClass("hidden");
+  $("#my-container").removeClass("px-2 md:px-4 lg:px-6 py-6");
   setCookie("user_id", "", 1);
   setCookie("secret", "", 1);
   setCookie("cname", "", 1);
@@ -59,9 +60,11 @@ async function updateUI() {
     document.getElementById("loading-progress").classList.add("hidden");
     document.body.classList.remove("overflow-hidden");
     $("#my-container").removeClass("hidden");
-    $("#my-container").addClass("flex");
+    $("#my-container").addClass("flex px-2 md:px-4 lg:px-6 py-6");
+    
     $("#webphone-keypad").removeClass("hidden");
     $("#webphone-keypad").addClass("flex");
+
     let extensionOpts = document.getElementById("extension-options");
     let phoneTab = document.getElementById("phone-tab");
     let settingsTab = document.getElementById("settings-tab");

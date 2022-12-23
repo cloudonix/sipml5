@@ -1,32 +1,47 @@
-
-      <div class="row" id="webphone-incoming-call" style="display: none;">
-        <div class="webphone-panel col-md-3">
-          <div class='row' style='margin-top: 20px'>
-            <div>
-              <p class='text-center'>INCOMING CALL</p>
-              <p class='webphone-caller-id text-center'>
-                <i class='fa fa-volume-control-phone'></i>
-                <b>7259992208</b>
-              </p>
-            </div>
-          </div>
-          <div class='row'>
-            <p class='text-center' style='padding-top: 50px; padding-bottom: 50px'>
-              <img src="./images/avatar.jpg"></img>
-            </p>
-          </div>
-          <div class='row'>
-            <div class='webphone-reject-key col-md-offset-1 col-sm-offset-1 col-xs-offset-1 col-md-3 col-sm-3 col-xs-3 text-center'>
-              Reject
-            </div>
-            <div class='webphone-answer-key col-md-offset-4 col-sm-offset-4 col-xs-offset-4 col-md-3 col-sm-3 col-xs-3 text-center'>
-              Answer
-            </div>
-          </div>
+<div id="webphone-incoming-call" class="w-full hidden">
+  <div class="flex flex-col">
+    <div class="flex flex-col pb-6 justify-center items-center relative">
+      <div>
+        <img src="/images/profile.svg" />
+      </div>
+      <h3 class="mt-4 font-medium text-[#0A0A0A] text-xl leading-7.5">
+        Test Mobile 01
+      </h3>
+      <span id="webphone-caller-id" class="text-[#1D1B1B] mt-5 text-2xl"
+        >6004</span
+      >
+      <div
+        class="relative items-center md:absolute md:left-1 md:top-1 flex gap-2"
+      >
+        <img class="network-img"  src="/images/wifi.svg" />
+        <span
+          class="uppercase network-status text-[#00A2DD]"
+        ></span>
+      </div>
+    </div>
+    <div class="w-full bg-[#F5F5F5] h-sidenav grid pb-8 px-5 place-items-end">
+      <div
+        class="w-full flex justify-center gap-30 items-center max-w-md mx-auto py-3"
+      >
+        <div
+          class="bg-[#FF3234] webphone-reject-key flex justify-center 
+          items-center cursor-pointer rounded-full drop-shadow-md w-24 h-24"
+        >
+          <img src="/images/hang-up.svg" />
+        </div>
+        <div
+          class="bg-[#72C515] cursor-pointer duration-200 ease-in 
+          p-3 webphone-answer-key justify-center flex hover:bg-green-400 
+          items-center h-24 w-24 rounded-full"
+        >
+          <img src="images/dialer.svg" />
         </div>
       </div>
+    </div>
+  </div>
+</div>
 
-      <!-- <div class="row" id="webphone-video" style="display: none;">
+<!-- <div class="row" id="webphone-video" style="display: none;">
         <div class="webphone-video-frame webphone-panel col-md-3">
           <div class="webphone-video-top-overlay row">
             <div class="col-md-12">
@@ -65,48 +80,58 @@
         </div>
       </div> -->
 
-      <div class='hidden w-full' id="in-call">
-        <div class="flex flex-col">
-          <div class="flex flex-col pb-6 justify-center items-center relative">  
-            <div>
-              <img src="/images/profile.svg"/>
-            </div>
-            <span id="calling-state" class="text-[#A3A3A3] mt-6">Calling....</span>
-            <h3 class="mt-3 font-medium text-[#0A0A0A] text-xl leading-7.5">Test Mobile 01</h3>
-            <span id="caller-number" class="text-[#9C9C9C] text-sm"></span>
-            <div id="elapse-time" class="pull-left webphone-elapse-time hidden"></div>
-            <div class="relative items-center md:absolute md:left-1 md:top-1 flex gap-2">
-              <img id="network-img" src="/images/wifi.svg"/>
-              <span id="network-status" class="uppercase text-[#00A2DD]"></span>
-            </div>
-          </div>
-          <div class="w-full bg-[#F5F5F5] h-sidenav grid pb-8 px-5 place-items-end">
-            <div class="w-full flex justify-between items-center max-w-md mx-auto py-3">
-              <div id="speaker-btn" class="cursor-pointer w-12 h-12">
-                  <img class="w-full h-full object-contain" src="/images/speaker.svg" />
-              </div>
-              <div id="hang-up" class="bg-[#FF3234] flex justify-center
-               items-center cursor-pointer
-                rounded-full drop-shadow-md w-16 h-16">
-                  <img src="/images/hang-up.svg"/>
-              </div>
-              <div id="webphone-mute-btn" class="cursor-pointer w-12 h-12">
-                <img class="w-full h-full object-contain" src="/images/mute.svg"/>
-              </div>
-            </div>
-          </div>
+<div class="hidden w-full" id="in-call">
+  <div class="flex flex-col">
+    <div class="flex flex-col pb-6 justify-center items-center relative">
+      <div>
+        <img src="/images/profile.svg" />
+      </div>
+      <span id="calling-state" class="text-[#A3A3A3] mt-6">Calling....</span>
+      <h3 class="mt-3 font-medium text-[#0A0A0A] text-xl leading-7.5">
+        Test Mobile 01
+      </h3>
+      <span id="caller-number" class="text-[#9C9C9C] text-sm"></span>
+      <div id="elapse-time" class="pull-left webphone-elapse-time hidden"></div>
+      <div
+        class="relative items-center md:absolute md:left-1 md:top-1 flex gap-2"
+      >
+        <img class="network-img" src="/images/wifi.svg" />
+        <span class="uppercase network-status text-[#00A2DD]"></span>
+      </div>
+    </div>
+    <div class="w-full bg-[#F5F5F5] h-sidenav grid pb-8 px-5 place-items-end">
+      <div
+        class="w-full flex justify-between items-center max-w-md mx-auto py-3"
+      >
+        <div id="speaker-btn" class="cursor-pointer w-12 h-12">
+          <img class="w-full h-full object-contain" src="/images/speaker.svg" />
         </div>
-        <!-- <div class="webphone-fkey side-key col-md-4 col-sm-4 col-xs-4" id="webphone-xfer-btn">
+        <div
+          id="hang-up"
+          class="bg-[#FF3234] flex justify-center items-center cursor-pointer rounded-full drop-shadow-md w-16 h-16"
+        >
+          <img src="/images/hang-up.svg" />
+        </div>
+        <div id="webphone-mute-btn" class="cursor-pointer w-12 h-12">
+          <img class="w-full h-full object-contain" src="/images/mute.svg" />
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- <div class="webphone-fkey side-key col-md-4 col-sm-4 col-xs-4" id="webphone-xfer-btn">
           <p>Transfer</p>
         </div>
         <div class="webphone-fkey center-key col-md-4 col-sm-4 col-xs-4" id="webphone-hold-btn">
           <p id="hold-btn-text">Hold</p>
           <p id="resume-btn-text" class="webphone-inactive">Resume</p>
         </div> -->
-      </div>
+</div>
 
-      <div id="webphone-keypad" class="flex-col hidden h-full justify-center text-white">
-        <!--         
+<div
+  id="webphone-keypad"
+  class="flex-col hidden h-full justify-center text-white"
+>
+  <!--         
         <div>
           <div id="last-call" class="pull-left" style="padding-left: 15px; min-height: 22px">
             &nbsp;
@@ -114,27 +139,25 @@
          
         </div> -->
 
-        <div class="w-full text-center flex flex-col gap-2">
-          <div id="no-call" class="relative flex justify-center">
-            <div class="webphone-digits font-medium text-[#232323] text-4xl bg-transparent 
-            mx-2 text-center focus:outline-none min-h-10"></div>
-            <div class="hidden cursor-pointer 
-            absolute bottom-[-5px]
-             right-[-8%] lg:right-[-20%]" id="webphone-backspace-btn">
-              <img src="./images/backspace.svg"/>
-            </div>
-          </div>
-          <div id="dialpad-container" class="inline-grid grid-cols-3 gap-6 mx-auto">
-          <div 
-          id="webphone-call-btn"
-          class="bg-[#72C515] cursor-pointer duration-200 
-          ease-in p-3 col-start-2 col-end-3
-           mx-auto justify-center flex
-            hover:bg-green-400 
-            items-center h-14 w-14 rounded-full">
-            <img src="images/dialer.svg" class="w-full h-full object-cover"/>
-          </div>
-        </div>
+  <div class="w-full text-center flex flex-col gap-2">
+    <div id="no-call" class="relative flex justify-center">
+      <div
+        class="webphone-digits font-medium select-none text-[#232323] text-4xl bg-transparent mx-2 text-center focus:outline-none min-h-10"
+      ></div>
+      <div
+        class="hidden cursor-pointer select-none absolute bottom-[-5px] right-[-8%] lg:right-[-20%]"
+        id="webphone-backspace-btn"
+      >
+        <img src="./images/backspace.svg" />
       </div>
-
- 
+    </div>
+    <div id="dialpad-container" class="inline-grid grid-cols-3 gap-6 mx-auto">
+      <div
+        id="webphone-call-btn"
+        class="bg-[#72C515] cursor-pointer duration-200 ease-in p-3 col-start-2 col-end-3 mx-auto justify-center flex hover:bg-green-400 items-center h-14 w-14 rounded-full"
+      >
+        <img src="images/dialer.svg" class="w-full h-full object-cover" />
+      </div>
+    </div>
+  </div>
+</div>

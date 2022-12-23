@@ -93,24 +93,6 @@
   display: none !important;
 }
 
-.webphone-answer-key {
-  cursor: pointer;
-  background-color: #2fa4e7;
-  color: #ffffff;
-  padding: 15px;
-}
-
-.webphone-reject-key {
-  cursor: pointer;
-  background-color: #b40000;
-  color: #ffffff;
-  padding: 15px;
-}
-
-.webphone-caller-id {
-  font-size: 40px;
-}
-
 .webphone-video-frame {
   overflow: hidden;
   padding: 0;
