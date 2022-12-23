@@ -140,11 +140,11 @@
     padding-left: 1rem;
   }
 
-  #main {
+  #main-login {
     padding: 3rem 1.5rem;
   }
 
-  #main h1 {
+  #main-login h1 {
     font-size: 20px;
     line-height: 30px;
   }

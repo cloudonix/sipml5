@@ -3,7 +3,6 @@ let activeClasses = classesStr.split(" ");
 let subMenuClassesStr = `bg-[#F7F7FB] text-[#0D0D54]`;
 let activeSubMenuClasses = subMenuClassesStr.split(" ");
 
-
 async function login() {
   let user = document.getElementById("user_id");
   let pwd = document.getElementById("user_pwd");
@@ -17,7 +16,6 @@ async function login() {
       cname.value,
       domain.value.length > 0 ? domain.value : null,
       async () => {
-        
         const urlSearchParams = new URLSearchParams(window.location.search);
         const params = Object.fromEntries(urlSearchParams.entries());
 
@@ -25,8 +23,8 @@ async function login() {
           urlSearchParams.delete("error");
           history.pushState({}, "", window.location.pathname);
         }
-        user.value = ""
-        pwd.value = ""
+        user.value = "";
+        pwd.value = "";
         resolve();
       },
       async () => {
@@ -53,7 +51,9 @@ async function updateUI() {
     document.getElementById("login-content").classList.add("hidden");
     const data = await fetch("/dialpad/index.html");
     const html = await data.text();
-    document.getElementById("dialpad-content").insertAdjacentHTML("afterbegin", html);
+    document
+      .getElementById("dialpad-content")
+      .insertAdjacentHTML("afterbegin", html);
     document.getElementById("error-message").style.display = "none";
     document.getElementById("loading-progress").classList.remove("grid");
     document.getElementById("loading-progress").classList.add("hidden");
@@ -74,13 +74,16 @@ async function updateUI() {
     let modal = document.getElementById("logout-modal");
     let logoutConfirm = document.getElementById("logout-confirm");
     let logoutCancel = document.getElementById("logout-cancel");
+    let container = document.getElementById("my-container")
+    mainWrapper.appendChild(container)
+    // const target = document.querySelector("#main-wrapper");
+    // target.parentNode.insertBefore($("#my-container"), target);
 
     let versionInfoBtn = document.getElementById("version-info");
     let sidebar = document.getElementById("sidebar");
     let hamburgerBtn = document.getElementById("hamburger");
 
-    extensionOpts.querySelector("span").innerText = getCookie("user_id")
-
+    extensionOpts.querySelector("span").innerText = getCookie("user_id");
 
     const cancelLogout = () => {
       modal.classList.remove("grid");
@@ -157,8 +160,6 @@ async function updateUI() {
   }
 }
 
-
-
 window.onload = function () {
   let userDomain = document.getElementById("user_domain");
 
@@ -224,8 +225,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const urlSearchParams = new URLSearchParams(window.location.search);
   const params = Object.fromEntries(urlSearchParams.entries());
-  if(params.error){
-    $("#error-message").show()
+  if (params.error) {
+    $("#error-message").show();
     userId.value = "";
     password.value = "";
   }
