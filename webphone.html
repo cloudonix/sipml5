@@ -7,53 +7,68 @@
     <title>Ringplan WebPhone</title>
     <link rel="stylesheet" href="css/webphone.css" type="text/css" />
     <link rel="stylesheet" href="css/main.css" />
+    <link rel="stylesheet" href="css/main.css" />
+    <link rel="stylesheet" href="css/dialpad.css" />
+    <script
+    type="text/javascript"
+    src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.7.2/jquery.min.js"
+  ></script>
+  <script
+    type="text/javascript"
+    src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.0.2/js/bootstrap.min.js"
+  ></script>
   </head>
 
-  <body>
-    <div class="header-section">
-      <div class="header-content">
-        <div>
-          <img src="images/ringplan-md.svg" />
-        </div>
-        <h1>Ringplan Webphone</h1>
-      </div>
-      <div class="header-img-wrapper">
-        <img src="images/ringplan-header.png" />
-      </div>
-    </div>
-    <div id="my-container" class="container"></div>
-    <div id="main">
-      <h1>Login with extension and secret</h1>
+  <body class="m-0 !font-body antialiased font-normal text-base leading-default">
+    <div id="dialpad-content">
+    <div id="my-container" class="container justify-center"></div>
 
-      <div id="login-extension">
-        <div class="input-wrapper">
-          <label for="user_id">Extension</label>
-          <input
-            type="text"
-            id="user_id"
-            placeholder="Enter extension here..."
-          />
+    </div>
+    <div id="login-content">
+      <div id="header-section" class="header-section">
+        <div class="header-content">
+          <div>
+            <img src="images/ringplan-md.svg" />
+          </div>
+          <h1>Ringplan Webphone</h1>
         </div>
-        <div class="input-wrapper">
-          <label for="user_domain">Server address</label>
-          <input
-            type="text"
-            id="user_domain"
-            placeholder="Enter server address"
-          />
+        <div class="header-img-wrapper">
+          <img src="images/ringplan-header.png" />
         </div>
-        <div class="input-wrapper">
-          <label for="user_pwd">Secret</label>
-          <input
-            type="password"
-            id="user_pwd"
-            placeholder="Enter secret code here..."
-          />
-        </div>
-        <div style="display: none"><input id="user_cname" type="text" /></div>
-        <span id="error-message">Invalid credentials</span>
-        <div id="btn-wrapper">
-          <button id="login-btn">Login</button>
+      </div>
+      <div id="main-login">
+        <h1>Login with extension and secret</h1>
+  
+        <div id="login-extension">
+          <div class="input-wrapper">
+            <label for="user_id">Extension</label>
+            <input
+              type="text"
+              id="user_id"
+              placeholder="Enter extension here..."
+            />
+          </div>
+          <div class="input-wrapper">
+            <label for="user_domain">Server address</label>
+            <input
+              type="text"
+              id="user_domain"
+              placeholder="Enter server address"
+            />
+          </div>
+          <div class="input-wrapper">
+            <label for="user_pwd">Secret</label>
+            <input
+              type="password"
+              id="user_pwd"
+              placeholder="Enter secret code here..."
+            />
+          </div>
+          <div style="display: none"><input id="user_cname" type="text" /></div>
+          <span id="error-message">Invalid credentials</span>
+          <div id="btn-wrapper">
+            <button id="login-btn">Login</button>
+          </div>
         </div>
       </div>
     </div>
@@ -69,6 +84,8 @@
         <span class="sr-only">Loading...</span>
       </div>
     </div>
+    <script src="../lib/websbc-client.js"></script>
+    <script src="../lib/webphone-plugin.js"></script>
     <script src="js/webphone.js"></script>
   </body>
 </html>
