@@ -1,21 +1,21 @@
-var classesStr = `items-center text-[#0D0D54] font-bold bg-[#F7F7FB] border-r-4 border-[#3B9EF7]`;
-var activeClasses = classesStr.split(" ");
-var subMenuClassesStr = `bg-[#F7F7FB] text-[#0D0D54]`;
-var activeSubMenuClasses = subMenuClassesStr.split(" ");
+let classesStr = `items-center text-[#0D0D54] font-bold bg-[#F7F7FB] border-r-4 border-[#3B9EF7]`;
+let activeClasses = classesStr.split(" ");
+let subMenuClassesStr = `bg-[#F7F7FB] text-[#0D0D54]`;
+let activeSubMenuClasses = subMenuClassesStr.split(" ");
 
 
 async function login() {
-  let user = document.getElementById("user_id").value;
-  let pwd = document.getElementById("user_pwd").value;
-  let cname = document.getElementById("user_cname").value;
-  let domain = document.getElementById("user_domain").value;
+  let user = document.getElementById("user_id");
+  let pwd = document.getElementById("user_pwd");
+  let cname = document.getElementById("user_cname");
+  let domain = document.getElementById("user_domain");
 
   return new Promise((resolve, reject) => {
     $("#my-container").webphone.login(
-      user,
-      pwd,
-      cname,
-      domain.length > 0 ? domain : null,
+      user.value,
+      pwd.value,
+      cname.value,
+      domain.value.length > 0 ? domain.value : null,
       async () => {
         
         const urlSearchParams = new URLSearchParams(window.location.search);
@@ -25,6 +25,8 @@ async function login() {
           urlSearchParams.delete("error");
           history.pushState({}, "", window.location.pathname);
         }
+        user.value = ""
+        pwd.value = ""
         resolve();
       },
       async () => {
@@ -193,7 +195,10 @@ window.onload = function () {
   let cnameInput = document.getElementById("user_cname");
   let domainInput = document.getElementById("user_domain");
 
-  if (uname.length > 1 && pass.length > 1) {
+  const urlSearchParams = new URLSearchParams(window.location.search);
+  const params = Object.fromEntries(urlSearchParams.entries());
+
+  if (uname.length > 1 && pass.length > 1 && !params.error) {
     userId.value = uname;
     password.value = pass;
     cnameInput.value = cname;
@@ -204,7 +209,8 @@ window.onload = function () {
 
 document.addEventListener("DOMContentLoaded", () => {
   $("#my-container").webphone(["sip.ringplan.com"]);
-
+  let userId = document.getElementById("user_id");
+  let password = document.getElementById("user_pwd");
   let loginBtn = document.getElementById("login-btn");
   let loader = document.getElementById("loading-progress");
 
@@ -215,4 +221,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
     updateUI();
   };
+
+  const urlSearchParams = new URLSearchParams(window.location.search);
+  const params = Object.fromEntries(urlSearchParams.entries());
+  if(params.error){
+    $("#error-message").show()
+    userId.value = "";
+    password.value = "";
+  }
 });
