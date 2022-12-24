@@ -13,10 +13,8 @@
       <div
         class="relative items-center mt-3 md:absolute md:left-1 md:top-1 flex gap-2"
       >
-        <img class="network-img"  src="/images/wifi.svg" />
-        <span
-          class="uppercase network-status text-[#00A2DD]"
-        ></span>
+        <img class="network-img" src="/images/wifi.svg" />
+        <span class="uppercase network-status text-[#00A2DD]"></span>
       </div>
     </div>
     <div class="w-full bg-[#F5F5F5] h-sidenav grid pb-8 px-5 place-items-end">
@@ -24,15 +22,12 @@
         class="w-full flex justify-center gap-30 items-center max-w-md mx-auto py-3"
       >
         <div
-          class="bg-[#FF3234] webphone-reject-key flex justify-center 
-          items-center cursor-pointer rounded-full drop-shadow-md w-24 h-24"
+          class="bg-[#FF3234] webphone-reject-key flex justify-center items-center cursor-pointer rounded-full drop-shadow-md w-24 h-24"
         >
           <img src="/images/hang-up.svg" />
         </div>
         <div
-          class="bg-[#72C515] cursor-pointer duration-200 ease-in 
-          p-3 webphone-answer-key justify-center flex hover:bg-green-400 
-          items-center h-24 w-24 rounded-full"
+          class="bg-[#72C515] cursor-pointer duration-200 ease-in p-3 webphone-answer-key justify-center flex hover:bg-green-400 items-center h-24 w-24 rounded-full"
         >
           <img src="images/dialer.svg" />
         </div>
@@ -101,11 +96,26 @@
     </div>
     <div class="w-full bg-[#F5F5F5] h-sidenav grid pb-8 px-5 place-items-end">
       <div
-        class="w-full flex justify-between items-center max-w-md mx-auto py-3"
+        class="w-full relative flex justify-between items-center max-w-md mx-auto py-3"
       >
+      
+        <div class="absolute bottom-16 left-5">
+          <input
+            class="hidden"
+            id="volume"
+            type="range"
+            min="0"
+            max="1"
+            step="0.1"
+            value="0.5"
+            orient="vertical"
+          />
+        </div>
         <div id="speaker-btn" class="cursor-pointer w-12 h-12">
           <img class="w-full h-full object-contain" src="/images/speaker.svg" />
         </div>
+    
+
         <div
           id="hang-up"
           class="bg-[#FF3234] flex justify-center items-center cursor-pointer rounded-full drop-shadow-md w-16 h-16"

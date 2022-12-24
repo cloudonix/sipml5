@@ -28,7 +28,6 @@ async function login() {
         resolve();
       },
       async () => {
-        // alert("login error");
         reject();
       }
     );
@@ -79,8 +78,6 @@ async function updateUI() {
     let logoutCancel = document.getElementById("logout-cancel");
     let container = document.getElementById("my-container");
     mainWrapper.appendChild(container);
-    // const target = document.querySelector("#main-wrapper");
-    // target.parentNode.insertBefore($("#my-container"), target);
 
     let versionInfoBtn = document.getElementById("version-info");
     let sidebar = document.getElementById("sidebar");
