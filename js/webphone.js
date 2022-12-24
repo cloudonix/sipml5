@@ -61,7 +61,7 @@ async function updateUI() {
     document.body.classList.remove("overflow-hidden");
     $("#my-container").removeClass("hidden");
     $("#my-container").addClass("flex px-2 md:px-4 lg:px-6 py-6");
-    
+
     $("#webphone-keypad").removeClass("hidden");
     $("#webphone-keypad").addClass("flex");
 
@@ -77,8 +77,8 @@ async function updateUI() {
     let modal = document.getElementById("logout-modal");
     let logoutConfirm = document.getElementById("logout-confirm");
     let logoutCancel = document.getElementById("logout-cancel");
-    let container = document.getElementById("my-container")
-    mainWrapper.appendChild(container)
+    let container = document.getElementById("my-container");
+    mainWrapper.appendChild(container);
     // const target = document.querySelector("#main-wrapper");
     // target.parentNode.insertBefore($("#my-container"), target);
 
@@ -86,7 +86,8 @@ async function updateUI() {
     let sidebar = document.getElementById("sidebar");
     let hamburgerBtn = document.getElementById("hamburger");
 
-    extensionOpts.querySelector("span").innerText = getCookie("user_id");
+    extensionOpts.querySelector("span").innerText =
+      document.getElementById("user_id").value || getCookie("user_id");
 
     const cancelLogout = () => {
       modal.classList.remove("grid");
