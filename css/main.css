@@ -1119,6 +1119,11 @@ video {
   padding-right: 2rem;
 }
 
+.px-4 {
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
 .pb-6 {
   padding-bottom: 1.5rem;
 }
@@ -1466,6 +1471,13 @@ video {
   }
 }
 
+@media (min-width: 576px) {
+  .sm\:px-6 {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+}
+
 @media (min-width: 768px) {
   .md\:absolute {
     position: absolute;
@@ -1494,9 +1506,27 @@ video {
     height: auto;
   }
 
+  .md\:h-24 {
+    height: 6rem;
+  }
+
+  .md\:w-24 {
+    width: 6rem;
+  }
+
   .md\:px-4 {
     padding-left: 1rem;
     padding-right: 1rem;
+  }
+
+  .md\:px-10 {
+    padding-left: 2.5rem;
+    padding-right: 2.5rem;
+  }
+
+  .md\:text-xl {
+    font-size: 1.25rem;
+    line-height: 1.75rem;
   }
 }
 
@@ -1521,6 +1551,11 @@ video {
   .lg\:px-6 {
     padding-left: 1.5rem;
     padding-right: 1.5rem;
+  }
+
+  .lg\:text-2xl {
+    font-size: 1.5rem;
+    line-height: 2rem;
   }
 }
 
