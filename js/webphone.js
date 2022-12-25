@@ -36,8 +36,10 @@ async function login() {
 
 const logout = async () => {
   $("#my-container").webphone.logout();
+  $("#phone-tab").click()
   $("#dialpad-content").addClass("hidden");
   $("#login-content").removeClass("hidden");
+  $("#logout-modal").addClass('hidden')
   $("#my-container").removeClass("px-2 md:px-4 lg:px-6 py-6");
   setCookie("user_id", "", 1);
   setCookie("secret", "", 1);
@@ -51,9 +53,12 @@ async function updateUI() {
     document.getElementById("login-content").classList.add("hidden");
     const data = await fetch("/dialpad/index.html");
     const html = await data.text();
-    document
-      .getElementById("dialpad-content")
-      .insertAdjacentHTML("afterbegin", html);
+    document.getElementById("dialpad-content").classList.remove("hidden");
+    if (!document.getElementById("main")) {
+      document
+        .getElementById("dialpad-content")
+        .insertAdjacentHTML("afterbegin", html);
+    }
     document.getElementById("error-message").style.display = "none";
     document.getElementById("loading-progress").classList.remove("grid");
     document.getElementById("loading-progress").classList.add("hidden");
