@@ -80,6 +80,18 @@ function tsk_utils_get_navigator_friendly_name(){
     return __s_navigator_friendly_name;
 }
 
+var __o_navigator_audio_devices = undefined;
+function tsk_utils_get_navigator_audio_devices() {
+    if (!__o_navigator_audio_devices) {
+        __o_navigator_audio_devices = 'unknown';
+        if (navigator.mediaDevices) {
+            var ao_mediaDevices = navigator.mediaDevices.enumerateDevices();
+        }
+        __o_navigator_audio_devices = ao_mediaDevices;
+    }
+    return __o_navigator_audio_devices;
+}
+
 var __s_system_friendly_name = undefined;
 function tsk_utils_get_system_friendly_name(){
     if(!__s_system_friendly_name){
@@ -103,7 +115,6 @@ function tsk_utils_get_system_friendly_name(){
     }
     return __s_system_friendly_name;
 }
-
 
 var __i_debug_level = 4; // INFO:4, WARN:3, ERROR:2, FATAL:1
 

@@ -33,6 +33,7 @@ SIPml = {};
 /** @private */SIPml.b_audio_constraint_noise_suppression = false;
 /** @private */SIPml.b_audio_constraint_auto_gain = false;
 /** @private */SIPml.b_sdp_unified_semantics = true;
+/** @private */SIPml.o_navigator_audio_devices = [];
 
 /**
 Sets the debug level.
@@ -444,6 +445,7 @@ SIPml.init = function (successCallback, errorCallback) {
         SIPml.s_webrtc4all_version = tsk_utils_webrtc4all_get_version();
         SIPml.s_navigator_friendly_name = tsk_utils_get_navigator_friendly_name();
         SIPml.s_system_friendly_name = tsk_utils_get_system_friendly_name();
+        SIPml.o_navigator_audio_devices = tsk_utils_get_navigator_audio_devices();
 
         // prints whether WebSocket is supported
         tsk_utils_log_info("WebSocket supported = " + (SIPml.isWebSocketSupported() ? "yes" : "no"));
